@@ -10,6 +10,16 @@ class App extends StatelessWidget {
       themeMode: ThemeMode.system,
       theme: TAppTheme.lightTheme,
       darkTheme: TAppTheme.darkTheme,
+      debugShowCheckedModeBanner: false,
+      // title: 'E-commerce Project',
+       home: const Scaffold(
+      body: Center(
+        child: Text(
+          "Welcome to E-Commerce App",
+          style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+        ),
+      ),
+       )
     );
   }
 }
