@@ -1,6 +1,7 @@
 import 'package:ecommerseproject/utils/constants/image_strings.dart';
 import 'package:ecommerseproject/utils/constants/sizes.dart';
 import 'package:ecommerseproject/utils/constants/text_strings.dart';
+import 'package:ecommerseproject/utils/devices/device_utility.dart';
 import 'package:ecommerseproject/utils/helpers/helper_functions.dart';
 import 'package:flutter/material.dart';
 
@@ -19,20 +20,35 @@ class OnBoardingScreen extends StatelessWidget {
               title: TTexts.onBoardingTitle1,
               subtitle: TTexts.onBoardingSubtitle1,
             ),
-             OnBoardingPage(
+            OnBoardingPage(
               image: TImages.onBoardingImage2,
               title: TTexts.onBoardingTitle2,
               subtitle: TTexts.onBoardingSubtitle2,
             ),
-             OnBoardingPage(
+            OnBoardingPage(
               image: TImages.onBoardingImage3,
               title: TTexts.onBoardingTitle3,
               subtitle: TTexts.onBoardingSubtitle3,
             ),
           ],
-        )
+        ),
+        OnBoardingSkip()
       ],
     ));
+  }
+}
+
+class OnBoardingSkip extends StatelessWidget {
+  const OnBoardingSkip({
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Positioned(
+        right: TSizes.defaultSpace,
+        top: TDeviceUtils.getAppBarHeight(),
+        child: TextButton(onPressed: () {}, child: const Text('Skip')));
   }
 }
 

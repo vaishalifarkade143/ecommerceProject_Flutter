@@ -1,10 +1,15 @@
 import 'dart:io';
 
+import 'package:flutter/foundation.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter/widgets.dart';
+import 'package:get/get_navigation/get_navigation.dart';
+import 'package:get/utils.dart';
 import 'package:url_launcher/url_launcher_string.dart';
 
-class TDeviceUtility {
+class TDeviceUtils {
+
 // Method to check if the device is in landscape mode
 // This method checks the orientation of the device and returns true if it is in landscape mode.
   static void hideKeyboard(BuildContext context) {
@@ -48,36 +53,57 @@ class TDeviceUtility {
         enable ? SystemUiMode.immersiveSticky : SystemUiMode.edgeToEdge);
   }
 
+// Method to get the bottom navigation bar height
+// This method retrieves the height of the bottom navigation bar using the constant kBottomNavigationBarHeight
+
+  static double getBottomNavigationBarHeight() {
+    return kBottomNavigationBarHeight;
+  }
+
+
+    static double getAppBarHeight() {
+    return kToolbarHeight;
+  }
+
+  static double getKeyboardHeight(){
+    final viewInsets = MediaQuery.of(Get.context!).viewInsets;
+    return viewInsets.bottom;
+  }
+
+  static Future<bool> isKeyboardVisile() async {
+    final viewInsets = View.of(Get.context!).viewInsets;
+    return viewInsets.bottom > 0;
+  }
+
+  // static Future<bool> isPhysicalDevice() async {
+  //   return defaultTergetPlatform == TargetPlatform.android || defaultTargetPlatform == TargetPlatform.iOS;
+  // }
+
 // Method to get the screen height
 // This method retrieves the height of the screen using MediaQuery.
-  static double getScreenHeight(BuildContext context) {
-    return MediaQuery.of(context).size.height;
+  static double getScreenHeight() {
+    return MediaQuery.of(Get.context!).size.height;
   }
 
 // Method to get the screen width
 // This method retrieves the width of the screen using MediaQuery.
-  static double getScreenWidth(BuildContext context) {
-    return MediaQuery.of(context).size.width;
+  static double getScreenWidth() {
+    return MediaQuery.of(Get.context!).size.width;
   }
 
   /// Get pixel ratio
-  static double getPixelRatio(BuildContext context) {
-    return MediaQuery.of(context).devicePixelRatio;
+  static double getPixelRatio() {
+    return MediaQuery.of(Get.context!).devicePixelRatio;
   }
 
 // Method to get the status bar height
 // This method retrieves the height of the status bar using MediaQuery.
 // It is useful for adjusting layouts based on the status bar height.
-  static double getStatusBarHeight(BuildContext context) {
-    return MediaQuery.of(context).padding.top;
+  static double getStatusBarHeight() {
+    return MediaQuery.of(Get.context!).padding.top;
   }
 
-// Method to get the bottom navigation bar height
-// This method retrieves the height of the bottom navigation bar using the constant kBottomNavigationBarHeight
-// static double getBottomNavigationBarHeight()
-// {
-//   return kBottomNavigationBarHeight;
-// }
+
 
 // Method to trigger a vibration on the device
   // This method uses HapticFeedback to trigger a vibration for a specified duration.
