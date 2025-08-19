@@ -37,6 +37,30 @@ class THelperFunctions {
     }
   }
 
+  static void showSnackBar(String message) {
+    ScaffoldMessenger.of(Get.context!).showSnackBar(
+      SnackBar(content: Text(message)),
+    );
+  }
+
+  static void showAlert(String title, String message) {
+     showDialog(
+      context: Get.context!,
+      builder: (context) {
+        return AlertDialog(
+          title: Text(title),
+          content: Text(message),
+          actions: [
+            TextButton(
+              onPressed: () => Navigator.of(context).pop(),
+              child: const Text('OK'),
+            ),
+          ],
+        );
+      },
+    );
+  }
+
   static void showStatusBar(String message) {
     ScaffoldMessenger.of(Get.context!).showSnackBar(
       SnackBar(content: Text(message)),

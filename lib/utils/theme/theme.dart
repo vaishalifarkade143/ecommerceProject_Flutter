@@ -25,12 +25,14 @@ class TAppTheme {
     outlinedButtonTheme: TOutlinedButtonTheme.lightOutlinedButtonTheme,
     inputDecorationTheme: TTextFormFieldTheme.lightInputDecorationTheme,
   );
+
   static ThemeData darkTheme = ThemeData(
     useMaterial3: true,
     fontFamily: 'Poppins',
-    brightness: Brightness.light,
+    brightness: Brightness.dark, // ✅ Correct
     primaryColor: Colors.blue,
-    textTheme: TTextTheme.lightTextTheme,
+    // textTheme: TTextTheme.lightTextTheme,
+    textTheme: TTextTheme.darkTextTheme,
     scaffoldBackgroundColor: Colors.black,
     appBarTheme: TAppBarTheme.darkAppBarTheme,
     checkboxTheme: TCheckboxTheme.darkCheckboxTheme,

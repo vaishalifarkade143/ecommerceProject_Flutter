@@ -11,6 +11,7 @@ dependencies:
   flutter:
     sdk: flutter
   flutter_native_splash: ^2.4.6
+  smooth_page_indicator: ^1.2.1
 
   # Utility
   http: ^1.1.0
@@ -39,6 +40,8 @@ flutter:
     - assets/logos/
     - assets/images/
     - assets/icons/brands/
+    - assets/images/on_boarding_images/
+    
     
 
   # fonts:
@@ -48,12 +51,6 @@ flutter:
   #       - asset: assets/fonts/Poppins-Italic.ttf
   #         style: italic
 
-# flutter_native_splash:
-#   color: "#FFFFFF"
-#   image: assets/logos/app_logo_dark.png
-#   android: true
-#   ios: true
-#   web: false
 
 
 
