@@ -1,12 +1,10 @@
 import 'package:ecommerseproject/features/authentication/screens/widgets/onboarding_dot_navigation.dart';
+import 'package:ecommerseproject/features/authentication/screens/widgets/onboarding_next_button.dart';
 import 'package:ecommerseproject/features/authentication/screens/widgets/onboarding_page.dart';
 import 'package:ecommerseproject/features/authentication/screens/widgets/onboarding_skip.dart';
 import 'package:ecommerseproject/utils/constants/image_strings.dart';
-import 'package:ecommerseproject/utils/constants/sizes.dart';
 import 'package:ecommerseproject/utils/constants/text_strings.dart';
-import 'package:ecommerseproject/utils/devices/device_utility.dart';
 import 'package:flutter/material.dart';
-import 'package:iconsax/iconsax.dart';
 
 class OnBoardingScreen extends StatelessWidget {
   const OnBoardingScreen({super.key});
@@ -44,15 +42,7 @@ class OnBoardingScreen extends StatelessWidget {
         const OnBoardingDotNavigation(),
 
         ///Circular button
-        Positioned(
-          right: TSizes.defaultSpace,
-          bottom: TDeviceUtils.getBottomNavigationBarHeight(),
-          child: ElevatedButton(
-              onPressed: () {},
-              style: ElevatedButton.styleFrom(
-                  shape: CircleBorder(), backgroundColor: Colors.black),
-              child: const Icon(Iconsax.arrow_right_3)),
-        )
+        const OnBoardingNextButtion()
       ],
     ));
   }
