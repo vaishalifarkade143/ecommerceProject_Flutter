@@ -1,4 +1,4 @@
-import 'package:ecommerseproject/features/authentication/screens/onboarding.dart';
+import 'package:ecommerseproject/features/authentication/screens/onbording/onboarding.dart';
 import 'package:ecommerseproject/utils/theme/theme.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
