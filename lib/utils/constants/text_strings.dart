@@ -14,6 +14,9 @@ class TTexts{
   //-- Home Page Texts
   static const String homePageTitle = "Home";
   static const String homePageSubtitle = "Explore our latest collections";
+  static const String tcontinue = "Continue";
+  static const String submit = "Submit";
+  static const String done = "Done";
 
   //-- Cart Page Texts
   static const String cartPageTitle = "Your Cart";
@@ -39,13 +42,13 @@ class TTexts{
   static const String orSignInWith= "Or Sign In With";
   static const String orSignUpWith= "Or Sign Up With";
   static const String iAgreeTo= "I Agree To";
-
+  static const String and= "And";
   static const String privacyPolicy= "Privacy Policy";
   static const String termsOfUse= "Terms of use";
   static const String varificationCode= "Varification Code";
   static const String resendEmail= "Resend Email";
   static const String resendEmailIn= "Resend Email In";
-
+  
   /// Authentication Heading Title
   
   static const String loginTitle = "Welcome Back";
@@ -53,13 +56,13 @@ class TTexts{
   static const String signupTitle = "Let's create your Account";
   static const String forgetPasswordTitle = "Forget Password";
   static const String forgetPasswordSubTitle= "Don't worry sometimes people can forget too, enter your email and we will send you a password resent link";
-  static const String changeYourPasswordTitle = "password reset email sent ";
-  static const String changeYourPasswordSubTitle= "your account ecurity is our priority!.";
-  static const String confirmEmail= "verify your email address";
-  static const String confirmEmailSubTitle= "congratulations! ";
+  static const String changeYourPasswordTitle = "Password Reset Email Sent ";
+  static const String changeYourPasswordSubTitle= "Your Account Security is our Priority!.";
+  static const String confirmEmail= "Verify Your Email Address";
+  static const String confirmEmailSubTitle= "Congratulations! Your Account Awaits Verify Your Email to Start Shopping and Experience a world of Unrivaled Deals and persanalized Offers!";
   static const String emailNoReservedMessage= "Don't get the email check your spam/junk or Resent it ! ";
   static const String yourAccountCreatedTilte= "Your Account successfully created! ";
-  static const String yourAccountCreatedSubTilte= "Welcome to your Ultimate Shopping Destination: Your Account is created! ";
+  static const String yourAccountCreatedSubTilte= "Welcome to Your Ultimate Shopping Destination: Your Account is created! ";
 
  
   // -- Home AppBar Texts

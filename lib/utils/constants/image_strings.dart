@@ -12,4 +12,12 @@ class TImages{
   static const String onBoardingImage2 = 'assets/images/on_boarding_images/searching.gif';
   static const String onBoardingImage3 = 'assets/images/on_boarding_images/shopping.gif';
 
+
+  //-- Animations
+  static const String productIllustration = 'assets/images/animations/checkmark _animation.gif';
+  static const String productSaleIllustration = 'assets/images/animations/money.gif';
+  static const String staticSuccessIllustration = 'assets/images/animations/star.gif';
+  static const String deliveredInPlanIllustration = 'assets/images/animations/checkmark _animation.gif';
+  static const String deliveredEmailIllustration = 'assets/images/animations/star.gif';
+  static const String verifyIllustration = 'assets/images/animations/money.gif';
 }
