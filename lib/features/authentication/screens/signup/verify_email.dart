@@ -1,4 +1,4 @@
-import 'package:ecommerseproject/common/success_screen/success_screen.dart';
+import 'package:ecommerseproject/common/widgets/success_screen/success_screen.dart';
 import 'package:ecommerseproject/features/authentication/screens/login/login.dart';
 import 'package:ecommerseproject/utils/constants/image_strings.dart';
 import 'package:ecommerseproject/utils/constants/sizes.dart';

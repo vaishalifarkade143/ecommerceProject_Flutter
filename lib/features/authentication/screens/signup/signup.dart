@@ -1,5 +1,5 @@
-import 'package:ecommerseproject/common/widgets.login_signup/form_divider.dart';
-import 'package:ecommerseproject/common/widgets.login_signup/social_button.dart';
+import 'package:ecommerseproject/common/widgets/login_signup/form_divider.dart';
+import 'package:ecommerseproject/common/widgets/login_signup/social_button.dart';
 import 'package:ecommerseproject/features/authentication/screens/signup/widgets/signup_form.dart';
 import 'package:ecommerseproject/utils/constants/colors.dart';
 import 'package:ecommerseproject/utils/constants/sizes.dart';

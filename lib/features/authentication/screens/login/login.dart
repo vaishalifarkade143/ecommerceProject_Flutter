@@ -1,6 +1,6 @@
 import 'package:ecommerseproject/common/styles/spacing_styles.dart';
-import 'package:ecommerseproject/common/widgets.login_signup/form_divider.dart';
-import 'package:ecommerseproject/common/widgets.login_signup/social_button.dart';
+import 'package:ecommerseproject/common/widgets/login_signup/form_divider.dart';
+import 'package:ecommerseproject/common/widgets/login_signup/social_button.dart';
 import 'package:ecommerseproject/features/authentication/screens/login/widgets/login_form.dart';
 import 'package:ecommerseproject/features/authentication/screens/login/widgets/login_header.dart';
 import 'package:ecommerseproject/utils/constants/sizes.dart';
