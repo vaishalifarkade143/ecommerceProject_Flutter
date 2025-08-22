@@ -35,6 +35,10 @@ class PrimaryHeaderContainer extends StatelessWidget {
                 backgroundColor: TColors.textWhite.withOpacity(0.1),
               ),
             ),
+             /// 👇 Foreground (your AppBar and other widgets)
+              Positioned.fill(
+                child: child,
+              ),
           ],
         ),
         ),
@@ -42,3 +46,8 @@ class PrimaryHeaderContainer extends StatelessWidget {
     );
   }
 }
+
+
+
+
+

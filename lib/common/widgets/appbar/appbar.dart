@@ -8,7 +8,7 @@ class TAppBar extends StatelessWidget implements PreferredSizeWidget {
   const TAppBar({
     super.key,
     this.title,
-    this.showBackArrow = true,
+    this.showBackArrow = false,
     this.leadingIcon,
     this.actions,
     this.leadingOnPressed,
@@ -41,6 +41,8 @@ class TAppBar extends StatelessWidget implements PreferredSizeWidget {
   }
 
   @override
-  // TODO: implement preferredSize
   Size get preferredSize => Size.fromHeight(TDeviceUtils.getAppBarHeight());
 }
+
+
+
