@@ -3,6 +3,7 @@ import 'package:ecommerseproject/utils/constants/sizes.dart';
 import 'package:ecommerseproject/utils/devices/device_utility.dart';
 import 'package:ecommerseproject/utils/helpers/helper_functions.dart';
 import 'package:flutter/material.dart';
+import 'package:iconsax/iconsax.dart';
 
 class TSearchContainer extends StatelessWidget {
   const TSearchContainer({
