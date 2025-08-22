@@ -1,5 +1,6 @@
 import 'package:ecommerseproject/common/widgets/custom_shapes/container/circular_container.dart';
 import 'package:ecommerseproject/common/widgets/custom_shapes/curved_edges/curved_edges.dart';
+import 'package:ecommerseproject/common/widgets/custom_shapes/curved_edges/curved_edges_widget.dart';
 import 'package:ecommerseproject/utils/constants/colors.dart';
 import 'package:flutter/material.dart';
 
@@ -12,28 +13,13 @@ class HomeScreen extends StatelessWidget {
         body: SingleChildScrollView(
       child: Column(
         children: [
-          CurvedEdgesWidget()
-        ],
-      ),
-    ));
-  }
-}
-
-class CurvedEdgesWidget extends StatelessWidget {
-  const CurvedEdgesWidget({
-    super.key,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return ClipPath(
-      clipper: CustomCurvedEdges(),
-      child: Container(
-        color: TColors.primary,
-        padding: EdgeInsets.all(0),
-        child: SizedBox(
-          height: 350,
-          child: Stack(
+          CurvedEdgesWidget(
+            child: Container(
+            color: TColors.primary,
+            padding: EdgeInsets.all(0),
+            child: SizedBox(
+            height: 350,
+            child: Stack(
             children: [
               Positioned(top: -150,
               right: -250,
@@ -47,12 +33,14 @@ class CurvedEdgesWidget extends StatelessWidget {
                   backgroundColor: TColors.textWhite.withOpacity(0.1),
                 ),
               ),
-          
-              
             ],
           ),
         ),
+      ),,
+          )
+        ],
       ),
-    );
+    ));
   }
 }
+
