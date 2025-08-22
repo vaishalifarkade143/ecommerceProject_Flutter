@@ -9,7 +9,8 @@ class HomeScreen extends StatelessWidget {
     return Scaffold(
         body: SingleChildScrollView(
       child: Column(
-        children: [PrimaryHeaderContainer(child: Container())],
+        children: [
+          PrimaryHeaderContainer(child: Container())],
       ),
     ));
   }
