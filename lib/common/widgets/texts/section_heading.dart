@@ -10,7 +10,7 @@ class TSectionHeading extends StatelessWidget {
     this.onPressed,
   });
 
-  final Colors? textColors;
+  final Color? textColors;
   final bool showActionButton;
   final String title, buttonTitle;
   final void Function()? onPressed;
@@ -21,7 +21,8 @@ class TSectionHeading extends StatelessWidget {
       children: [
         Text(
           title,
-          style: Theme.of(context).textTheme.headlineSmall,
+          style: Theme.of(context).textTheme.headlineSmall!.apply(
+                color: textColors),
           maxLines: 1,
           overflow: TextOverflow.ellipsis,
         ),

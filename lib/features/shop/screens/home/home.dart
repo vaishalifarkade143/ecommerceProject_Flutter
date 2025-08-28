@@ -1,8 +1,12 @@
 import 'package:ecommerseproject/common/widgets/custom_shapes/container/primary_header_container.dart';
 import 'package:ecommerseproject/common/widgets/custom_shapes/container/search_container.dart';
+import 'package:ecommerseproject/common/widgets/image_text_widgets/vertical_image_text.dart';
 import 'package:ecommerseproject/common/widgets/texts/section_heading.dart';
 import 'package:ecommerseproject/features/shop/screens/home/widgets/home_appbar.dart';
+import 'package:ecommerseproject/utils/constants/colors.dart';
+import 'package:ecommerseproject/utils/constants/image_strings.dart';
 import 'package:ecommerseproject/utils/constants/sizes.dart';
+import 'package:ecommerseproject/utils/helpers/helper_functions.dart';
 import 'package:flutter/material.dart';
 
 class HomeScreen extends StatelessWidget {
@@ -33,11 +37,26 @@ class HomeScreen extends StatelessWidget {
                 padding: const EdgeInsets.only(left: TSizes.defaultSpace),
                 child: Column(
                   children: [
+                    /// --  Heading
                     TSectionHeading(
                       title: 'Popular Categories',
                       showActionButton: false,
+                      textColors: Colors.white,
                     ),
-                     const SizedBox(height: TSizes.spaceBtwItems),
+                    const SizedBox(height: TSizes.spaceBtwItems),
+
+                    /// -- Categories List
+                    SizedBox(
+                      height: 80,
+                      child: ListView.builder(
+                        shrinkWrap: true,
+                        itemCount: 6,
+                        scrollDirection: Axis.horizontal,
+                        itemBuilder: (_, index) {
+                          return  TVerticalImageText(image: TImages.shoeIcon, title: 'Shoes', onTap: (){},);
+                        },
+                      ),
+                    )
                   ],
                 ),
               )
@@ -48,3 +67,4 @@ class HomeScreen extends StatelessWidget {
     ));
   }
 }
+

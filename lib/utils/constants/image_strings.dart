@@ -1,4 +1,4 @@
-class TImages{
+class TImages {
   //-- App Logo
   static const String darkAppLogo = 'assets/logos/logo_dark.png';
   static const String lightAppLogo = 'assets/logos/logo_light.png';
@@ -8,16 +8,34 @@ class TImages{
   static const String facebook = 'assets/logos/facebook.png';
 
   //-- Onboarding Images
-  static const String onBoardingImage1 = 'assets/images/on_boarding_images/delivery.gif';
-  static const String onBoardingImage2 = 'assets/images/on_boarding_images/searching.gif';
-  static const String onBoardingImage3 = 'assets/images/on_boarding_images/shopping.gif';
-
+  static const String onBoardingImage1 =
+      'assets/images/on_boarding_images/delivery.gif';
+  static const String onBoardingImage2 =
+      'assets/images/on_boarding_images/searching.gif';
+  static const String onBoardingImage3 =
+      'assets/images/on_boarding_images/shopping.gif';
 
   //-- Animations
-  static const String productIllustration = 'assets/images/animations/checkmark _animation.gif';
-  static const String productSaleIllustration = 'assets/images/animations/money.gif';
-  static const String staticSuccessIllustration = 'assets/images/animations/star.gif';
-  static const String deliveredInPlanIllustration = 'assets/images/animations/checkmark _animation.gif';
-  static const String deliveredEmailIllustration = 'assets/images/animations/star.gif';
+  static const String productIllustration =
+      'assets/images/animations/checkmark _animation.gif';
+  static const String productSaleIllustration =
+      'assets/images/animations/money.gif';
+  static const String staticSuccessIllustration =
+      'assets/images/animations/star.gif';
+  static const String deliveredInPlanIllustration =
+      'assets/images/animations/checkmark _animation.gif';
+  static const String deliveredEmailIllustration =
+      'assets/images/animations/star.gif';
   static const String verifyIllustration = 'assets/images/animations/money.gif';
+
+  //-- Categories icons
+  static const String sportIcon = 'assets/icons/categories/sports.png';
+  static const String clothIcon = 'assets/icons/categories/jumper.png';
+  static const String shoeIcon = 'assets/icons/categories/running-shoe.png';
+  static const String cosmeticsIcon = 'assets/icons/categories/cosmetics.png';
+  static const String animalIcon = 'assets/icons/categories/turtle.png';
+  static const String toyIcon = 'assets/icons/categories/toy.png';
+  static const String furnitureIcon = 'assets/icons/categories/furniture.png';
+  static const String jwelaryIcon = 'assets/icons/categories/christmas-ball.png';
+  static const String electronicsIcon = 'assets/icons/categories/device.png';
 }
