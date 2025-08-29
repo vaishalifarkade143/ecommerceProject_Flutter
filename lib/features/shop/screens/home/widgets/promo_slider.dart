@@ -11,7 +11,10 @@ import 'package:get/get.dart';
 class TPromoSlider extends StatelessWidget {
   const TPromoSlider({
     super.key,
+    required this.banners,
   });
+
+  final List<String> banners;
 
   @override
   Widget build(BuildContext context) {
@@ -23,17 +26,7 @@ class TPromoSlider extends StatelessWidget {
               viewportFraction: 1,
               onPageChanged: (index, _) =>
                   controller.updatePageIndicator(index)),
-          items: [
-            TRoundedImage(
-              imageUrl: TImages.promoBanner1,
-            ),
-            TRoundedImage(
-              imageUrl: TImages.promoBanner2,
-            ),
-            TRoundedImage(
-              imageUrl: TImages.promoBanner3,
-            ),
-          ],
+          items: banners.map((url) => TRoundedImage(imageUrl: url)).toList(),
         ),
         const SizedBox(height: TSizes.spaceBtwItems),
         Center(
@@ -41,13 +34,14 @@ class TPromoSlider extends StatelessWidget {
             () => Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                for (int i = 0; i < 3; i++)
+                for (int i = 0; i < banners.length; i++)
                   CircularContainer(
                       width: 15,
                       height: 3,
-                      backgroundColor: controller.carouselCurrentIndex.value == i
-                          ? TColors.primary
-                          : TColors.grey,
+                      backgroundColor:
+                          controller.carouselCurrentIndex.value == i
+                              ? TColors.primary
+                              : TColors.grey,
                       margin: EdgeInsets.only(right: 10)),
               ],
             ),
