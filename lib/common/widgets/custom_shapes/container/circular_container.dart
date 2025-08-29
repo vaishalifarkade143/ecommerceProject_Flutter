@@ -8,26 +8,29 @@ class CircularContainer extends StatelessWidget {
     this.height = 400,
     this.radious = 400,
     this.padding = 0,
+    this.margin ,
     this.child,
-    this.backgroundColor = TColors.white,
+    this.backgroundColor = TColors.white, 
   });
 
   final double? width;
   final double? height;
-  final double? radious;
+  final double radious;
   final double? padding;
   final Widget? child;
   final Color backgroundColor;
+  final EdgeInsets? margin;
 
   @override
   Widget build(BuildContext context) {
     return Container(
       width: width,
       height: height,
+      margin: margin,
       padding: EdgeInsets.all(padding!),
       decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(radious!),
-          color: TColors.textWhite.withOpacity(0.1)),
+          borderRadius: BorderRadius.circular(radious),
+          color: backgroundColor),
     );
   }
 }

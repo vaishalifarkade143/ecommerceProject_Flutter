@@ -1,9 +1,12 @@
+import 'package:carousel_slider/carousel_slider.dart';
+import 'package:ecommerseproject/common/widgets/custom_shapes/container/circular_container.dart';
 import 'package:ecommerseproject/common/widgets/custom_shapes/container/primary_header_container.dart';
 import 'package:ecommerseproject/common/widgets/custom_shapes/container/search_container.dart';
 import 'package:ecommerseproject/common/widgets/images/t_rounded_image.dart';
 import 'package:ecommerseproject/common/widgets/texts/section_heading.dart';
 import 'package:ecommerseproject/features/shop/screens/home/widgets/home_appbar.dart';
 import 'package:ecommerseproject/features/shop/screens/home/widgets/home_categories.dart';
+import 'package:ecommerseproject/features/shop/screens/home/widgets/promo_slider.dart';
 import 'package:ecommerseproject/utils/constants/colors.dart';
 import 'package:ecommerseproject/utils/constants/image_strings.dart';
 import 'package:ecommerseproject/utils/constants/sizes.dart';
@@ -56,11 +59,8 @@ class HomeScreen extends StatelessWidget {
 
           /// Body --
           Padding(
-            padding: const EdgeInsets.all(TSizes.defaultSpace),
-            child: TRoundedImage(
-              imageUrl: TImages.promoBanner1,
-            ),
-          )
+              padding: const EdgeInsets.all(TSizes.defaultSpace),
+              child: TPromoSlider())
         ],
       ),
     ));
