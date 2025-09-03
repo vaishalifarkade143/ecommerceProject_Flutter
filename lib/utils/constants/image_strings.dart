@@ -43,4 +43,51 @@ class TImages {
   static const String promoBanner1 = 'assets/images/banners/promo-bannar-1.png';
   static const String promoBanner2 = 'assets/images/banners/promo-bannar-2.png';  
   static const String promoBanner3 = 'assets/images/banners/promo-bannar-3.png';
+
+  //Products
+  static const String productImage1 = 'assets/images/products/cloth1.png';
+  static const String productImage2 = 'assets/images/products/cloth2.png';
+  static const String productImage3 = 'assets/images/products/cloth3.png';
+  static const String productImage4 = 'assets/images/products/cloth4.png';
+  static const String productImage5 = 'assets/images/products/cloth5.png';
+  static const String productImage6 = 'assets/images/products/cloth6.png';
+  static const String productImage7 = 'assets/images/products/cloth7.png';
+  static const String productImage8 = 'assets/images/products/cloth8.png';
+  static const String productImage9 = 'assets/images/products/cloth9.png';
+  static const String productImage10 = 'assets/images/products/cloth10.png';
+  static const String productImage11 = 'assets/images/products/jwel1.png';
+  static const String productImage12 = 'assets/images/products/jwel2.png';
+  static const String productImage13 = 'assets/images/products/jwel3.png';
+  static const String productImage14 = 'assets/images/products/jwel4.png';
+  static const String productImage15 = 'assets/images/products/jwel5.png';
+  static const String productImage16 = 'assets/images/products/jwel6.png';
+  static const String productImage17 = 'assets/images/products/jwel7.png';
+  static const String productImage18 = 'assets/images/products/jwel8.png';
+  static const String productImage19 = 'assets/images/products/jwel9.png';
+  static const String productImage20 = 'assets/images/products/jwel10.png';
+  static const String productImage21 = 'assets/images/products/cos3.png';
+  static const String productImage22 = 'assets/images/products/cloth2.png';
+  static const String productImage23 = 'assets/images/products/cloth3.png';
+  static const String productImage24 = 'assets/images/products/cloth4.png';
+  static const String productImage25 = 'assets/images/products/cloth5.png';
+  static const String productImage26 = 'assets/images/products/cloth6.png';
+  static const String productImage27 = 'assets/images/products/cloth7.png';
+  static const String productImage28 = 'assets/images/products/cloth8.png';
+  static const String productImage29 = 'assets/images/products/cloth9.png';
+  static const String productImage30 = 'assets/images/products/cloth10.png';
+  static const String productImage31 = 'assets/images/products/jwel1.png';
+  static const String productImage32 = 'assets/images/products/jwel2.png';
+  static const String productImage33 = 'assets/images/products/jwel3.png';
+  static const String productImage34 = 'assets/images/products/jwel4.png';
+  static const String productImage35 = 'assets/images/products/jwel5.png';
+  static const String productImage36 = 'assets/images/products/jwel6.png';
+  static const String productImage37 = 'assets/images/products/jwel7.png';
+  static const String productImage38 = 'assets/images/products/jwel8.png';
+  static const String productImage39 = 'assets/images/products/jwel9.png';
+  static const String productImage40 = 'assets/images/products/jwel10.png';
+
+
+
+
+
 }

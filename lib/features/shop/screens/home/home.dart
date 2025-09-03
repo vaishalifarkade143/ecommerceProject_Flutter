@@ -1,13 +1,11 @@
-import 'package:carousel_slider/carousel_slider.dart';
-import 'package:ecommerseproject/common/widgets/custom_shapes/container/circular_container.dart';
 import 'package:ecommerseproject/common/widgets/custom_shapes/container/primary_header_container.dart';
 import 'package:ecommerseproject/common/widgets/custom_shapes/container/search_container.dart';
-import 'package:ecommerseproject/common/widgets/images/t_rounded_image.dart';
+import 'package:ecommerseproject/common/widgets/layouts/grid_layout.dart';
+import 'package:ecommerseproject/common/widgets/products/product_cards/product_cart_vertical.dart';
 import 'package:ecommerseproject/common/widgets/texts/section_heading.dart';
 import 'package:ecommerseproject/features/shop/screens/home/widgets/home_appbar.dart';
 import 'package:ecommerseproject/features/shop/screens/home/widgets/home_categories.dart';
 import 'package:ecommerseproject/features/shop/screens/home/widgets/promo_slider.dart';
-import 'package:ecommerseproject/utils/constants/colors.dart';
 import 'package:ecommerseproject/utils/constants/image_strings.dart';
 import 'package:ecommerseproject/utils/constants/sizes.dart';
 import 'package:flutter/material.dart';
@@ -59,8 +57,23 @@ class HomeScreen extends StatelessWidget {
 
           /// Body --
           Padding(
-              padding: const EdgeInsets.all(TSizes.defaultSpace),
-              child: TPromoSlider(banners: [TImages.promoBanner1, TImages.promoBanner2,TImages.promoBanner3,],))
+            padding: const EdgeInsets.all(TSizes.defaultSpace),
+            child: Column(
+              children: [
+                TPromoSlider(
+                  banners: [
+                    TImages.promoBanner1,
+                    TImages.promoBanner2,
+                    TImages.promoBanner3
+                  ],
+                ),
+                const SizedBox(height: TSizes.spaceBtwItems),
+
+                // -- Popular Products
+                TGridLayout(itemCount: 2,itemBuilder: (_,index) => TProductCardVertical())
+              ],
+            ),
+          ),
         ],
       ),
     ));
