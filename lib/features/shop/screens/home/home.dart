@@ -67,10 +67,21 @@ class HomeScreen extends StatelessWidget {
                     TImages.promoBanner3
                   ],
                 ),
+                const SizedBox(height: TSizes.spaceBtwSections),
+
+                /// - Heading
+                TSectionHeading(
+                    title: 'Popular Products',
+                    onPressed: () {},
+                    showActionButton: true,
+                    // textColors: Colors.black
+                    ),
                 const SizedBox(height: TSizes.spaceBtwItems),
 
                 // -- Popular Products
-                TGridLayout(itemCount: 2,itemBuilder: (_,index) => TProductCardVertical())
+                TGridLayout(
+                    itemCount: 2,
+                    itemBuilder: (_, index) => TProductCardVertical())
               ],
             ),
           ),
@@ -79,4 +90,3 @@ class HomeScreen extends StatelessWidget {
     ));
   }
 }
-

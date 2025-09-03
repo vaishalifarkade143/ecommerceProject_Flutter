@@ -9,7 +9,6 @@ import 'package:ecommerseproject/utils/constants/image_strings.dart';
 import 'package:ecommerseproject/utils/constants/sizes.dart';
 import 'package:ecommerseproject/utils/helpers/helper_functions.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
 
 class TProductCardVertical extends StatelessWidget {
@@ -20,7 +19,7 @@ class TProductCardVertical extends StatelessWidget {
     final dark = THelperFunctions.isDarkMode(context);
 
     return GestureDetector(
-      onTap: (){},
+      onTap: () {},
       child: Container(
         width: 180,
         padding: const EdgeInsets.all(1),
@@ -43,7 +42,7 @@ class TProductCardVertical extends StatelessWidget {
                     imageUrl: TImages.productImage1,
                     applyImageRadious: true,
                   ),
-      
+
                   // Sale Tag
                   Positioned(
                     top: 12,
@@ -59,7 +58,7 @@ class TProductCardVertical extends StatelessWidget {
                               .apply(color: TColors.black)),
                     ),
                   ),
-      
+
                   // -- Favorite Icon Button
                   Positioned(
                       top: 0,
@@ -71,9 +70,9 @@ class TProductCardVertical extends StatelessWidget {
                 ],
               ),
             ),
-      
+
             const SizedBox(height: TSizes.spaceBtwItems / 2),
-      
+
             // Details
             Padding(
               padding: const EdgeInsets.only(left: TSizes.sm),
@@ -99,43 +98,43 @@ class TProductCardVertical extends StatelessWidget {
                       )
                     ],
                   ),
-
-          
-
                 ],
               ),
             ),
-                   const Spacer(),
-                  ///--  price Row
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      ///price
-                      TProductPriceText(price: '35.0',),
+            const Spacer(),
 
-                      Container(
-                        decoration: BoxDecoration(
-                            color: TColors.dark,
-                            borderRadius: BorderRadius.only(
-                              topLeft: Radius.circular(TSizes.cardRadiousMd),
-                              bottomRight:
-                                  Radius.circular(TSizes.productImageRadious),
-                            )),
-                        child: const SizedBox(
-                          width: TSizes.iconLg * 1.2,
-                          height: TSizes.iconLg * 1.2,
-                          child: Center(
-                            child: Icon(Iconsax.add, color: TColors.white),
-                          ),
-                        ),
-                      )
-                    ],
-                  )
+            ///--  price Row
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                ///price
+                const Padding(
+                  padding: EdgeInsets.only(left: TSizes.sm),
+                    child: TProductPriceText(
+                  price: '35.0',
+                )),
+
+                Container(
+                  decoration: BoxDecoration(
+                      color: TColors.dark,
+                      borderRadius: BorderRadius.only(
+                        topLeft: Radius.circular(TSizes.cardRadiousMd),
+                        bottomRight:
+                            Radius.circular(TSizes.productImageRadious),
+                      )),
+                  child: const SizedBox(
+                    width: TSizes.iconLg * 1.2,
+                    height: TSizes.iconLg * 1.2,
+                    child: Center(
+                      child: Icon(Iconsax.add, color: TColors.white),
+                    ),
+                  ),
+                )
+              ],
+            )
           ],
         ),
       ),
     );
   }
 }
-
-
