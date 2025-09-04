@@ -4,7 +4,7 @@ class TSectionHeading extends StatelessWidget {
   const TSectionHeading({
     super.key,
     this.textColors,
-    this.showActionButton = false,
+    this.showActionButton = true,
     required this.title,
     this.buttonTitle = 'View all',
     this.onPressed,
@@ -24,9 +24,10 @@ class TSectionHeading extends StatelessWidget {
           title,
           // style: Theme.of(context).textTheme.headlineSmall!.apply(
           //       color: textColors),
-  style: Theme.of(context).textTheme.headlineSmall!.copyWith(
-        color: textColors ?? Theme.of(context).textTheme.headlineSmall!.color,
-      ),
+          style: Theme.of(context).textTheme.headlineSmall!.copyWith(
+                color: textColors ??
+                    Theme.of(context).textTheme.headlineSmall!.color,
+              ),
           maxLines: 1,
           overflow: TextOverflow.ellipsis,
         ),

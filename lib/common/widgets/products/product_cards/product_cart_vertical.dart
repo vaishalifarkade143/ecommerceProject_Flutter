@@ -4,6 +4,7 @@ import 'package:ecommerseproject/common/widgets/icons/t_circular_icon.dart';
 import 'package:ecommerseproject/common/widgets/images/t_rounded_image.dart';
 import 'package:ecommerseproject/common/widgets/texts/product_price_text.dart';
 import 'package:ecommerseproject/common/widgets/texts/product_title_text.dart';
+import 'package:ecommerseproject/common/widgets/texts/t_brand_title_text.dart';
 import 'package:ecommerseproject/utils/constants/colors.dart';
 import 'package:ecommerseproject/utils/constants/image_strings.dart';
 import 'package:ecommerseproject/utils/constants/sizes.dart';
@@ -86,18 +87,11 @@ class TProductCardVertical extends StatelessWidget {
                   SizedBox(height: TSizes.spaceBtwItems / 2),
                   Row(
                     children: [
-                      Text('Shein',
-                          overflow: TextOverflow.ellipsis,
-                          maxLines: 1,
-                          style: Theme.of(context).textTheme.labelMedium),
-                      const SizedBox(width: TSizes.xs),
-                      Icon(
-                        Iconsax.verify5,
-                        color: TColors.primary,
-                        size: TSizes.iconXs,
-                      )
+                      TBrandTitleText(
+                        title: 'Shein',
+                      ),
                     ],
-                  ),
+                  )
                 ],
               ),
             ),
@@ -109,10 +103,10 @@ class TProductCardVertical extends StatelessWidget {
               children: [
                 ///price
                 const Padding(
-                  padding: EdgeInsets.only(left: TSizes.sm),
+                    padding: EdgeInsets.only(left: TSizes.sm),
                     child: TProductPriceText(
-                  price: '35.0',
-                )),
+                      price: '35.0',
+                    )),
 
                 Container(
                   decoration: BoxDecoration(
