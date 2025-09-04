@@ -6,12 +6,12 @@ class TGridLayout extends StatelessWidget {
   const TGridLayout({
     super.key,
     required this.itemCount,
-    this.mainAxisAlignment = 288,
+    this.mainAxisExtent = 288,
     required this.itemBuilder,
   });
 
   final int itemCount;
-  final double? mainAxisAlignment;
+  final double? mainAxisExtent;
   final Widget? Function(BuildContext, int) itemBuilder;
 
   @override
@@ -25,9 +25,10 @@ class TGridLayout extends StatelessWidget {
         crossAxisCount: 2,
         mainAxisSpacing: TSizes.gridViewSpacing,
         crossAxisSpacing: TSizes.gridViewSpacing,
-        mainAxisExtent: mainAxisAlignment,
+        mainAxisExtent: mainAxisExtent,
       ),
-      itemBuilder: (_, index) => TProductCardVertical(),
+      // itemBuilder: (_, index) => TProductCardVertical(),
+      itemBuilder: itemBuilder,
     );
   }
 }
