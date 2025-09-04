@@ -10,15 +10,51 @@ import 'package:ecommerseproject/utils/constants/image_strings.dart';
 import 'package:ecommerseproject/utils/constants/sizes.dart';
 import 'package:flutter/material.dart';
 
+
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
+    
+   /// Categories
+    final categories = [
+      CategoryModel(name: "Sports", icon: TImages.sportIcon),
+      CategoryModel(name: "Clothes", icon: TImages.clothIcon),
+      CategoryModel(name: "Shoes", icon: TImages.shoeIcon),
+      CategoryModel(name: "Cosmetics", icon: TImages.cosmeticsIcon),
+      CategoryModel(name: "Electronics", icon: TImages.electronicsIcon),
+    ];
+
+    /// Products
+    final products = [
+      ProductModel(
+          title: "Casual Shirt",
+          image: TImages.productImage1,
+          price: 35,
+          brand: "Shein"),
+      ProductModel(
+          title: "Red Dress",
+          image: TImages.productImage2,
+          price: 55,
+          brand: "H&M"),
+      ProductModel(
+          title: "Jewelry Set",
+          image: TImages.productImage11,
+          price: 120,
+          brand: "Zara"),
+      ProductModel(
+          title: "Cosmetic Kit",
+          image: TImages.productImage21,
+          price: 80,
+          brand: "Sephora"),
+    ];
+
     return Scaffold(
         body: SingleChildScrollView(
       child: Column(
         children: [
+           /// Header + Categories
           PrimaryHeaderContainer(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -47,7 +83,7 @@ class HomeScreen extends StatelessWidget {
                       const SizedBox(height: TSizes.spaceBtwItems),
 
                       /// -- Categories List
-                      THomeCategories()
+                      THomeCategories(categories: categories,)
                     ],
                   ),
                 )
@@ -80,8 +116,8 @@ class HomeScreen extends StatelessWidget {
 
                 // -- Popular Products
                 TGridLayout(
-                    itemCount: 2,
-                    itemBuilder: (_, index) => TProductCardVertical())
+                    itemCount: products.length,
+                    itemBuilder: (_, index) => TProductCardVertical(product: products[index],))
               ],
             ),
           ),

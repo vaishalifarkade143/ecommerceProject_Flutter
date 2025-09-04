@@ -2,10 +2,18 @@ import 'package:ecommerseproject/common/widgets/image_text_widgets/vertical_imag
 import 'package:ecommerseproject/utils/constants/image_strings.dart';
 import 'package:flutter/material.dart';
 
+class CategoryModel {
+  final String name;
+  final String icon;
+  CategoryModel({required this.name, required this.icon});
+}
+
 class THomeCategories extends StatelessWidget {
   const THomeCategories({
-    super.key,
+    super.key, required this.categories,
   });
+
+   final List<CategoryModel> categories;
 
   @override
   Widget build(BuildContext context) {
@@ -13,10 +21,14 @@ class THomeCategories extends StatelessWidget {
       height: 80,
       child: ListView.builder(
         shrinkWrap: true,
-        itemCount: 6,
+        itemCount: categories.length,
         scrollDirection: Axis.horizontal,
         itemBuilder: (_, index) {
-          return  TVerticalImageText(image: TImages.shoeIcon, title: 'Shoes', onTap: (){},);
+           final category = categories[index];
+          return  TVerticalImageText(
+             image: category.icon,
+            title: category.name,
+            onTap: (){},);
         },
       ),
     );

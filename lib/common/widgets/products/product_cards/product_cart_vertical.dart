@@ -12,8 +12,24 @@ import 'package:ecommerseproject/utils/helpers/helper_functions.dart';
 import 'package:flutter/material.dart';
 import 'package:iconsax/iconsax.dart';
 
+class ProductModel {
+  final String title;
+  final String image;
+  final double price;
+  final String brand;
+
+  ProductModel({
+    required this.title,
+    required this.image,
+    required this.price,
+    required this.brand,
+  });
+}
+
 class TProductCardVertical extends StatelessWidget {
-  const TProductCardVertical({super.key});
+  const TProductCardVertical({super.key, required this.product});
+
+  final ProductModel product;
 
   @override
   Widget build(BuildContext context) {
@@ -40,7 +56,7 @@ class TProductCardVertical extends StatelessWidget {
                 children: [
                   // --Thumbnail Image
                   TRoundedImage(
-                    imageUrl: TImages.productImage1,
+                    imageUrl: product.image,
                     applyImageRadious: true,
                   ),
 
@@ -81,14 +97,14 @@ class TProductCardVertical extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   TProductTitleText(
-                    title: 'Shein cream shirt',
+                    title:  product.title,
                     smallSize: true,
                   ),
                   SizedBox(height: TSizes.spaceBtwItems / 2),
                   Row(
                     children: [
                       TBrandTitleText(
-                        title: 'Shein',
+                        title: product.brand
                       ),
                     ],
                   )
@@ -102,10 +118,10 @@ class TProductCardVertical extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 ///price
-                const Padding(
-                    padding: EdgeInsets.only(left: TSizes.sm),
+                Padding(
+                    padding: const EdgeInsets.only(left: TSizes.sm),
                     child: TProductPriceText(
-                      price: '35.0',
+                      price: product.price.toString(),
                     )),
 
                 Container(
