@@ -1,5 +1,3 @@
-
-
 import 'package:ecommerseproject/common/widgets/appbar/appbar.dart';
 import 'package:ecommerseproject/common/widgets/custom_shapes/container/search_container.dart';
 import 'package:ecommerseproject/common/widgets/custom_shapes/container/t_rounded_container.dart';
@@ -15,12 +13,32 @@ import 'package:ecommerseproject/utils/constants/sizes.dart';
 import 'package:ecommerseproject/utils/helpers/helper_functions.dart';
 import 'package:flutter/material.dart';
 
+class BrandModel {
+  final String name;
+  final String image;
+  final int products;
+
+  BrandModel({
+    required this.name,
+    required this.image,
+    required this.products,
+  });
+}
+
 class StoreScreen extends StatelessWidget {
   const StoreScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
     final dark = THelperFunctions.isDarkMode(context);
+
+    /// --- Sample Data
+    final List<BrandModel> brands = [
+      BrandModel(name: "Shein", image: TImages.clothIcon, products: 230),
+      BrandModel(name: "Nike", image: TImages.shoeIcon, products: 150),
+      BrandModel(name: "Adidas", image: TImages.sportIcon, products: 180),
+      BrandModel(name: "Tiger", image: TImages.animalIcon, products: 95),
+    ];
 
     return Scaffold(
       appBar: TAppBar(
@@ -63,15 +81,20 @@ class StoreScreen extends StatelessWidget {
             /// --- Featured Brands Section
             TSectionHeading(title: 'Featured Brands', onPressed: () {}),
             // const SizedBox(height: TSizes.spaceBtwItems / 1.5),
+
+            /// --- Grid of Brands
             TGridLayout(
-                itemCount: 4,
-                mainAxisExtent:70,
+                itemCount: brands.length,
+                mainAxisExtent: 70,
                 itemBuilder: (_, index) {
+                  final brand = brands[index];
                   return GestureDetector(
-                    onTap: () {},
+                    onTap: () {
+                      debugPrint("Tapped on ${brand.name}");
+                    },
                     child: TRoundedContainer(
-                      width: 60,
-                      height: 60,
+                      // width: 60,
+                      // height: 60,
                       radious: 10, // 👈 set custom border radius here
                       showBorder: true, // optional: if you also want a border
                       borderColor: TColors.grey,
@@ -80,19 +103,26 @@ class StoreScreen extends StatelessWidget {
                       margin: const EdgeInsets.only(top: TSizes.sm),
                       child: Row(children: [
                         Flexible(
-                          child: TCircularImageUseInStore(image: TImages.clothIcon,),
+                          child: 
+                            /// Brand Image
+                          TCircularImageUseInStore(
+                            image: brand.image,
+                            isNetworkImage: false,
+                            size: 48,
+                          ),
                         ),
                         const SizedBox(width: TSizes.spaceBtwItems / 2),
-                        // -- Example text
+                         /// Brand Info
                         Expanded(
                           child: Column(
                             mainAxisSize: MainAxisSize.min,
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               TBrandTitleTextWithVerifiredIcon(
-                                  title: 'Shein', brandTextSize: TextSizes.large),
+                                  title: brand.name,
+                                  brandTextSize: TextSizes.large),
                               Text(
-                                '230 products ghfytfyhj',
+                                '${brand.products} products',
                                 overflow: TextOverflow.ellipsis,
                                 style: Theme.of(context).textTheme.labelMedium,
                               )
@@ -113,5 +143,3 @@ class StoreScreen extends StatelessWidget {
     );
   }
 }
-
-
