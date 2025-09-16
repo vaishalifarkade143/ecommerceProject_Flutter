@@ -1,4 +1,4 @@
-import 'package:ecommerseproject/common/widgets/products/product_cards/product_cart_vertical.dart';
+
 import 'package:ecommerseproject/utils/constants/sizes.dart';
 import 'package:flutter/material.dart';
 

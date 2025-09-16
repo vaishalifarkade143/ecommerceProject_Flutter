@@ -1,55 +1,6 @@
-// import 'package:ecommerseproject/utils/constants/colors.dart';
-// import 'package:ecommerseproject/utils/constants/enum.dart';
-// import 'package:ecommerseproject/utils/constants/sizes.dart';
-// import 'package:flutter/material.dart';
-// import 'package:iconsax/iconsax.dart';
 
-// class TBrandTitleText extends StatelessWidget {
-//   const TBrandTitleText({
-//     super.key,
-//     this.color,
-//     required this.title,
-//     this.maxLines = 1,
-//     this.textAlign = TextAlign.center,
-//     this.brandTextSize = TextSizes.small,
-//   });
-
-//   final Color? color;
-//   final String title;
-//   final int maxLines;
-//   final TextAlign? textAlign;
-//   final TextSizes brandTextSize;
-
-//   @override
-//   Widget build(BuildContext context) {
-//     return Text(
-//       title,
-//       textAlign: textAlign,
-//       overflow: TextOverflow.ellipsis,
-//       maxLines: maxLines,
-//       style: brandTextSize == TextSizes.small
-//           ? Theme.of(context)
-//               .textTheme
-//               .bodyMedium
-//               ?.copyWith(color: color ?? TColors.dark)
-//           : brandTextSize == TextSizes.medium
-//               ? Theme.of(context)
-//                   .textTheme
-//                   .titleMedium
-//                   ?.copyWith(color: color ?? TColors.dark)
-//               : Theme.of(context)
-//                   .textTheme
-//                   .headlineSmall
-//                   ?.copyWith(color: color ?? TColors.dark),
-//     );
-//   }
-// }
-
-import 'package:ecommerseproject/utils/constants/colors.dart';
 import 'package:ecommerseproject/utils/constants/enum.dart';
-import 'package:ecommerseproject/utils/constants/sizes.dart';
 import 'package:flutter/material.dart';
-import 'package:iconsax/iconsax.dart';
 
 class TBrandTitleText extends StatelessWidget {
   const TBrandTitleText({

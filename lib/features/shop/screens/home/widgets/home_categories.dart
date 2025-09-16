@@ -1,5 +1,4 @@
 import 'package:ecommerseproject/common/widgets/image_text_widgets/vertical_image_text.dart';
-import 'package:ecommerseproject/utils/constants/image_strings.dart';
 import 'package:flutter/material.dart';
 
 class CategoryModel {
