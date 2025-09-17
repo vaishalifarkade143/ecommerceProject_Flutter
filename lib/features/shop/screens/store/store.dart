@@ -1,6 +1,6 @@
-
 import 'package:ecommerseproject/common/widgets/appbar/appbar.dart';
 import 'package:ecommerseproject/common/widgets/appbar/tabbar.dart';
+import 'package:ecommerseproject/common/widgets/brands/brand_show_case.dart';
 import 'package:ecommerseproject/common/widgets/custom_shapes/container/search_container.dart';
 import 'package:ecommerseproject/common/widgets/custom_shapes/container/t_rounded_container.dart';
 import 'package:ecommerseproject/common/widgets/images/t_circular_image_use_in_store.dart';
@@ -8,6 +8,7 @@ import 'package:ecommerseproject/common/widgets/layouts/grid_layout.dart';
 import 'package:ecommerseproject/common/widgets/products/cart/cart_menu_icon.dart';
 import 'package:ecommerseproject/common/widgets/texts/section_heading.dart';
 import 'package:ecommerseproject/common/widgets/texts/t_brand_title_text_with_verifired_icon.dart';
+import 'package:ecommerseproject/features/shop/screens/store/widgets/category_tab.dart';
 import 'package:ecommerseproject/utils/constants/colors.dart';
 import 'package:ecommerseproject/utils/constants/enum.dart';
 import 'package:ecommerseproject/utils/constants/image_strings.dart';
@@ -76,7 +77,8 @@ class StoreScreen extends StatelessWidget {
                       const SizedBox(height: TSizes.spaceBtwSections),
 
                       /// --- Featured Brands Section
-                      TSectionHeading(title: 'Featured Brands', onPressed: () {}),
+                      TSectionHeading(
+                          title: 'Featured Brands', onPressed: () {}),
 
                       /// --- Grid of Brands
                       TGridLayout(
@@ -104,7 +106,8 @@ class StoreScreen extends StatelessWidget {
                                       size: 32,
                                     ),
                                   ),
-                                  const SizedBox(width: TSizes.spaceBtwItems / 2),
+                                  const SizedBox(
+                                      width: TSizes.spaceBtwItems / 2),
 
                                   /// Brand Info
                                   Expanded(
@@ -161,21 +164,15 @@ class StoreScreen extends StatelessWidget {
           /// Tab content
           body: TabBarView(
             children: [
-              _buildTabContent("Sports Content"),
-              _buildTabContent("Furniture Content"),
-              _buildTabContent("Electronics Content"),
-              _buildTabContent("Cloths Content"),
-              _buildTabContent("Cosmetics Content"),
+              TCategoryTab(),
+              TCategoryTab(),
+              TCategoryTab(),
+              TCategoryTab(),
+              TCategoryTab(),
             ],
           ),
         ),
       ),
-    );
-  }
-
-  Widget _buildTabContent(String title) {
-    return Center(
-      child: Text(title, style: const TextStyle(fontSize: 18)),
     );
   }
 }
