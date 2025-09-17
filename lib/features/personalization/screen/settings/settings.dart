@@ -3,7 +3,7 @@ import 'package:ecommerseproject/common/widgets/custom_shapes/container/primary_
 import 'package:ecommerseproject/common/widgets/list_tile/settings_menu_tile.dart';
 import 'package:ecommerseproject/common/widgets/list_tile/user_profile_tile.dart';
 import 'package:ecommerseproject/common/widgets/texts/section_heading.dart';
-import 'package:ecommerseproject/features/personalization/screen/profile/widgets/profile.dart';
+import 'package:ecommerseproject/features/personalization/screen/profile/profile.dart';
 import 'package:ecommerseproject/utils/constants/colors.dart';
 import 'package:ecommerseproject/utils/constants/sizes.dart';
 import 'package:flutter/material.dart';
