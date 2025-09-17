@@ -6,7 +6,6 @@ import 'package:ecommerseproject/common/widgets/texts/product_price_text.dart';
 import 'package:ecommerseproject/common/widgets/texts/product_title_text.dart';
 import 'package:ecommerseproject/common/widgets/texts/t_brand_title_text.dart';
 import 'package:ecommerseproject/utils/constants/colors.dart';
-import 'package:ecommerseproject/utils/constants/image_strings.dart';
 import 'package:ecommerseproject/utils/constants/sizes.dart';
 import 'package:ecommerseproject/utils/helpers/helper_functions.dart';
 import 'package:flutter/material.dart';

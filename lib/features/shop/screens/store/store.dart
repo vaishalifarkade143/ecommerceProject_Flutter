@@ -1,6 +1,5 @@
 import 'package:ecommerseproject/common/widgets/appbar/appbar.dart';
 import 'package:ecommerseproject/common/widgets/appbar/tabbar.dart';
-import 'package:ecommerseproject/common/widgets/brands/brand_show_case.dart';
 import 'package:ecommerseproject/common/widgets/custom_shapes/container/search_container.dart';
 import 'package:ecommerseproject/common/widgets/custom_shapes/container/t_rounded_container.dart';
 import 'package:ecommerseproject/common/widgets/images/t_circular_image_use_in_store.dart';

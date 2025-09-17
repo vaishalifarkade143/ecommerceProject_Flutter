@@ -36,40 +36,51 @@ class TCategoryTab extends StatelessWidget {
     ];
 
     return ListView(
-      shrinkWrap: true,
-      physics: const NeverScrollableScrollPhysics(),
-      children: [
-        Padding(
-        padding: const EdgeInsets.all(TSizes.defaultSpace),
-        child: Column(
-          children: [
-            ///== Brand
-            TBrandShowCase(
-              images: [
-                TImages.productImage10,
-                TImages.productImage2,
-                TImages.productImage1
+        shrinkWrap: true,
+        physics: const NeverScrollableScrollPhysics(),
+        children: [
+          Padding(
+            padding: const EdgeInsets.all(TSizes.defaultSpace),
+            child: Column(
+              children: [
+                ///== Brand
+                TBrandShowCase(
+                  images: [
+                    TImages.productImage10,
+                    TImages.productImage2,
+                    TImages.productImage1
+                  ],
+                ),
+                TBrandShowCase(
+                  images: [
+                    TImages.productImage10,
+                    TImages.productImage2,
+                    TImages.productImage1
+                  ],
+                ),
+                const SizedBox(
+                  height: TSizes.spaceBtwItems,
+                ),
+
+                ///-- Product
+                TSectionHeading(
+                  title: 'You might like',
+                  onPressed: () {},
+                ),
+                const SizedBox(
+                  height: TSizes.spaceBtwItems,
+                ),
+                TGridLayout(
+                    itemCount: products.length,
+                    itemBuilder: (_, index) => TProductCardVertical(
+                          product: products[index],
+                        )),
+                const SizedBox(
+                  height: TSizes.spaceBtwSections,
+                )
               ],
             ),
-      
-            ///-- Product
-            TSectionHeading(
-              title: 'You might like',
-              onPressed: () {},
-            ),
-            const SizedBox(
-              height: TSizes.spaceBtwItems,
-            ),
-            TGridLayout(
-                itemCount: products.length,
-                itemBuilder: (_, index) => TProductCardVertical(
-                      product: products[index],
-                    )),
-                    const SizedBox(height: TSizes.spaceBtwSections,)
-          ],
-        ),
-      ),
-      ]
-    );
+          ),
+        ]);
   }
 }

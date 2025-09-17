@@ -3,7 +3,6 @@ import 'package:ecommerseproject/common/widgets/custom_shapes/container/circular
 import 'package:ecommerseproject/common/widgets/images/t_rounded_image.dart';
 import 'package:ecommerseproject/features/shop/controller/home_controller.dart';
 import 'package:ecommerseproject/utils/constants/colors.dart';
-import 'package:ecommerseproject/utils/constants/image_strings.dart';
 import 'package:ecommerseproject/utils/constants/sizes.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
