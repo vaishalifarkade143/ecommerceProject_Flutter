@@ -39,6 +39,11 @@ class TImages {
   static const String jwelaryIcon = 'assets/icons/categories/christmas-ball.png';
   static const String electronicsIcon = 'assets/icons/categories/device.png';
 
+  // --  user
+   static const String user = 'assets/images/user/user.png';
+   static const String user1 = 'assets/images/user/user1.png';
+   static const String man = 'assets/images/user/man.png';
+
   //Bannars
   static const String promoBanner1 = 'assets/images/banners/promo-bannar-1.png';
   static const String promoBanner2 = 'assets/images/banners/promo-bannar-2.png';  

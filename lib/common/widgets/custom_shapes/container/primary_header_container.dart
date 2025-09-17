@@ -7,17 +7,20 @@ class PrimaryHeaderContainer extends StatelessWidget {
   const PrimaryHeaderContainer({
     super.key,
     required this.child,
+     this.height,
   });
   final Widget child;
+  final double? height;
 
   @override
   Widget build(BuildContext context) {
     return CurvedEdgesWidget(
       child: Container(
         color: TColors.primary,
-        padding: const EdgeInsets.only(bottom:  0),
-        child: SizedBox(
-        height: 380,
+        // padding: const EdgeInsets.only(bottom: 0),
+        // child: SizedBox(
+        // height: 380,
+         height: height,
         child: Stack(
           children: [
             ///Background custom Shape
@@ -35,19 +38,15 @@ class PrimaryHeaderContainer extends StatelessWidget {
                 backgroundColor: TColors.textWhite.withOpacity(0.1),
               ),
             ),
-             /// 👇 Foreground (your AppBar and other widgets)
-              Positioned.fill(
-                child: child,
-              ),
+
+            /// 👇 Foreground (your AppBar and other widgets)
+            Positioned.fill(
+              child: child,
+            ),
           ],
         ),
-        ),
+        // ),
       ),
     );
   }
 }
-
-
-
-
-

@@ -10,14 +10,12 @@ import 'package:ecommerseproject/utils/constants/image_strings.dart';
 import 'package:ecommerseproject/utils/constants/sizes.dart';
 import 'package:flutter/material.dart';
 
-
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
-    
-   /// Categories
+    /// Categories
     final categories = [
       CategoryModel(name: "Sports", icon: TImages.sportIcon),
       CategoryModel(name: "Clothes", icon: TImages.clothIcon),
@@ -51,11 +49,12 @@ class HomeScreen extends StatelessWidget {
     ];
 
     return Scaffold(
-        body: SingleChildScrollView(
+     body: SingleChildScrollView(
       child: Column(
         children: [
-           /// Header + Categories
+          /// Header + Categories
           PrimaryHeaderContainer(
+            height: 380,
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
@@ -83,10 +82,15 @@ class HomeScreen extends StatelessWidget {
                       const SizedBox(height: TSizes.spaceBtwItems),
 
                       /// -- Categories List
-                      THomeCategories(categories: categories,)
+                      THomeCategories(
+                        categories: categories,
+                      )
                     ],
                   ),
-                )
+                ),
+                // const SizedBox(
+                //   height: TSizes.spaceBtwSections,
+                // ),
               ],
             ),
           ),
@@ -107,17 +111,19 @@ class HomeScreen extends StatelessWidget {
 
                 /// - Heading
                 TSectionHeading(
-                    title: 'Popular Products',
-                    onPressed: () {},
-                    showActionButton: true,
-                    // textColors: Colors.black
-                    ),
+                  title: 'Popular Products',
+                  onPressed: () {},
+                  showActionButton: true,
+                  // textColors: Colors.black
+                ),
                 const SizedBox(height: TSizes.spaceBtwItems),
 
                 // -- Popular Products
                 TGridLayout(
                     itemCount: products.length,
-                    itemBuilder: (_, index) => TProductCardVertical(product: products[index],))
+                    itemBuilder: (_, index) => TProductCardVertical(
+                          product: products[index],
+                        ))
               ],
             ),
           ),

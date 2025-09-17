@@ -1,3 +1,4 @@
+import 'package:ecommerseproject/features/personalization/screen/settings/settings.dart';
 import 'package:ecommerseproject/features/shop/screens/home/home.dart';
 import 'package:ecommerseproject/features/shop/screens/store/store.dart';
 import 'package:ecommerseproject/features/shop/screens/wishlist/wishlist.dart';
@@ -21,8 +22,10 @@ class NavigationMenu extends StatelessWidget {
           selectedIndex: controller.selectedIndex.value,
           onDestinationSelected: (index) =>
               controller.selectedIndex.value = index,
-              backgroundColor: darkMode ? Colors.black : Colors.white,
-              indicatorColor: darkMode ? TColors.white.withOpacity(0.1): TColors.black.withOpacity(0.1),
+          backgroundColor: darkMode ? Colors.black : Colors.white,
+          indicatorColor: darkMode
+              ? TColors.white.withOpacity(0.1)
+              : TColors.black.withOpacity(0.1),
           destinations: [
             const NavigationDestination(
               icon: Icon(Iconsax.home),
@@ -43,7 +46,7 @@ class NavigationMenu extends StatelessWidget {
           ],
         ),
       ),
-      body: Obx(()=> controller.screen[controller.selectedIndex.value]),
+      body: Obx(() => controller.screen[controller.selectedIndex.value]),
     );
   }
 }
@@ -54,8 +57,6 @@ class Navigationcontroller extends GetxController {
     const HomeScreen(),
     const StoreScreen(),
     const FavouriteScreen(),
-    Container(
-      color: Colors.greenAccent,
-    ),
+    const SettingsScreen(),
   ];
 }
