@@ -3,10 +3,12 @@ import 'package:ecommerseproject/common/widgets/custom_shapes/container/primary_
 import 'package:ecommerseproject/common/widgets/list_tile/settings_menu_tile.dart';
 import 'package:ecommerseproject/common/widgets/list_tile/user_profile_tile.dart';
 import 'package:ecommerseproject/common/widgets/texts/section_heading.dart';
+import 'package:ecommerseproject/features/personalization/screen/profile/widgets/profile.dart';
 import 'package:ecommerseproject/utils/constants/colors.dart';
 import 'package:ecommerseproject/utils/constants/sizes.dart';
 import 'package:flutter/material.dart';
 import 'package:iconsax/iconsax.dart';
+import 'package:get/get.dart';
 
 class SettingsScreen extends StatelessWidget {
   const SettingsScreen({super.key});
@@ -35,7 +37,7 @@ class SettingsScreen extends StatelessWidget {
                   // const SizedBox(height: TSizes.spaceBtwSections,),
 
                   ///  UserProfile Card
-                  TUserProfileTile(),
+                  TUserProfileTile(onPressed :() => Get.to(()=> const ProfileScreen())),
                 ],
               ),
             ),
