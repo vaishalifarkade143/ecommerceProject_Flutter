@@ -17,7 +17,7 @@ class TProductTitleText extends StatelessWidget {
   Widget build(BuildContext context) {
     return 
           Text(
-            'Shein cream shirt',
+            title,
             style: Theme.of(context).textTheme.labelLarge,
             overflow: TextOverflow.ellipsis,
             maxLines: 2,
