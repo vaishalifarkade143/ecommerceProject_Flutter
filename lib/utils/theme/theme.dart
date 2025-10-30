@@ -1,6 +1,7 @@
 import 'package:ecommerseproject/utils/theme/custom_themes/appbar_theme.dart';
 import 'package:ecommerseproject/utils/theme/custom_themes/bottom_sheet_theme.dart';
 import 'package:ecommerseproject/utils/theme/custom_themes/checkbox_theme.dart';
+import 'package:ecommerseproject/utils/theme/custom_themes/chip_theme.dart';
 import 'package:ecommerseproject/utils/theme/custom_themes/elevated_button_theme.dart';
 import 'package:ecommerseproject/utils/theme/custom_themes/outlined_button_theme.dart';
 import 'package:ecommerseproject/utils/theme/custom_themes/text_field_theme.dart';
@@ -17,6 +18,7 @@ class TAppTheme {
     brightness: Brightness.light,
     primaryColor: Colors.blue,
     textTheme: TTextTheme.lightTextTheme,
+    chipTheme: TChipTheme.lightChipTheme,
     scaffoldBackgroundColor: Colors.white,
     appBarTheme: TAppBarTheme.lightAppBarTheme,
     checkboxTheme: TCheckboxTheme.lightCheckboxTheme,
@@ -33,6 +35,7 @@ class TAppTheme {
     primaryColor: Colors.blue,
     // textTheme: TTextTheme.lightTextTheme,
     textTheme: TTextTheme.darkTextTheme,
+    chipTheme: TChipTheme.darkChipTheme,
     scaffoldBackgroundColor: Colors.black,
     appBarTheme: TAppBarTheme.darkAppBarTheme,
     checkboxTheme: TCheckboxTheme.darkCheckboxTheme,
