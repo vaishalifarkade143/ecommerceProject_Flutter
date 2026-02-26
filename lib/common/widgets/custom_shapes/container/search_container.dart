@@ -30,7 +30,7 @@ class TSearchContainer extends StatelessWidget {
       child: Padding(
         padding: padding ?? const EdgeInsets.symmetric(horizontal: TSizes.defaultSpace),
         child: Container(
-          width: TDeviceUtils.getScreenWidth(),
+          width: TDeviceUtils.getScreenWidth(context),
           padding: const EdgeInsets.all(TSizes.md),
           decoration: BoxDecoration(
             color: showBackground

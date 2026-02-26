@@ -84,8 +84,8 @@ class TDeviceUtils {
 
 // Method to get the screen width
 // This method retrieves the width of the screen using MediaQuery.
-  static double getScreenWidth() {
-    return MediaQuery.of(Get.context!).size.width;
+  static double getScreenWidth(BuildContext context) {
+    return MediaQuery.of(context).size.width;
   }
 
   /// Get pixel ratio
