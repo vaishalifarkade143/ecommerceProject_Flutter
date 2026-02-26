@@ -41,18 +41,30 @@ class TSingleAddress extends StatelessWidget {
             ),
           ),
           Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-             
-              Text(
-                '123, Main Street, City, Country - 123456 ',
-                maxLines: 2,
+                Text(
+                'John Doe ',
+                maxLines: 1,
                 overflow: TextOverflow.ellipsis,
                 style: Theme.of(context).textTheme.titleLarge,
               ),
               const SizedBox(
                 height: TSizes.sm / 2,
               ),
-              
+                 Text(
+                '+91 9876543210',
+                maxLines: 1,
+                overflow: TextOverflow.ellipsis,
+              ),
+              const SizedBox(
+                height: TSizes.sm / 2,
+              ),
+              Text(
+                '123, Main Street, City, Country - 123456 ',
+               softWrap: true,
+              ),
+
             ],
           )
         ],

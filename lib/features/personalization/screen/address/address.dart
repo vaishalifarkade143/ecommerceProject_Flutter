@@ -6,7 +6,6 @@ import 'package:ecommerseproject/utils/constants/colors.dart';
 import 'package:ecommerseproject/utils/constants/sizes.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:get/get_connect/http/src/utils/utils.dart';
 import 'package:iconsax/iconsax.dart';
 
 class UserAddressScreen extends StatelessWidget {
@@ -28,8 +27,8 @@ class UserAddressScreen extends StatelessWidget {
             padding: EdgeInsets.all(TSizes.defaultSpace),
             child: Column(
               children: [
-              TSingleAddress(selecedAddress: true),
               TSingleAddress(selecedAddress: false),
+              TSingleAddress(selecedAddress: true),
               ],
             ),
           )
