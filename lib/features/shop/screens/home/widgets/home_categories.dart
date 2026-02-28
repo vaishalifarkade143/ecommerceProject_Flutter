@@ -1,5 +1,7 @@
 import 'package:ecommerseproject/common/widgets/image_text_widgets/vertical_image_text.dart';
+import 'package:ecommerseproject/features/shop/screens/sub_category/sub_categories.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 class CategoryModel {
   final String name;
@@ -27,7 +29,7 @@ class THomeCategories extends StatelessWidget {
           return  TVerticalImageText(
              image: category.icon,
             title: category.name,
-            onTap: (){},);
+            onTap: () => Get.to(()=> SubCategoriesScreen()),);
         },
       ),
     );

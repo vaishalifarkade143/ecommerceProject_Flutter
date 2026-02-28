@@ -3,12 +3,14 @@ import 'package:ecommerseproject/common/widgets/custom_shapes/container/search_c
 import 'package:ecommerseproject/common/widgets/layouts/grid_layout.dart';
 import 'package:ecommerseproject/common/widgets/products/product_cards/product_cart_vertical.dart';
 import 'package:ecommerseproject/common/widgets/texts/section_heading.dart';
+import 'package:ecommerseproject/features/shop/screens/all_products/all_products.dart';
 import 'package:ecommerseproject/features/shop/screens/home/widgets/home_appbar.dart';
 import 'package:ecommerseproject/features/shop/screens/home/widgets/home_categories.dart';
 import 'package:ecommerseproject/features/shop/screens/home/widgets/promo_slider.dart';
 import 'package:ecommerseproject/utils/constants/image_strings.dart';
 import 'package:ecommerseproject/utils/constants/sizes.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -49,7 +51,7 @@ class HomeScreen extends StatelessWidget {
     ];
 
     return Scaffold(
-     body: SingleChildScrollView(
+        body: SingleChildScrollView(
       child: Column(
         children: [
           /// Header + Categories
@@ -95,7 +97,7 @@ class HomeScreen extends StatelessWidget {
             ),
           ),
 
-          /// Body -- 
+          /// Body --
           Padding(
             padding: const EdgeInsets.all(TSizes.defaultSpace),
             child: Column(
@@ -112,7 +114,7 @@ class HomeScreen extends StatelessWidget {
                 /// - Heading
                 TSectionHeading(
                   title: 'Popular Products',
-                  onPressed: () {},
+                  onPressed: () => Get.to(() => const AllProductsScreen()),
                   showActionButton: true,
                   // textColors: Colors.black
                 ),
