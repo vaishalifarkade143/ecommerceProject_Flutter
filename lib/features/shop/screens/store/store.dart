@@ -7,6 +7,7 @@ import 'package:ecommerseproject/common/widgets/layouts/grid_layout.dart';
 import 'package:ecommerseproject/common/widgets/products/cart/cart_menu_icon.dart';
 import 'package:ecommerseproject/common/widgets/texts/section_heading.dart';
 import 'package:ecommerseproject/common/widgets/texts/t_brand_title_text_with_verifired_icon.dart';
+import 'package:ecommerseproject/features/shop/screens/all_brands/all_brands.dart';
 import 'package:ecommerseproject/features/shop/screens/store/widgets/category_tab.dart';
 import 'package:ecommerseproject/utils/constants/colors.dart';
 import 'package:ecommerseproject/utils/constants/enum.dart';
@@ -14,6 +15,7 @@ import 'package:ecommerseproject/utils/constants/image_strings.dart';
 import 'package:ecommerseproject/utils/constants/sizes.dart';
 import 'package:ecommerseproject/utils/helpers/helper_functions.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 class BrandModel {
   final String name;
@@ -77,7 +79,8 @@ class StoreScreen extends StatelessWidget {
 
                       /// --- Featured Brands Section
                       TSectionHeading(
-                          title: 'Featured Brands', onPressed: () {}),
+                          title: 'Featured Brands',
+                          onPressed: () => Get.to(() => const AllBrands())),
 
                       /// --- Grid of Brands
                       TGridLayout(
