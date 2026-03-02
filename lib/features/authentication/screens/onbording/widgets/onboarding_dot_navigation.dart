@@ -1,4 +1,4 @@
-import 'package:ecommerseproject/features/authentication/controllers.onboarding/onboarding_controller.dart';
+import 'package:ecommerseproject/features/authentication/controllers/onboarding/onboarding_controller.dart';
 import 'package:ecommerseproject/utils/constants/colors.dart';
 import 'package:ecommerseproject/utils/constants/sizes.dart';
 import 'package:ecommerseproject/utils/devices/device_utility.dart';

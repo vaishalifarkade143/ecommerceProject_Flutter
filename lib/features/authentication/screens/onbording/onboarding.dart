@@ -1,4 +1,4 @@
-import 'package:ecommerseproject/features/authentication/controllers.onboarding/onboarding_controller.dart';
+import 'package:ecommerseproject/features/authentication/controllers/onboarding/onboarding_controller.dart';
 import 'package:ecommerseproject/features/authentication/screens/onbording/widgets/onboarding_dot_navigation.dart';
 import 'package:ecommerseproject/features/authentication/screens/onbording/widgets/onboarding_next_button.dart';
 import 'package:ecommerseproject/features/authentication/screens/onbording/widgets/onboarding_page.dart';

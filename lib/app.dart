@@ -1,4 +1,5 @@
 import 'package:ecommerseproject/features/authentication/screens/onbording/onboarding.dart';
+import 'package:ecommerseproject/utils/constants/colors.dart';
 import 'package:ecommerseproject/utils/theme/theme.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -13,7 +14,13 @@ class App extends StatelessWidget {
       theme: TAppTheme.lightTheme,
       darkTheme: TAppTheme.darkTheme,
       debugShowCheckedModeBanner: false,
-      home: const OnBoardingScreen(),
+      // home: const OnBoardingScreen(),
+      home: const Scaffold(
+        backgroundColor: TColors.primary,
+        body: Center(
+          child: CircularProgressIndicator(color: TColors.white),
+        ),
+      ),
     );
   }
 }

@@ -1,7 +1,6 @@
 import 'package:ecommerseproject/common/widgets/appbar/appbar.dart';
 import 'package:ecommerseproject/common/widgets/brands/t_brand_card.dart';
 import 'package:ecommerseproject/common/widgets/layouts/grid_layout.dart';
-import 'package:ecommerseproject/common/widgets/products/sortable/sortable_products.dart';
 import 'package:ecommerseproject/common/widgets/texts/section_heading.dart';
 import 'package:ecommerseproject/features/shop/screens/all_brands/brand_products.dart';
 import 'package:ecommerseproject/utils/constants/sizes.dart';
