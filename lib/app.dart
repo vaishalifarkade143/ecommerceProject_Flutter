@@ -1,4 +1,4 @@
-import 'package:ecommerseproject/features/authentication/screens/onbording/onboarding.dart';
+import 'package:ecommerseproject/bindings/general_bindings.dart';
 import 'package:ecommerseproject/utils/constants/colors.dart';
 import 'package:ecommerseproject/utils/theme/theme.dart';
 import 'package:flutter/material.dart';
@@ -13,6 +13,7 @@ class App extends StatelessWidget {
       themeMode: ThemeMode.system,
       theme: TAppTheme.lightTheme,
       darkTheme: TAppTheme.darkTheme,
+      initialBinding: GeneralBindings(),
       debugShowCheckedModeBanner: false,
       // home: const OnBoardingScreen(),
       home: const Scaffold(

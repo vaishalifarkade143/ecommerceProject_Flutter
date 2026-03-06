@@ -22,6 +22,8 @@ Future<void> main() async {
   await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform)
   .then((FirebaseApp value) => Get.put(AuthenticationRepository()),
   );
+
+  //Load all the  material design
   runApp(const App());
   // TColors.linearGradient;
 }

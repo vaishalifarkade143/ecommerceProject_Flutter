@@ -1,14 +1,22 @@
 class TValidator {
+  //Empty Text Validation
+  static String? validateEmptyText(String? fieldName, String? value) {
+    if (value == null || value.isEmpty) {
+      return '$fieldName is required.';
+    }
+    return null; // Return null if the field is not empty
+  }
+
   static String? validateEmail(String? value) {
     if (value == null || value.isEmpty) {
-      return 'Email cannot be empty';
+      return 'Email is required. ';
     }
     // regular expression for validating email
     // final emailRegExp = RegExp(r'^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$');
     final emailRegExp = RegExp(r'^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$');
 
     if (!emailRegExp.hasMatch(value)) {
-      return 'Please enter a valid email address';
+      return 'Invalid email address. ';
     }
     return null; // Return null if the email is valid
   }
