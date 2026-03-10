@@ -69,8 +69,9 @@ class SignUpController extends GetxController {
           userName: userName.text.trim(),
           profilePicture: '');
 
-      final userRepodsitory = Get.put(UserRepository());
-      await userRepodsitory.saveUserRecord(newUser);
+      // final userRepository = Get.put(UserRepository());
+      final userRepository = UserRepository.instance;
+      await userRepository.saveUserRecord(newUser);
 
       //Remove Loader
       TFullScreenLoader.stopLoading();
@@ -81,7 +82,7 @@ class SignUpController extends GetxController {
           message: 'Your account has been created successfully!');
 
       // Move to verify Email screen
-      Get.to(() => const VerifyEmailScreen());
+      Get.to(() =>  VerifyEmailScreen(email: email.text.trim()));
 
       // Show success message or navigate to another screen
       // Get.snackbar("Success", "Your account has been created successfully!");

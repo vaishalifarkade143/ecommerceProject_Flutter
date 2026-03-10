@@ -24,11 +24,12 @@ class TFullScreenLoader {
           width: double.infinity,
           height: double.infinity,
           child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
             children: [
             
-              const SizedBox(
-                height: 250,
-              ),
+              // const SizedBox(
+              //   height: 250,
+              // ),
               TAnimationLoaderWidget(text  :text, animation: animation)
               
             ],

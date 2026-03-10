@@ -70,7 +70,7 @@ class TLoaders {
       isDismissible: true,
       shouldIconPulse: true,
       colorText: Colors.white,
-      backgroundColor: Colors.red,
+      backgroundColor: Colors.red.shade600,
       snackPosition: SnackPosition.BOTTOM,
       duration: const Duration(seconds: 3),
       margin: const EdgeInsets.all(20),

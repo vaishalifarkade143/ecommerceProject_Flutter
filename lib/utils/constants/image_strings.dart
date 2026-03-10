@@ -28,6 +28,24 @@ class TImages {
       'assets/images/animations/star.gif';
   static const String verifyIllustration = 'assets/images/animations/money.gif';
 
+  // -- Lottie animations
+  static String cartAnimation = 'assets/images/animations/empty_cart.json';
+  static String orderCompletedAnimation = 'assets/images/animations/order_placed.json';
+  static String packageAnimation = 'assets/images/animations/order_placed.json';
+  static String paparPlaneAnimation = 'assets/images/animations/order_placed.json';
+  static String carAnimation = 'assets/images/animations/order_placed.json';
+  static String pencilAnimation = 'assets/images/animations/order_placed.json';
+  static String docerAnimation = 'assets/images/animations/order_placed.json';
+  static String searchAnimation = 'assets/images/animations/order_placed.json';
+  static String emptyAnimation = 'assets/images/animations/order_placed.json';
+  static String securityAnimation = 'assets/images/animations/order_placed.json';
+  static String successfullyRegisterAnimation = 'assets/images/animations/order_placed.json';
+  static String thankYouAnimation = 'assets/images/animations/order_placed.json';
+  static String paymentSuccessfulAnimation = 'assets/images/animations/order_placed.json';
+  static String loadingJuggleAnimation = 'assets/images/animations/order_placed.json';
+  static String cloudUploadingAnimation = 'assets/images/animations/order_placed.json';
+  static String loaderAnimation = 'assets/images/animations/order_placed.json';
+
   //-- Categories icons
   static const String sportIcon = 'assets/icons/categories/sports.png';
   static const String clothIcon = 'assets/icons/categories/jumper.png';
@@ -36,35 +54,38 @@ class TImages {
   static const String animalIcon = 'assets/icons/categories/turtle.png';
   static const String toyIcon = 'assets/icons/categories/toy.png';
   static const String furnitureIcon = 'assets/icons/categories/furniture.png';
-  static const String jwelaryIcon = 'assets/icons/categories/christmas-ball.png';
+  static const String jwelaryIcon =
+      'assets/icons/categories/christmas-ball.png';
   static const String electronicsIcon = 'assets/icons/categories/device.png';
 
   // --  user
-   static const String user = 'assets/images/user/user.png';
-   static const String user1 = 'assets/images/user/user1.png';
-   static const String man = 'assets/images/user/man.png';
+  static const String user = 'assets/images/user/user.png';
+  static const String user1 = 'assets/images/user/user1.png';
+  static const String man = 'assets/images/user/man.png';
 
   //Bannars
   static const String promoBanner1 = 'assets/images/banners/promo-bannar-1.png';
-  static const String promoBanner2 = 'assets/images/banners/promo-bannar-2.png';  
+  static const String promoBanner2 = 'assets/images/banners/promo-bannar-2.png';
   static const String promoBanner3 = 'assets/images/banners/promo-bannar-3.png';
 
-    // --  Product review 
-   static const String userProfileImage1 = 'assets/images/user/user.png';
-   static const String userProfileImage2 = 'assets/images/user/user1.png';
-   static const String userProfileImage3 = 'assets/images/user/man.png';
+  // --  Product review
+  static const String userProfileImage1 = 'assets/images/user/user.png';
+  static const String userProfileImage2 = 'assets/images/user/user1.png';
+  static const String userProfileImage3 = 'assets/images/user/man.png';
 
- // --  Payment Methods
-   static const String applePay = 'assets/icons/payment_methods/apple-pay.png';
-   static const String creditCard = 'assets/icons/payment_methods/credit-card.png';
-   static const String googlePay = 'assets/icons/payment_methods/google-pay.png';
-   static const String masterCard = 'assets/icons/payment_methods/master-card.png';
-   static const String payPal = 'assets/icons/payment_methods/paypal.png';
-   static const String visa = 'assets/icons/payment_methods/visa.png';
-   static const String payStack = 'assets/icons/payment_methods/paystack.png';
-   static const String paytm = 'assets/icons/payment_methods/paytm.png';
-   static const String successfulPaymentIcon = 'assets/icons/payment_methods/payment_successful_icon.png';
-   
+  // --  Payment Methods
+  static const String applePay = 'assets/icons/payment_methods/apple-pay.png';
+  static const String creditCard =
+      'assets/icons/payment_methods/credit-card.png';
+  static const String googlePay = 'assets/icons/payment_methods/google-pay.png';
+  static const String masterCard =
+      'assets/icons/payment_methods/master-card.png';
+  static const String payPal = 'assets/icons/payment_methods/paypal.png';
+  static const String visa = 'assets/icons/payment_methods/visa.png';
+  static const String payStack = 'assets/icons/payment_methods/paystack.png';
+  static const String paytm = 'assets/icons/payment_methods/paytm.png';
+  static const String successfulPaymentIcon =
+      'assets/icons/payment_methods/payment_successful_icon.png';
 
   //Products
   static const String productImage1 = 'assets/images/products/cloth1.png';
@@ -107,9 +128,4 @@ class TImages {
   static const String productImage38 = 'assets/images/products/jwel8.png';
   static const String productImage39 = 'assets/images/products/jwel9.png';
   static const String productImage40 = 'assets/images/products/jwel10.png';
-
-
-
-
-
 }

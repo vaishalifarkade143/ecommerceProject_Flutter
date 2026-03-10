@@ -1,7 +1,8 @@
 import 'package:ecommerseproject/features/authentication/controllers/signup/signup_cotroller.dart';
-import 'package:ecommerseproject/features/authentication/screens/signup/verify_email.dart';
+// import 'package:ecommerseproject/features/authentication/screens/signup/verify_email.dart';
 import 'package:ecommerseproject/features/authentication/screens/signup/widgets/termsand_condition_checkbox.dart';
 import 'package:ecommerseproject/utils/constants/sizes.dart';
+import 'package:ecommerseproject/features/authentication/screens/signup/widgets/verify_email.dart';
 import 'package:ecommerseproject/utils/constants/text_strings.dart';
 import 'package:ecommerseproject/utils/validators/validation.dart';
 import 'package:flutter/material.dart';
@@ -101,8 +102,8 @@ class SignUpForm extends StatelessWidget {
           SizedBox(
               width: double.infinity,
               child: ElevatedButton(
-                  onPressed: () => Get.to(() => const VerifyEmail()),
-                  // onPressed: () => controller.signUp(),
+                  // onPressed: () => Get.to(() => const VerifyEmail()),
+                  onPressed: () => controller.signUp(),
                   child: const Text(TTexts.createAccount)))
         ],
       ),

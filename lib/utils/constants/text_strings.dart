@@ -62,7 +62,7 @@ class TTexts{
   static const String confirmEmailSubTitle= "Congratulations! Your Account Awaits Verify Your Email to Start Shopping and Experience a world of Unrivaled Deals and persanalized Offers!";
   static const String emailNoReservedMessage= "Don't get the email check your spam/junk or Resent it ! ";
   static const String yourAccountCreatedTilte= "Your Account successfully created! ";
-  static const String yourAccountCreatedSubTilte= "Welcome to Your Ultimate Shopping Destination: Your Account is created! ";
+  static const String yourAccountCreatedSubTilte = "Welcome to Your Ultimate Shopping Destination: Your Account is created! ";
 
  
   // -- Home AppBar Texts
