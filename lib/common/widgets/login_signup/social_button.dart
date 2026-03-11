@@ -1,7 +1,9 @@
+import 'package:ecommerseproject/features/authentication/controllers/login/login_controller.dart';
 import 'package:ecommerseproject/utils/constants/colors.dart';
 import 'package:ecommerseproject/utils/constants/image_strings.dart';
 import 'package:ecommerseproject/utils/constants/sizes.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 class SocialButton extends StatelessWidget {
   const SocialButton({
@@ -10,6 +12,7 @@ class SocialButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final controller = Get.put(LoginController());
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
@@ -17,8 +20,9 @@ class SocialButton extends StatelessWidget {
           decoration: BoxDecoration(
               border: Border.all(color: TColors.grey),
               borderRadius: BorderRadius.circular(100)),
+              //google sign in button
           child: IconButton(
-              onPressed: () {},
+              onPressed: () => controller.googleSignIn(),
               icon: const Image(
                   width: TSizes.iconMd,
                   height: TSizes.iconMd,
@@ -31,6 +35,7 @@ class SocialButton extends StatelessWidget {
           decoration: BoxDecoration(
               border: Border.all(color: TColors.grey),
               borderRadius: BorderRadius.circular(100)),
+              //facebook sign in button
           child: IconButton(
               onPressed: () {},
               icon: const Image(
