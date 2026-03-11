@@ -163,6 +163,10 @@ class LoginController extends GetxController {
       await AuthenticationRepository.instance
           .loginWithEmailAndPassword(email.text.trim(), password.text.trim());
 
+// ✅ Force refresh user data so correct user's name shows immediately
+      await UserController.instance.fetchUserData();
+
+
       // ✅ Stop loader BEFORE navigating to avoid black screen
       TFullScreenLoader.stopLoading();
       AuthenticationRepository.instance.screenRedirect();

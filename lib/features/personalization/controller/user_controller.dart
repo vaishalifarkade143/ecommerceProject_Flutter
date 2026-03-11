@@ -27,7 +27,7 @@ class UserController extends GetxController {
             UserModel.nameParts(userCredentials.user?.displayName ?? '');
         final userName =
             UserModel.generateUsername(userCredentials.user?.displayName ?? '');
-        final user = UserModel(
+        final newUser = UserModel(
             id: userCredentials.user!.uid,
             firstName: nameParts[0],
             lastName:
@@ -38,7 +38,9 @@ class UserController extends GetxController {
             profilePicture: userCredentials.user?.photoURL ?? '');
 
             //save user data to Firestore
-        await userRepository.saveUserRecord(user);
+        await userRepository.saveUserRecord(newUser);
+        // ✅ Update local cache immediately — don't wait for Firestore round-trip
+        user.value = newUser;
       }
     } catch (e) {
       TLoaders.warningSnackbar(
@@ -52,7 +54,11 @@ class UserController extends GetxController {
     try {
       isLoading.value = true;
       final uid = FirebaseAuth.instance.currentUser?.uid;
-      if (uid == null) return;
+      // if (uid == null) return;
+       if (uid == null) {
+        user.value = UserModel.empty();
+        return;
+      }
 
       final doc =
           await FirebaseFirestore.instance.collection('Users').doc(uid).get();
@@ -64,4 +70,10 @@ class UserController extends GetxController {
       isLoading.value = false;
     }
   }
+
+   /// ✅ Call this on logout to wipe stale cached user data immediately
+  void clearUser() {
+    user.value = UserModel.empty();
+  }
+
 }

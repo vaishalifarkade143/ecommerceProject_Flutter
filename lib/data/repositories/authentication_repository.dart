@@ -265,6 +265,7 @@ import 'package:ecommerseproject/data/user/user_repository.dart';
 import 'package:ecommerseproject/features/authentication/screens/login/login.dart';
 import 'package:ecommerseproject/features/authentication/screens/onbording/onboarding.dart';
 import 'package:ecommerseproject/features/authentication/screens/signup/widgets/verify_email.dart';
+import 'package:ecommerseproject/features/personalization/controller/user_controller.dart';
 import 'package:ecommerseproject/features/personalization/model/user_model.dart';
 import 'package:ecommerseproject/navigation_menu.dart';
 import 'package:ecommerseproject/utils/exceptions/firebase_auth_exceptions.dart';
@@ -445,6 +446,8 @@ class AuthenticationRepository extends GetxController {
       await _ensureGoogleSignInInitialized();
       await _googleSignIn.signOut();
       await _auth.signOut();
+      // ✅ Clear cached user data so old user's name never shows for next login
+      UserController.instance.clearUser();
       Get.offAll(() => const LoginScreen());
     } on FirebaseAuthException catch (e) {
       throw TFirebaseAuthExceptions(e.code).message;
