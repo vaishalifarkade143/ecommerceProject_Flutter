@@ -25,9 +25,18 @@ class TAnimationLoaderWidget extends StatelessWidget {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          Lottie.asset(animation,
-              width: MediaQuery.of(context).size.width *
-                  0.8), // Display the animation
+          // Lottie.asset(animation,
+          //     width: MediaQuery.of(context).size.width *
+          //         0.8), // Display the animation
+
+          Lottie.asset(
+            animation,
+            width: MediaQuery.of(context).size.width * 0.8,
+            errorBuilder: (context, error, stackTrace) {
+              return const Icon(Icons.check_circle,
+                  size: 100, color: Colors.green);
+            },
+          ),
           SizedBox(
             height: TSizes.defaultSpace,
           ),

@@ -1,6 +1,7 @@
 import 'package:ecommerseproject/features/authentication/screens/password_configuration/reset_password.dart';
 import 'package:ecommerseproject/utils/constants/sizes.dart';
 import 'package:ecommerseproject/utils/constants/text_strings.dart';
+import 'package:ecommerseproject/utils/validators/validation.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
@@ -10,6 +11,9 @@ class ForgetPassword extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+      // FIX: added a controller and formKey so the email is actually captured
+    final emailController = TextEditingController();
+    final formKey = GlobalKey<FormState>();
     return Scaffold(
       appBar: AppBar(),
       body:  Padding(
@@ -36,11 +40,35 @@ class ForgetPassword extends StatelessWidget {
             ),
 
             /// Text Field
-            TextFormField(decoration: const InputDecoration(labelText: TTexts.email, prefixIcon: Icon(Iconsax.direct_right)),),
+            TextFormField(
+              controller: emailController,
+              decoration: const InputDecoration(
+                labelText: TTexts.email,
+                 prefixIcon: Icon(Iconsax.direct_right)
+                 ),
+              // validator: (value) {
+              //   if (value == null || value.isEmpty) {
+              //     return 'Please enter your email';
+              //   }
+              //   return null;
+              // },
+                validator: (value) => TValidator.validateEmail(value),
+            ),
             const SizedBox(height: TSizes.spaceBtwSections,),
 
             /// submit Button 
-            SizedBox(width: double.infinity, child: ElevatedButton(onPressed: () => Get.off(()=> const ResetPassword()), child: const Text(TTexts.submit)),)
+            SizedBox(width: double.infinity, 
+            child: ElevatedButton(
+               onPressed: () {
+                    if (formKey.currentState!.validate()) {
+                      // FIX: pass email to reset password screen
+                      Get.off(() =>
+                          ResetPassword(email: emailController.text.trim()));
+                    }
+                  },
+                  child: const Text(TTexts.submit),
+                ),
+               ),
 
           ],
         ),

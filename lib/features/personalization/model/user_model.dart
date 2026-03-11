@@ -1,6 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:ecommerseproject/utils/formatters/formatter.dart';
-import 'package:get/state_manager.dart';
 
 class UserModel {
   final String id;

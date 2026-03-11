@@ -30,21 +30,22 @@ class TImages {
 
   // -- Lottie animations
   static String cartAnimation = 'assets/images/animations/empty_cart.json';
-  static String orderCompletedAnimation = 'assets/images/animations/order_placed.json';
-  static String packageAnimation = 'assets/images/animations/order_placed.json';
-  static String paparPlaneAnimation = 'assets/images/animations/order_placed.json';
-  static String carAnimation = 'assets/images/animations/order_placed.json';
-  static String pencilAnimation = 'assets/images/animations/order_placed.json';
-  static String docerAnimation = 'assets/images/animations/order_placed.json';
-  static String searchAnimation = 'assets/images/animations/order_placed.json';
-  static String emptyAnimation = 'assets/images/animations/order_placed.json';
-  static String securityAnimation = 'assets/images/animations/order_placed.json';
-  static String successfullyRegisterAnimation = 'assets/images/animations/order_placed.json';
-  static String thankYouAnimation = 'assets/images/animations/order_placed.json';
-  static String paymentSuccessfulAnimation = 'assets/images/animations/order_placed.json';
-  static String loadingJuggleAnimation = 'assets/images/animations/order_placed.json';
-  static String cloudUploadingAnimation = 'assets/images/animations/order_placed.json';
-  static String loaderAnimation = 'assets/images/animations/order_placed.json';
+  // static String orderCompletedAnimation = 'assets/images/animations/order_placed.json';
+  // static String packageAnimation = 'assets/images/animations/order_placed.json';
+  // static String paparPlaneAnimation = 'assets/images/animations/order_placed.json';
+  // static String carAnimation = 'assets/images/animations/order_placed.json';
+  // static String pencilAnimation = 'assets/images/animations/order_placed.json';
+  // static String docerAnimation = 'assets/images/animations/order_placed.json';
+  // static String searchAnimation = 'assets/images/animations/order_placed.json';
+  // static String emptyAnimation = 'assets/images/animations/order_placed.json';
+  // static String securityAnimation = 'assets/images/animations/order_placed.json';
+  static String successfullyRegisterAnimation =
+      'assets/images/animations/order_placed.json';
+  // static String thankYouAnimation = 'assets/images/animations/order_placed.json';
+  // static String paymentSuccessfulAnimation = 'assets/images/animations/order_placed.json';
+  // static String loadingJuggleAnimation = 'assets/images/animations/order_placed.json';
+  // static String cloudUploadingAnimation = 'assets/images/animations/order_placed.json';
+  // static String loaderAnimation = 'assets/images/animations/order_placed.json';
 
   //-- Categories icons
   static const String sportIcon = 'assets/icons/categories/sports.png';
