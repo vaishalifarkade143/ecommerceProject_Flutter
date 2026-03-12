@@ -75,7 +75,7 @@ class TUserProfileTile extends StatelessWidget {
           user.fullName.isNotEmpty ? user.fullName : 'User',
           style: Theme.of(context)
               .textTheme
-              .bodyMedium!
+              .bodyLarge!
               .apply(color: TColors.white),
         ),
         // Show real email from Firestore
@@ -83,7 +83,7 @@ class TUserProfileTile extends StatelessWidget {
           user.email.isNotEmpty ? user.email : '',
           style: Theme.of(context)
               .textTheme
-              .bodySmall!
+              .bodyMedium!
               .apply(color: TColors.white),
         ),
         trailing: IconButton(

@@ -273,6 +273,7 @@ import 'package:ecommerseproject/utils/exceptions/firebase_exceptions.dart';
 import 'package:ecommerseproject/utils/exceptions/format_exceptions.dart';
 import 'package:ecommerseproject/utils/exceptions/platform_exceptions.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_native_splash/flutter_native_splash.dart';
 import 'package:get/get.dart';
@@ -383,6 +384,8 @@ class AuthenticationRepository extends GetxController {
     }
   }
 
+
+/// [ Email Authentication ] - Forget Password 
   Future<void> sendPasswordResetEmail(String email) async {
     try {
       await _auth.sendPasswordResetEmail(email: email);
@@ -433,7 +436,9 @@ class AuthenticationRepository extends GetxController {
     } on PlatformException catch (e) {
       throw TPlatformExceptions(e.code).message;
     } catch (e) {
-      throw e.toString();
+      if (kDebugMode) print('Google Sign-In error: $e');
+      return null;
+      // throw e.toString();
     }
   }
 

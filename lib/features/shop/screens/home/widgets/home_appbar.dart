@@ -32,7 +32,7 @@ class THomeAppBar extends StatelessWidget {
                         : TTexts.homeAppbarSubTitle,
                 style: Theme.of(context)
                     .textTheme
-                    .headlineSmall!
+                    .headlineMedium!
                     .apply(color: TColors.white),
               )),
         ],

@@ -1,3 +1,4 @@
+import 'package:ecommerseproject/features/authentication/controllers/forget_password/forget_password_controller.dart';
 import 'package:ecommerseproject/features/authentication/screens/login/login.dart';
 import 'package:ecommerseproject/utils/constants/image_strings.dart';
 import 'package:ecommerseproject/utils/constants/sizes.dart';
@@ -64,19 +65,23 @@ class ResetPassword extends StatelessWidget {
 
                 SizedBox(
                   width: double.infinity,
-                  child: TextButton(
-                        onPressed: () async {
-                    try {
-                      await FirebaseAuth.instance
-                          .sendPasswordResetEmail(email: email);
-                      TLoaders.successSnackBar(
-                          title: 'Email Sent',
-                          message: 'Password reset email resent to $email');
-                    } catch (e) {
-                      TLoaders.errorSnackBar(
-                          title: 'Error', message: e.toString());
-                    }
-                  },
+                  // child: TextButton(
+                  //       onPressed: () async {
+                  //   try {
+                  //     await FirebaseAuth.instance
+                  //         .sendPasswordResetEmail(email: email);
+                  //     TLoaders.successSnackBar(
+                  //         title: 'Email Sent',
+                  //         message: 'Password reset email resent to $email');
+                  //   } catch (e) {
+                  //     TLoaders.errorSnackBar(
+                  //         title: 'Error', message: e.toString());
+                  //   }
+                  // },
+                  //     child: Text(TTexts.resendEmail)),
+
+                        child: TextButton(
+                        onPressed: () => ForgetPasswordController.instance.resendPasswordResetEmail(email),
                       child: Text(TTexts.resendEmail)),
                 ),
               ],
