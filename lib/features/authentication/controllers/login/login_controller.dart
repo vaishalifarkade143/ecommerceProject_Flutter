@@ -164,7 +164,7 @@ class LoginController extends GetxController {
           .loginWithEmailAndPassword(email.text.trim(), password.text.trim());
 
 // ✅ Force refresh user data so correct user's name shows immediately
-      await UserController.instance.fetchUserData();
+      await UserController.instance.fetchUserRecord();
 
 
       // ✅ Stop loader BEFORE navigating to avoid black screen
