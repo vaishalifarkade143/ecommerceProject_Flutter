@@ -1,8 +1,3 @@
-
-
-
-
-
 import 'package:ecommerseproject/data/user/user_repository.dart';
 import 'package:ecommerseproject/features/authentication/screens/login/login.dart';
 import 'package:ecommerseproject/features/authentication/screens/onbording/onboarding.dart';
@@ -29,7 +24,7 @@ class AuthenticationRepository extends GetxController {
   final FirebaseAuth _auth = FirebaseAuth.instance;
 
   //Get Authenticated User Data
-   User? get authUser => _auth.currentUser;
+  User? get authUser => _auth.currentUser;
 
   // v7: use singleton
   final GoogleSignIn _googleSignIn = GoogleSignIn.instance;
@@ -53,8 +48,8 @@ class AuthenticationRepository extends GetxController {
 
     if (user != null) {
       // ✅ Google users are always considered verified — check provider
-      final isGoogleUser = user.providerData
-          .any((info) => info.providerId == 'google.com');
+      final isGoogleUser =
+          user.providerData.any((info) => info.providerId == 'google.com');
 
       if (user.emailVerified || isGoogleUser) {
         // ✅ Fully authenticated — go to home
@@ -129,8 +124,7 @@ class AuthenticationRepository extends GetxController {
     }
   }
 
-
-/// [ Email Authentication ] - Forget Password 
+  /// [ Email Authentication ] - Forget Password
   Future<void> sendPasswordResetEmail(String email) async {
     try {
       await _auth.sendPasswordResetEmail(email: email);
@@ -171,7 +165,6 @@ class AuthenticationRepository extends GetxController {
       // ✅ Return credential — let LoginController handle navigation
       // screenRedirect() is NOT called here to avoid double navigation
       return userCredential;
-
     } on FirebaseAuthException catch (e) {
       throw TFirebaseAuthExceptions(e.code).message;
     } on FirebaseException catch (e) {
@@ -199,6 +192,46 @@ class AuthenticationRepository extends GetxController {
       // ✅ Clear cached user data so old user's name never shows for next login
       UserController.instance.clearUser();
       Get.offAll(() => const LoginScreen());
+    } on FirebaseAuthException catch (e) {
+      throw TFirebaseAuthExceptions(e.code).message;
+    } on FirebaseException catch (e) {
+      throw TFirebaseExceptions(e.code).message;
+    } on FormatException catch (_) {
+      throw TFormatExceptions().message;
+    } on PlatformException catch (e) {
+      throw TPlatformExceptions(e.code).message;
+    } catch (e) {
+      throw 'Something went wrong. Please try again.';
+    }
+  }
+
+  Future<void> deleteAccount() async {
+   try {
+     await UserRepository.instance.removeUserRecord(_auth.currentUser!.uid);
+      await _auth.currentUser?.delete();
+    } on FirebaseAuthException catch (e) {
+      throw TFirebaseAuthExceptions(e.code).message;
+    } on FirebaseException catch (e) {
+      throw TFirebaseExceptions(e.code).message;
+    } on FormatException catch (_) {
+      throw TFormatExceptions().message;
+    } on PlatformException catch (e) {
+      throw TPlatformExceptions(e.code).message;
+    } catch (e) {
+      throw 'Something went wrong. Please try again.';
+    }
+
+  }
+
+  Future<void> reAuthenticateWithEmailAndPassword(
+      String email, String password) async {
+    try {
+      //create credential
+      AuthCredential credential =
+          EmailAuthProvider.credential(email: email, password: password);
+
+      //Re-authenticate
+      await _auth.currentUser!.reauthenticateWithCredential(credential);
     } on FirebaseAuthException catch (e) {
       throw TFirebaseAuthExceptions(e.code).message;
     } on FirebaseException catch (e) {
