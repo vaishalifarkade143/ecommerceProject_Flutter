@@ -145,7 +145,7 @@
 import 'dart:async';
 
 import 'package:ecommerseproject/common/widgets/success_screen/success_screen.dart';
-import 'package:ecommerseproject/data/repositories/authentication_repository.dart';
+import 'package:ecommerseproject/data/repositories/authentication/authentication_repository.dart';
 import 'package:ecommerseproject/utils/constants/image_strings.dart';
 import 'package:ecommerseproject/utils/constants/text_strings.dart';
 import 'package:ecommerseproject/utils/popups/loader.dart';

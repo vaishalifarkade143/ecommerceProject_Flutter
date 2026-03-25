@@ -107,7 +107,7 @@
 
 
 
-import 'package:ecommerseproject/data/repositories/authentication_repository.dart';
+import 'package:ecommerseproject/data/repositories/authentication/authentication_repository.dart';
 import 'package:ecommerseproject/features/personalization/controller/user_controller.dart';
 import 'package:ecommerseproject/utils/constants/image_strings.dart';
 import 'package:ecommerseproject/utils/helpers/network_manager.dart';

@@ -1,5 +1,5 @@
 import 'package:ecommerseproject/app.dart';
-import 'package:ecommerseproject/data/repositories/authentication_repository.dart';
+import 'package:ecommerseproject/data/repositories/authentication/authentication_repository.dart';
 import 'package:ecommerseproject/firebase_options.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';

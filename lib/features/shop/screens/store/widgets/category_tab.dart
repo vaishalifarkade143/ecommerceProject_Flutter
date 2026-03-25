@@ -2,12 +2,14 @@ import 'package:ecommerseproject/common/widgets/brands/brand_show_case.dart';
 import 'package:ecommerseproject/common/widgets/layouts/grid_layout.dart';
 import 'package:ecommerseproject/common/widgets/products/product_cards/product_cart_vertical.dart';
 import 'package:ecommerseproject/common/widgets/texts/section_heading.dart';
+import 'package:ecommerseproject/features/shop/model/category_model.dart';
 import 'package:ecommerseproject/utils/constants/image_strings.dart';
 import 'package:ecommerseproject/utils/constants/sizes.dart';
 import 'package:flutter/material.dart';
 
 class TCategoryTab extends StatelessWidget {
-  const TCategoryTab({super.key});
+  const TCategoryTab({super.key, required this.category});
+  final CategoryModel category; 
 
   @override
   Widget build(BuildContext context) {

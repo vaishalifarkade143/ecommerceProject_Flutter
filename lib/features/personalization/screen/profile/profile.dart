@@ -6,6 +6,7 @@ import 'package:ecommerseproject/features/personalization/screen/profile/widgets
 import 'package:ecommerseproject/features/personalization/screen/profile/widgets/profile_menu.dart';
 import 'package:ecommerseproject/utils/constants/image_strings.dart';
 import 'package:ecommerseproject/utils/constants/sizes.dart';
+import 'package:ecommerseproject/common/widgets/shimmer/shimmer.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
@@ -33,13 +34,30 @@ class ProfileScreen extends StatelessWidget {
                 width: double.infinity,
                 child: Column(
                   children: [
-                    TCircularImage(
-                      image: TImages.man,
-                      width: 80,
-                      height: 80,
+                    Obx(
+                      () {
+                        final networkImage =
+                            controller.user.value.profilePicture;
+                        final image = networkImage.isNotEmpty
+                            ? networkImage
+                            : TImages.user;
+
+                        return controller.imageUploading.value
+                            ? TShimmerEffect(
+                                width: 80,
+                                height: 80,
+                                radius: 80,
+                              )
+                            : TCircularImage(
+                                image: image,
+                                width: 80,
+                                height: 80,
+                                isNetworkImage: networkImage.isNotEmpty,
+                              );
+                      },
                     ),
                     TextButton(
-                        onPressed: () {},
+                        onPressed: () => controller.uploadUserProfilePicture(),
                         child: Text('Change Profile Pitcture')),
                   ],
                 ),
@@ -61,7 +79,7 @@ class ProfileScreen extends StatelessWidget {
               TProfileMenu(
                 title: 'Name',
                 value: controller.user.value.fullName,
-                onPressed: () => Get.to(()=> const ChangeName()),
+                onPressed: () => Get.to(() => const ChangeName()),
               ),
               TProfileMenu(
                 title: 'Username',

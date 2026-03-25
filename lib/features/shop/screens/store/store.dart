@@ -7,6 +7,7 @@ import 'package:ecommerseproject/common/widgets/layouts/grid_layout.dart';
 import 'package:ecommerseproject/common/widgets/products/cart/cart_menu_icon.dart';
 import 'package:ecommerseproject/common/widgets/texts/section_heading.dart';
 import 'package:ecommerseproject/common/widgets/texts/t_brand_title_text_with_verifired_icon.dart';
+import 'package:ecommerseproject/features/shop/controller/category_controller.dart';
 import 'package:ecommerseproject/features/shop/screens/all_brands/all_brands.dart';
 import 'package:ecommerseproject/features/shop/screens/store/widgets/category_tab.dart';
 import 'package:ecommerseproject/utils/constants/colors.dart';
@@ -35,6 +36,7 @@ class StoreScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final dark = THelperFunctions.isDarkMode(context);
+    final categories = CategoryController.instance.featuredCategories;
 
     /// --- Sample Data
     final List<BrandModel> brands = [
@@ -45,7 +47,8 @@ class StoreScreen extends StatelessWidget {
     ];
 
     return DefaultTabController(
-      length: 5,
+      // length: 5,
+      length: categories.length,
       child: Scaffold(
         appBar: TAppBar(
           title: Text(
@@ -150,29 +153,39 @@ class StoreScreen extends StatelessWidget {
                 pinned: true,
                 backgroundColor: dark ? TColors.black : TColors.white,
                 toolbarHeight: 0,
-                bottom: const TTabBar(
-                  tabs: [
-                    Tab(child: Text('Sports')),
-                    Tab(child: Text('Furniture')),
-                    Tab(child: Text('Electronics')),
-                    Tab(child: Text('Cloths')),
-                    Tab(child: Text('Cosmetics')),
-                  ],
+                // bottom: const TTabBar(
+                //   tabs: [
+                //     Tab(child: Text('Sports')),
+                //     Tab(child: Text('Furniture')),
+                //     Tab(child: Text('Electronics')),
+                //     Tab(child: Text('Cloths')),
+                //     Tab(child: Text('Cosmetics')),
+                //   ],
+                // ),
+                bottom:  TTabBar(
+                 tabs:categories.map((category) => Tab(child: Text(category.name))).toList(),
                 ),
               ),
             ];
           },
 
           /// Tab content
-          body: TabBarView(
-            children: [
-              TCategoryTab(),
-              TCategoryTab(),
-              TCategoryTab(),
-              TCategoryTab(),
-              TCategoryTab(),
-            ],
-          ),
+          // body: TabBarView(
+          //   children: [
+          //     TCategoryTab(),
+          //     TCategoryTab(),
+          //     TCategoryTab(),
+          //     TCategoryTab(),
+          //     TCategoryTab(),
+             
+          //   ],
+          // ),
+body: TabBarView(
+  children: categories
+      .map((category) => TCategoryTab(category: category))
+      .toList(),
+),
+          
         ),
       ),
     );

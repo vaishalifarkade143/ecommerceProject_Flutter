@@ -102,7 +102,7 @@
 //   }
 // }
 
-import 'package:ecommerseproject/data/repositories/authentication_repository.dart';
+import 'package:ecommerseproject/data/repositories/authentication/authentication_repository.dart';
 import 'package:ecommerseproject/data/user/user_repository.dart';
 import 'package:ecommerseproject/features/authentication/screens/signup/widgets/verify_email.dart';
 import 'package:ecommerseproject/features/personalization/model/user_model.dart';

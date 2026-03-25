@@ -51,7 +51,7 @@ import 'package:ecommerseproject/common/widgets/products/cart/cart_menu_icon.dar
 import 'package:ecommerseproject/features/personalization/controller/user_controller.dart';
 import 'package:ecommerseproject/utils/constants/colors.dart';
 import 'package:ecommerseproject/utils/constants/text_strings.dart';
-import 'package:ecommerseproject/utils/popups/shimmer.dart';
+import 'package:ecommerseproject/common/widgets/shimmer/shimmer.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 

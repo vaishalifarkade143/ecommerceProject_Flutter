@@ -1,6 +1,6 @@
 
 
-import 'package:ecommerseproject/data/repositories/authentication_repository.dart';
+import 'package:ecommerseproject/data/repositories/authentication/authentication_repository.dart';
 import 'package:ecommerseproject/features/authentication/controllers/signup/varify_email_controller.dart';
 
 import 'package:ecommerseproject/utils/constants/sizes.dart';
