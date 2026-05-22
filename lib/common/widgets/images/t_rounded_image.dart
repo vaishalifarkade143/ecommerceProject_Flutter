@@ -1,3 +1,5 @@
+import 'package:cached_network_image/cached_network_image.dart';
+import 'package:ecommerseproject/common/widgets/shimmer/shimmer.dart';
 import 'package:ecommerseproject/utils/constants/colors.dart';
 import 'package:ecommerseproject/utils/constants/sizes.dart';
 import 'package:flutter/material.dart';
@@ -5,15 +7,15 @@ import 'package:flutter/material.dart';
 class TRoundedImage extends StatelessWidget {
   const TRoundedImage({
     super.key,
-    this.width ,
-    this.height ,
+    this.width,
+    this.height,
     required this.imageUrl,
     this.applyImageRadious = true,
     this.border,
     this.backgroundColor = TColors.white,
     this.fit,
     this.padding,
-    this.isNetworkImage =  false,
+    this.isNetworkImage = false,
     this.onPressed,
     this.borderRadious = TSizes.md,
   });
@@ -45,12 +47,22 @@ class TRoundedImage extends StatelessWidget {
           borderRadius: applyImageRadious
               ? BorderRadius.circular(borderRadious)
               : BorderRadius.zero,
-          child: Image(
-            image: isNetworkImage
-                ? NetworkImage(imageUrl)
-                : AssetImage(imageUrl) as ImageProvider,
-            fit: fit,
-          ),
+          child: isNetworkImage
+              ? CachedNetworkImage(
+                  imageUrl: imageUrl,
+                  fit: fit,
+                  progressIndicatorBuilder: (context, url, downloadProgress) =>
+                      TShimmerEffect(
+                         width: width ?? double.infinity , height: height ?? 158,),
+                         errorWidget: (context, url , error) => const Icon(Icons.error,),
+                          
+                )
+              : Image(
+                  image: isNetworkImage
+                      ? NetworkImage(imageUrl)
+                      : AssetImage(imageUrl) as ImageProvider,
+                  fit: fit,
+                ),
         ),
       ),
     );

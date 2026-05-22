@@ -1,4 +1,5 @@
 import 'package:ecommerseproject/bindings/general_bindings.dart';
+import 'package:ecommerseproject/routes/app_routes.dart';
 import 'package:ecommerseproject/utils/constants/colors.dart';
 import 'package:ecommerseproject/utils/theme/theme.dart';
 import 'package:flutter/material.dart';
@@ -15,6 +16,7 @@ class App extends StatelessWidget {
       darkTheme: TAppTheme.darkTheme,
       initialBinding: GeneralBindings(),
       debugShowCheckedModeBanner: false,
+      getPages: AppRoute.pages,
       // home: const OnBoardingScreen(),
       home: const Scaffold(
         backgroundColor: TColors.primary,

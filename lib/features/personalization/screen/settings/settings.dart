@@ -4,12 +4,17 @@ import 'package:ecommerseproject/common/widgets/list_tile/settings_menu_tile.dar
 import 'package:ecommerseproject/common/widgets/list_tile/user_profile_tile.dart';
 import 'package:ecommerseproject/common/widgets/texts/section_heading.dart';
 import 'package:ecommerseproject/data/repositories/authentication/authentication_repository.dart';
+import 'package:ecommerseproject/data/repositories/banners/bannar_repository.dart';
+import 'package:ecommerseproject/data/repositories/categories/category_repository.dart';
+import 'package:ecommerseproject/data/repositories/product/product_repository.dart';
 import 'package:ecommerseproject/features/personalization/screen/address/address.dart';
 import 'package:ecommerseproject/features/personalization/screen/profile/profile.dart';
+import 'package:ecommerseproject/features/shop/dummy/dummy_data.dart';
 import 'package:ecommerseproject/features/shop/screens/cart/cart.dart';
 import 'package:ecommerseproject/features/shop/screens/order/order.dart';
 import 'package:ecommerseproject/utils/constants/colors.dart';
 import 'package:ecommerseproject/utils/constants/sizes.dart';
+import 'package:ecommerseproject/utils/popups/loader.dart';
 import 'package:flutter/material.dart';
 import 'package:iconsax/iconsax.dart';
 import 'package:get/get.dart';
@@ -41,7 +46,8 @@ class SettingsScreen extends StatelessWidget {
                   // const SizedBox(height: TSizes.spaceBtwSections,),
 
                   ///  UserProfile Card
-                  TUserProfileTile(onPressed :() => Get.to(()=> const ProfileScreen())),
+                  TUserProfileTile(
+                      onPressed: () => Get.to(() => const ProfileScreen())),
                 ],
               ),
             ),
@@ -62,17 +68,17 @@ class SettingsScreen extends StatelessWidget {
                       icon: Iconsax.safe_home,
                       title: 'My Addresses',
                       subTitle: 'Set Shopping delivery address',
-                      onTap: ()=>Get.to(()=> const UserAddressScreen())),
+                      onTap: () => Get.to(() => const UserAddressScreen())),
                   TSettingMenuTile(
                       icon: Iconsax.shopping_cart,
                       title: 'My Cart',
                       subTitle: 'Add, remove product and move to checkout',
-                      onTap:()=>Get.to(()=> const CartScreen())),
+                      onTap: () => Get.to(() => const CartScreen())),
                   TSettingMenuTile(
                       icon: Iconsax.safe_home,
                       title: 'My Order',
                       subTitle: 'In-progress and Complete Orders',
-                      onTap: ()=>Get.to(()=> const OrderScreen())),
+                      onTap: () => Get.to(() => const OrderScreen())),
                   TSettingMenuTile(
                       icon: Iconsax.bank,
                       title: 'Bank Account',
@@ -112,28 +118,54 @@ class SettingsScreen extends StatelessWidget {
                     subTitle: 'Set reccommendation base on location',
                     trailing: Switch(value: true, onChanged: (value) {}),
                   ),
-                    TSettingMenuTile(
+                  TSettingMenuTile(
                     icon: Iconsax.security_user,
                     title: 'Safe Mode',
                     subTitle: 'Search result is safe for all ages',
                     trailing: Switch(value: false, onChanged: (value) {}),
                   ),
-                    TSettingMenuTile(
+                  TSettingMenuTile(
                     icon: Iconsax.location,
                     title: 'HD Image Quality',
                     subTitle: 'Set image quality to be seen',
                     trailing: Switch(value: false, onChanged: (value) {}),
                   ),
 
+                  // ✅ After — remove the duplicate button at bottom and use this tile instead
+                  TSettingMenuTile(
+                    icon: Iconsax.document_upload,
+                    title: 'Load Data',
+                    subTitle: 'Upload Data to your Firebase',
+                    onTap: () async {
+                      try {
+                        TLoaders.CustomToast(message: 'Uploading Products...');
+                        await Get.put(ProductRepository())
+                            .uploadDummyData(TDummyData.products);
+                        TLoaders.successSnackBar(
+                            title: 'Done!',
+                            message: 'Products uploaded successfully.');
+                      } catch (e) {
+                        TLoaders.errorSnackBar(
+                            title: 'Upload Failed', message: e.toString());
+                      }
+                    },
+                  ),
+
                   /// -- Logout Button
-                  const SizedBox(height: TSizes.spaceBtwSections,),
+                  const SizedBox(
+                    height: TSizes.spaceBtwSections,
+                  ),
                   SizedBox(
                     width: double.infinity,
                     child: OutlinedButton(
-                      onPressed: () => AuthenticationRepository.instance.logout(),
-                    child: const Text('Logout')),
+                        onPressed: () =>
+                            AuthenticationRepository.instance.logout(),
+                        child: const Text('Logout')),
                   ),
-                  const SizedBox(height: TSizes.spaceBtwSections * 2.5 ,)
+
+                  const SizedBox(
+                    height: TSizes.spaceBtwSections * 2.5,
+                  ),
                 ],
               ),
             )

@@ -1,4 +1,5 @@
 import 'package:ecommerseproject/common/widgets/texts/section_heading.dart';
+import 'package:ecommerseproject/features/shop/model/product_model.dart';
 import 'package:ecommerseproject/features/shop/screens/product_details/widgets/bottom_add_to_cart_widget.dart';
 import 'package:ecommerseproject/features/shop/screens/product_details/widgets/product_attributes.dart';
 import 'package:ecommerseproject/features/shop/screens/product_details/widgets/product_detail_image_slider.dart';
@@ -6,24 +7,29 @@ import 'package:ecommerseproject/features/shop/screens/product_details/widgets/p
 import 'package:ecommerseproject/features/shop/screens/product_details/widgets/rating_share_widget.dart';
 import 'package:ecommerseproject/features/shop/screens/product_reviews/product_review.dart';
 import 'package:ecommerseproject/utils/constants/sizes.dart';
+import 'package:ecommerseproject/utils/helpers/helper_functions.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
 import 'package:readmore/readmore.dart';
 
 class ProductDetailsScreen extends StatelessWidget {
-  const ProductDetailsScreen({super.key});
-
+  // const ProductDetailsScreen({super.key, required ProductModel product});
+const ProductDetailsScreen({super.key, required this.product});
+  final ProductModel product;
   @override
   Widget build(BuildContext context) {
-    // final dark = THelperFunctions.isDarkMode(context);
+    final dark = THelperFunctions.isDarkMode(context);
     return Scaffold(
       bottomNavigationBar: TBottomAddCard(),
       body: SingleChildScrollView(
         child: Column(
           children: [
-            TProductImageSlider(),
+            // TProductImageSlider(),
 
+            TProductImageSlider(
+              product: product,
+            ),
             //Product details
             Padding(
                 padding: EdgeInsets.only(
@@ -78,11 +84,17 @@ class ProductDetailsScreen extends StatelessWidget {
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        TSectionHeading(title: 'Reviews(199)',showActionButton: false, ),
-                        IconButton(onPressed: () => Get.to(() => const ProductReviewScreen()), icon: const Icon(Iconsax.arrow_right_3)),
+                        TSectionHeading(
+                          title: 'Reviews(199)',
+                          showActionButton: false,
+                        ),
+                        IconButton(
+                            onPressed: () =>
+                                Get.to(() => const ProductReviewScreen()),
+                            icon: const Icon(Iconsax.arrow_right_3)),
                       ],
                     ),
-                   
+
                     const SizedBox(
                       height: TSizes.spaceBtwItems,
                     ),
