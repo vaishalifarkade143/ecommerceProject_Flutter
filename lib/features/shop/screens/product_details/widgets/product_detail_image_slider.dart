@@ -38,14 +38,18 @@ class TProductImageSlider extends StatelessWidget {
                   child: Center(child: Obx(() {
                     final image = controller.selectedProductImages.value;
                     // return Image(image: AssetImage(TImages.productImage5));
-                    return CachedNetworkImage(
-                      imageUrl: image,
-                      progressIndicatorBuilder: (_, __, downloadProgress) =>
-                          CircularProgressIndicator(
-                              value: downloadProgress.progress,
-                              color: TColors.primary),
+                    return GestureDetector(
+                      onTap: () => controller.showEnlargedImages(image),
+                      child: CachedNetworkImage(
+                        imageUrl: image,
+                        progressIndicatorBuilder: (_, __, downloadProgress) =>
+                            CircularProgressIndicator(
+                                value: downloadProgress.progress,
+                                color: TColors.primary),
+                      ),
                     );
-                  })),
+                  })
+                  ),
                 )),
 
             //Image slider
