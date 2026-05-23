@@ -9,7 +9,9 @@ class ProductController extends GetxController {
   static ProductController get instance => Get.find();
 
   final isLoading = false.obs;
-  final productRepository = Get.put(ProductRepository());
+
+  // ProductRepository get productRepository => ProductRepository.instance;
+  // final productRepository = Get.put(ProductRepository());
   
   RxList<ProductModel> featuredProducts = <ProductModel>[].obs;
 
@@ -19,20 +21,34 @@ class ProductController extends GetxController {
     super.onInit();
   }
 
+  // void fetchFeaturedProducts() async {
+  //   try {
+  //     isLoading.value = true;
+
+  //     // FIX: productRepository is already an instance, not a function — remove ()
+  //     final products = await productRepository.getFeaturedProducts(); // ← FIXED
+
+  //     featuredProducts.assignAll(products);
+  //   } catch (e) {
+  //     TLoaders.errorSnackBar(title: 'Oh snap!', message: e.toString());
+  //   } finally {
+  //     isLoading.value = false;
+  //   }
+  // }
+
   void fetchFeaturedProducts() async {
-    try {
-      isLoading.value = true;
-
-      // FIX: productRepository is already an instance, not a function — remove ()
-      final products = await productRepository.getFeaturedProducts(); // ← FIXED
-
-      featuredProducts.assignAll(products);
-    } catch (e) {
-      TLoaders.errorSnackBar(title: 'Oh snap!', message: e.toString());
-    } finally {
-      isLoading.value = false;
-    }
+  try {
+    isLoading.value = true;
+   final products = await ProductRepository.instance.getFeaturedProducts();
+    print('✅ Products fetched: ${products.length}'); // ← ADD THIS
+    featuredProducts.assignAll(products);
+  } catch (e) {
+    print('❌ Fetch error: $e'); // ← ADD THIS
+    TLoaders.errorSnackBar(title: 'Oh snap!', message: e.toString());
+  } finally {
+    isLoading.value = false;
   }
+}
 
   ///Get the product price or price range for variable
   String getProductPrice(ProductModel product){

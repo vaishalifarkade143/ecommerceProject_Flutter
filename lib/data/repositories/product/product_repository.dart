@@ -24,6 +24,7 @@ class ProductRepository extends GetxController {
           .where('IsFeatured', isEqualTo: true)
           .limit(10)
           .get();
+      print('📦 Firestore docs returned: ${snapshot.docs.length}'); // ✅ debug
 
       return snapshot.docs.map((e) => ProductModel.fromSnapshot(e)).toList();
     } on FirebaseException catch (e) {
@@ -31,7 +32,8 @@ class ProductRepository extends GetxController {
     } on PlatformException catch (e) {
       throw TPlatformExceptions(e.code).message;
     } catch (e) {
-      throw 'Something went wrong.Please try again later.';
+      // throw 'Something went wrong.Please try again later.';
+       throw e.toString(); // ✅ show REAL error not generic message
     }
   }
 

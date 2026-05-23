@@ -85,7 +85,8 @@ class ProductModel {
       brand: data['Brand'] != null ? BrandModel.fromJson(data['Brand']) : null,
       images: data['Images'] != null ? List<String>.from(data['Images']) : [],
       salePrice: double.parse((data['SalePrice'] ?? 0.0).toString()),
-      isFeatured: data['IsFeatured'] ?? false,
+      // isFeatured: data['IsFeatured'] ?? false,
+      isFeatured: data['IsFeatured'] == true,
       categoryID: data['CategoryID'] ?? '',
       description: data['Description'] ?? '',
       productAttributes: (data['ProductAttributes'] as List<dynamic>?)
@@ -114,7 +115,8 @@ class ProductModel {
       brand: data['Brand'] != null ? BrandModel.fromJson(data['Brand']) : null,
       images: data['Images'] != null ? List<String>.from(data['Images']) : [],
       salePrice: double.parse((data['SalePrice'] ?? 0.0).toString()),
-      isFeatured: data['IsFeatured'] ?? false,
+      // isFeatured: data['IsFeatured'] ?? false,
+      isFeatured: data['IsFeatured'] == true,
       categoryID: data['CategoryID'] ?? '',
       description: data['Description'] ?? '',
       productAttributes: (data['ProductAttributes'] as List<dynamic>?)

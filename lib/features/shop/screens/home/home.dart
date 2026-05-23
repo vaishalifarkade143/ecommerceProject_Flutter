@@ -155,8 +155,11 @@ class HomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final controller = Get.put(ProductController());
+    // final controller = Get.put(ProductController());
 
+    final controller = Get.find<ProductController>();
+// ✅ After — finds the already-registered instance from bindings
+// final controller = ProductController.instance;
 
     return Scaffold(
         body: SingleChildScrollView(
@@ -233,8 +236,9 @@ class HomeScreen extends StatelessWidget {
                   if (controller.isLoading.value) {
                     return const TVerticalProductShimmer();
                   }
-                  if(controller.featuredProducts.isEmpty){
-                    return const Center(child: Text('No featured products available.'));
+                  if (controller.featuredProducts.isEmpty) {
+                    return const Center(
+                        child: Text('No featured products available.'));
                   }
 
                   return TGridLayout(
