@@ -66,7 +66,7 @@ import 'package:ecommerseproject/common/widgets/appbar/appbar.dart';
 import 'package:ecommerseproject/common/widgets/icons/t_circular_icon.dart';
 import 'package:ecommerseproject/common/widgets/layouts/grid_layout.dart';
 import 'package:ecommerseproject/common/widgets/products/product_cards/product_cart_vertical.dart';
-import 'package:ecommerseproject/features/shop/controller/product_controller.dart';
+import 'package:ecommerseproject/features/shop/controller/product/product_controller.dart';
 import 'package:ecommerseproject/features/shop/screens/home/home.dart';
 import 'package:ecommerseproject/utils/constants/sizes.dart';
 import 'package:flutter/material.dart';

@@ -22,8 +22,9 @@ class ProductAttributeModel {
     return ProductAttributeModel(
       // name: data['Name'] ? data['Name'] : '',
       // values: List<String>.from(data['Values']),
-      name: data['Name'] ?? '', // ✅ ?? instead of ternary
-      values: List<String>.from(data['Values'] ?? []), // ✅ null-safe
+      name: data.containsKey('Name') ? data['Name'] : '', // ✅ safer way to access keys
+      // name: data['Name'] ?? '', // ✅ ?? instead of ternary
+      values: List<String>.from(data['Values'] ), // ✅ null-safe
     );
   }
 }

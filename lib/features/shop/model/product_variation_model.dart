@@ -24,7 +24,8 @@ class ProductVariationModel {
       ProductVariationModel(id: '', attributesValues: {});
 
   ///Json format
-  Map<String, Object?> toJson() {
+  // Map<String, Object?>
+   toJson() {
     return {
       'Id': id,
       'Sku': sku,
@@ -54,4 +55,7 @@ class ProductVariationModel {
           Map<String, String>.from(data['AttributesValues'] ?? {}),
     );
   }
+
+ // Add this getter as an alias
+Map<String, String> get attributeValues => attributesValues ?? {};
 }

@@ -141,7 +141,7 @@ import 'package:ecommerseproject/common/widgets/layouts/grid_layout.dart';
 import 'package:ecommerseproject/common/widgets/products/product_cards/product_cart_vertical.dart';
 import 'package:ecommerseproject/common/widgets/shimmer/vertical_product_shimmer.dart';
 import 'package:ecommerseproject/common/widgets/texts/section_heading.dart';
-import 'package:ecommerseproject/features/shop/controller/product_controller.dart';
+import 'package:ecommerseproject/features/shop/controller/product/product_controller.dart';
 import 'package:ecommerseproject/features/shop/screens/all_products/all_products.dart';
 import 'package:ecommerseproject/features/shop/screens/home/widgets/home_appbar.dart';
 import 'package:ecommerseproject/features/shop/screens/home/widgets/home_categories.dart';
