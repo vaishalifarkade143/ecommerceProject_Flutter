@@ -148,7 +148,7 @@ class TProductMetaData extends StatelessWidget {
                 padding: const EdgeInsets.symmetric(
                     horizontal: TSizes.sm, vertical: TSizes.xs),
                 child: Text(
-                  '$salePercentage%',
+                  '$salePercentage',
                   style: Theme.of(context)
                       .textTheme
                       .labelLarge!

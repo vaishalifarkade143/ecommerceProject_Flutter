@@ -224,7 +224,7 @@ class TProductCardVertical extends StatelessWidget {
                       backgroundColor: TColors.secondary.withOpacity(0.8),
                       padding: const EdgeInsets.symmetric(
                           horizontal: TSizes.sm, vertical: TSizes.xs),
-                      child: Text('$salePercentage%',
+                      child: Text('$salePercentage',
                           style: Theme.of(context)
                               .textTheme
                               .labelLarge!
