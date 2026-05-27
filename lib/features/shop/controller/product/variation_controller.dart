@@ -6,33 +6,79 @@ import 'package:get/get.dart';
 class VariationController extends GetxController {
   static VariationController get instance => Get.find();
 
+  // ADD THESE 3 lines
+  RxInt quantity = 1.obs;
+  void increaseQuantity() => quantity.value++;
+  void decreaseQuantity() {
+    if (quantity.value > 1) quantity.value--;
+  }
+
   //variables
   RxMap selectedAttributes = {}.obs;
   RxString variationStockStatus = ''.obs;
   Rx<ProductVariationModel?> selectedVariation =
       ProductVariationModel.empty().obs;
   // -- Get product stock status
+
+  // void onAttributeSelected(
+  //     ProductModel product, attributeName, attributeValue) {
+  //   //-- when attribute is selected we will first add tht attribute to selected attributes map
+  //   final selectedAttributes =
+  //       Map<String, dynamic>.from(this.selectedAttributes);
+  //   selectedAttributes[attributeName] = attributeValue;
+  //   this.selectedAttributes[attributeName] = attributeValue;
+
+  //   final selectedVariation = product.productVariations!.firstWhere(
+  //       (variation) => _isSameAttributeValues(
+  //           variation.attributeValues, selectedAttributes),
+  //       orElse: () => ProductVariationModel.empty());
+
+  //   // show the selected variation image as a main images
+  //   if (selectedVariation.image.isNotEmpty) {
+  //     ImagesController.instance.selectedProductImages.value =
+  //         selectedVariation.image;
+  //   }
+
+  //   //Assign selected variation
+  //   this.selectedVariation.value = selectedVariation;
+  //   // ✅ FIX: call stock status update here — it was never being called
+  //   getProdutVariationStockStatus();
+  // }
+
   void onAttributeSelected(
       ProductModel product, attributeName, attributeValue) {
-    //-- when attribute is selected we will first add tht attribute to selected attributes map
     final selectedAttributes =
         Map<String, dynamic>.from(this.selectedAttributes);
     selectedAttributes[attributeName] = attributeValue;
     this.selectedAttributes[attributeName] = attributeValue;
 
+    // ✅ Try full match first
     final selectedVariation = product.productVariations!.firstWhere(
         (variation) => _isSameAttributeValues(
             variation.attributeValues, selectedAttributes),
         orElse: () => ProductVariationModel.empty());
 
-    // show the selected variation image as a main images
+    // ✅ If full match found, update image from variation
     if (selectedVariation.image.isNotEmpty) {
       ImagesController.instance.selectedProductImages.value =
           selectedVariation.image;
+    } else {
+      // ✅ Partial match — find any variation that has this attribute value
+      // so image updates even before all attributes are selected
+      final partialMatch = product.productVariations!.firstWhere(
+        (variation) =>
+            variation.attributeValues[attributeName] == attributeValue &&
+            variation.image.isNotEmpty,
+        orElse: () => ProductVariationModel.empty(),
+      );
+      if (partialMatch.image.isNotEmpty) {
+        ImagesController.instance.selectedProductImages.value =
+            partialMatch.image;
+      }
     }
 
-    //Assign selected variation
     this.selectedVariation.value = selectedVariation;
+    getProdutVariationStockStatus();
   }
 
   //-- check if selected attributes match variation attributes
@@ -65,10 +111,12 @@ class VariationController extends GetxController {
     return availableVariationAttributesValues;
   }
 
-
   String getVariationPrice() {
-   return (selectedVariation.value!.salePrice > 0 ? selectedVariation.value!.salePrice : selectedVariation.value!.price).toString();
-  } 
+    return (selectedVariation.value!.salePrice > 0
+            ? selectedVariation.value!.salePrice
+            : selectedVariation.value!.price)
+        .toString();
+  }
 
   /// -- Get product Vatiation stock status
   void getProdutVariationStockStatus() {
@@ -81,5 +129,6 @@ class VariationController extends GetxController {
     selectedAttributes.clear();
     variationStockStatus.value = '';
     selectedVariation.value = ProductVariationModel.empty();
+    quantity.value = 1;
   }
 }

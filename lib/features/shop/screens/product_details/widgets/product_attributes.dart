@@ -22,9 +22,12 @@ class TProductAttributes extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final dark = THelperFunctions.isDarkMode(context);
-    final controller = Get.put(VariationController());
+    // final controller = Get.put(VariationController());
+    // ✅ Already correct with Get.put here since this widget loads first
+    // final controller = Get.find<VariationController>();
+    final controller = Get.put(VariationController(), permanent: false);
     return Obx(
-      ()=> Column(
+      () => Column(
         // Selected Attribute Pricing and Desription
         children: [
           if (controller.selectedVariation.value!.id.isNotEmpty)
@@ -52,7 +55,7 @@ class TProductAttributes extends StatelessWidget {
                                 title: "Price : ",
                                 smallSize: true,
                               ),
-      
+
                               /// Actual Price
                               Text(
                                 "\$${controller.getVariationPrice()}",
@@ -65,12 +68,13 @@ class TProductAttributes extends StatelessWidget {
                               SizedBox(
                                 width: TSizes.spaceBtwItems,
                               ),
-      
+
                               /// Sale Price
-                              TProductPriceText(price: controller.getVariationPrice())
+                              TProductPriceText(
+                                  price: controller.getVariationPrice())
                             ],
                           ),
-      
+
                           //Stack
                           Row(
                             children: [
@@ -97,12 +101,12 @@ class TProductAttributes extends StatelessWidget {
                 ],
               ),
             ),
-      
+
           SizedBox(
             height: TSizes.spaceBtwItems,
           ),
           //Attribute Options
-      
+
           Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: product.productAttributes!
@@ -110,20 +114,22 @@ class TProductAttributes extends StatelessWidget {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         TSectionHeading(
-                            title: attribute.name ?? '', showActionButton: false),
+                            title: attribute.name ?? '',
+                            showActionButton: false),
                         SizedBox(
                           height: TSizes.spaceBtwItems / 2,
                         ),
-                        Obx(() =>
-                          Wrap(
+                        Obx(
+                          () => Wrap(
                             spacing: 8,
                             children: attribute.values!.map((attributeValue) {
-                              final isSelected =
-                                  controller.selectedAttributes[attribute.name] ==
-                                      attributeValue;
+                              final isSelected = controller
+                                      .selectedAttributes[attribute.name] ==
+                                  attributeValue;
                               final available = controller
                                   .getAttributesAvailabilityInVariation(
-                                      product.productVariations!, attribute.name!)
+                                      product.productVariations!,
+                                      attribute.name!)
                                   .contains(attributeValue);
                               return TChoicesChips(
                                 text: attributeValue,
@@ -131,15 +137,16 @@ class TProductAttributes extends StatelessWidget {
                                 onSelected: available
                                     ? (selected) {
                                         if (selected && available) {
-                                          controller.onAttributeSelected(product,
-                                              attribute.name ?? '', attributeValue);
+                                          controller.onAttributeSelected(
+                                              product,
+                                              attribute.name ?? '',
+                                              attributeValue);
                                         }
                                       }
                                     : null,
                               );
                             }).toList(),
                           ),
-                          
                         ),
                       ],
                     ))
