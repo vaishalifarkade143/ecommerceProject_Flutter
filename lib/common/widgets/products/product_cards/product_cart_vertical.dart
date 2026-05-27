@@ -216,6 +216,7 @@ class TProductCardVertical extends StatelessWidget {
                   ),
 
                   // Sale Tag
+                  if (salePercentage != null)
                   Positioned(
                     top: 12,
                     child: TRoundedContainer(
@@ -256,7 +257,7 @@ class TProductCardVertical extends StatelessWidget {
                     smallSize: true,
                   ),
                   SizedBox(height: TSizes.spaceBtwItems / 2),
-                  TBrandTitleTextWithVerifiredIcon(title: product.brand!.name)
+                  TBrandTitleTextWithVerifiredIcon(title: product.brand?.name ?? '')
                   // Row(
                   //   children: [
                   //     TBrandTitleText(

@@ -95,6 +95,24 @@ class ProductRepository extends GetxController {
   //   }
   // }
 
+  // In product_repository.dart — add this method
+Future<List<ProductModel>> getProductsByCategory(String categoryId) async {
+  try {
+    final snapshot = await _db
+        .collection('Products')
+        .where('CategoryID', isEqualTo: categoryId)
+        .limit(10)
+        .get();
+    return snapshot.docs.map((e) => ProductModel.fromSnapshot(e)).toList();
+  } on FirebaseException catch (e) {
+    throw TFirebaseExceptions(e.code).message;
+  } on PlatformException catch (e) {
+    throw TPlatformExceptions(e.code).message;
+  } catch (e) {
+    throw e.toString();
+  }
+}
+
   // ✅ Replace the entire uploadDummyData method with this:
   Future<void> uploadDummyData(List<ProductModel> products) async {
     try {

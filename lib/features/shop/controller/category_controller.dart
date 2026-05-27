@@ -1,5 +1,7 @@
 import 'package:ecommerseproject/data/repositories/categories/category_repository.dart';
+import 'package:ecommerseproject/data/repositories/product/product_repository.dart';
 import 'package:ecommerseproject/features/shop/model/category_model.dart';
+import 'package:ecommerseproject/features/shop/model/product_model.dart';
 import 'package:ecommerseproject/utils/popups/loader.dart';
 import 'package:get/get.dart';
 
@@ -45,4 +47,13 @@ class CategoryController extends GetxController {
 
   /// -- Load selected category data
   ///  -- Get category or sub -category Products.
+  // In category_controller.dart — add this method
+Future<List<ProductModel>> getCategoryProducts(String categoryId) async {
+  try {
+    return await ProductRepository.instance.getProductsByCategory(categoryId);
+  } catch (e) {
+    TLoaders.errorSnackBar(title: 'Oh snap!', message: e.toString());
+    return [];
+  }
+}
 }

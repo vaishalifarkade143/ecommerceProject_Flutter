@@ -108,10 +108,10 @@ class SettingsScreen extends StatelessWidget {
                     showActionButton: false,
                   ),
                   SizedBox(height: TSizes.spaceBtwItems),
-                  TSettingMenuTile(
-                      icon: Iconsax.document_upload,
-                      title: 'Load Data',
-                      subTitle: 'Upload Data to your Firebase'),
+                  // TSettingMenuTile(
+                  //     icon: Iconsax.document_upload,
+                  //     title: 'Load Data',
+                  //     subTitle: 'Upload Data to your Firebase'),
                   TSettingMenuTile(
                     icon: Iconsax.location,
                     title: 'Geolocation',
@@ -132,6 +132,26 @@ class SettingsScreen extends StatelessWidget {
                   ),
 
                   // ✅ After — remove the duplicate button at bottom and use this tile instead
+
+                  // Upload Categories
+                  TSettingMenuTile(
+                    icon: Iconsax.category,
+                    title: 'Load Categories',
+                    subTitle: 'Upload categories to Firebase',
+                    onTap: () async {
+                      try {
+                        await CategoryRepository.instance
+                            .uploadDummyData(TDummyData.categories);
+                        TLoaders.successSnackBar(
+                            title: 'Done!', message: 'Categories uploaded.');
+                      } catch (e) {
+                        TLoaders.errorSnackBar(
+                            title: 'Failed', message: e.toString());
+                      }
+                    },
+                  ),
+                  //upload products in firebase
+
                   // TSettingMenuTile(
                   //   icon: Iconsax.document_upload,
                   //   title: 'Load Data',
@@ -139,7 +159,7 @@ class SettingsScreen extends StatelessWidget {
                   //   onTap: () async {
                   //     try {
                   //       TLoaders.CustomToast(message: 'Uploading Products...');
-                  //       await Get.put(ProductRepository())
+                  //       await ProductRepository.instance
                   //           .uploadDummyData(TDummyData.products);
                   //       TLoaders.successSnackBar(
                   //           title: 'Done!',
@@ -150,21 +170,21 @@ class SettingsScreen extends StatelessWidget {
                   //     }
                   //   },
                   // ),
+
+                  // Upload Products
                   TSettingMenuTile(
                     icon: Iconsax.document_upload,
-                    title: 'Load Data',
-                    subTitle: 'Upload Data to your Firebase',
+                    title: 'Load Products',
+                    subTitle: 'Upload products to Firebase',
                     onTap: () async {
                       try {
-                        TLoaders.CustomToast(message: 'Uploading Products...');
                         await ProductRepository.instance
                             .uploadDummyData(TDummyData.products);
                         TLoaders.successSnackBar(
-                            title: 'Done!',
-                            message: 'Products uploaded successfully.');
+                            title: 'Done!', message: 'Products uploaded.');
                       } catch (e) {
                         TLoaders.errorSnackBar(
-                            title: 'Upload Failed', message: e.toString());
+                            title: 'Failed', message: e.toString());
                       }
                     },
                   ),
