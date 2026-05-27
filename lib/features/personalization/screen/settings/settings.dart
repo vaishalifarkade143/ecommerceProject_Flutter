@@ -132,6 +132,24 @@ class SettingsScreen extends StatelessWidget {
                   ),
 
                   // ✅ After — remove the duplicate button at bottom and use this tile instead
+                  // TSettingMenuTile(
+                  //   icon: Iconsax.document_upload,
+                  //   title: 'Load Data',
+                  //   subTitle: 'Upload Data to your Firebase',
+                  //   onTap: () async {
+                  //     try {
+                  //       TLoaders.CustomToast(message: 'Uploading Products...');
+                  //       await Get.put(ProductRepository())
+                  //           .uploadDummyData(TDummyData.products);
+                  //       TLoaders.successSnackBar(
+                  //           title: 'Done!',
+                  //           message: 'Products uploaded successfully.');
+                  //     } catch (e) {
+                  //       TLoaders.errorSnackBar(
+                  //           title: 'Upload Failed', message: e.toString());
+                  //     }
+                  //   },
+                  // ),
                   TSettingMenuTile(
                     icon: Iconsax.document_upload,
                     title: 'Load Data',
@@ -139,7 +157,7 @@ class SettingsScreen extends StatelessWidget {
                     onTap: () async {
                       try {
                         TLoaders.CustomToast(message: 'Uploading Products...');
-                        await Get.put(ProductRepository())
+                        await ProductRepository.instance
                             .uploadDummyData(TDummyData.products);
                         TLoaders.successSnackBar(
                             title: 'Done!',

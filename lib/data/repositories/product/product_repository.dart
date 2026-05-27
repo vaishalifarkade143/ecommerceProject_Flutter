@@ -21,7 +21,7 @@ class ProductRepository extends GetxController {
     try {
       final snapshot = await _db
           .collection('Products')
-          .where('IsFeatured', isEqualTo: true)
+          // .where('IsFeatured', isEqualTo: true)
           .limit(10)
           .get();
       print('📦 Firestore docs returned: ${snapshot.docs.length}'); // ✅ debug
