@@ -9,16 +9,55 @@ class ProductController extends GetxController {
   static ProductController get instance => Get.find();
 
   final isLoading = false.obs;
+  final isAllProductsLoading = false.obs;
+  RxList<ProductModel> featuredProducts =
+      <ProductModel>[].obs; // 1 per category
+  RxList<ProductModel> allProducts = <ProductModel>[].obs;
 
-  // ProductRepository get productRepository => ProductRepository.instance;
-  // final productRepository = Get.put(ProductRepository());
+  // Category IDs matching your dummy data
+  static const List<String> _categoryIds = [
+    'CAT1',
+    'CAT2',
+    'CAT3',
+    'CAT4',
+    'CAT5',
+    'CAT6'
+  ];
 
-  RxList<ProductModel> featuredProducts = <ProductModel>[].obs;
+  // RxList<ProductModel> featuredProducts = <ProductModel>[].obs;
 
   @override
   void onInit() {
-    fetchFeaturedProducts();
+    // fetchFeaturedProducts();
+    fetchOneProductPerCategory();
     super.onInit();
+  }
+
+  // ✅ Fetch 1 featured product per category for home screen
+  void fetchOneProductPerCategory() async {
+    try {
+      isLoading.value = true;
+      final products = await ProductRepository.instance
+          .getOneProductPerCategory(_categoryIds);
+      featuredProducts.assignAll(products);
+    } catch (e) {
+      TLoaders.errorSnackBar(title: 'Oh snap!', message: e.toString());
+    } finally {
+      isLoading.value = false;
+    }
+  }
+
+  // ✅ Fetch ALL products for View All screen
+  Future<void> fetchAllProducts() async {
+    try {
+      isAllProductsLoading.value = true;
+      final products = await ProductRepository.instance.getAllProducts();
+      allProducts.assignAll(products);
+    } catch (e) {
+      TLoaders.errorSnackBar(title: 'Oh snap!', message: e.toString());
+    } finally {
+      isAllProductsLoading.value = false;
+    }
   }
 
   void fetchFeaturedProducts() async {
@@ -34,6 +73,17 @@ class ProductController extends GetxController {
       isLoading.value = false;
     }
   }
+    Future<List<ProductModel>> fetchAllFeaturedProducts() async {
+    try {
+      final products = await ProductRepository.instance.getFeaturedProducts();
+      print('✅ All Products fetched: ${products.length}');
+      return products;
+    } catch (e) {
+      print('❌ Fetch error: $e'); // ← ADD THIS
+      TLoaders.errorSnackBar(title: 'Oh snap!', message: e.toString());
+      return [];
+    }
+  }
 
   ///Get the product price or price range for variable
   String getProductPrice(ProductModel product) {
@@ -44,27 +94,6 @@ class ProductController extends GetxController {
       return (product.salePrice > 0 ? product.salePrice : product.price)
           .toString();
     } else {
-      ///calculate price range for variable product
-      // for(var variation in product.productVariations!){
-      //   // Determine the price to use (salePrice if available, otherwise regular price)
-      //   double priceToConsider = variation.salePrice > 0.0 ? variation.salePrice : variation.price;
-
-      //   //Update smallest and largest prices
-      //   if(priceToConsider < smallestPrice){
-      //     smallestPrice = priceToConsider;
-      //   }
-      //   if(priceToConsider > largestPrice){
-      //     largestPrice = priceToConsider;
-      //   }
-
-      //   //if smallest and largest prices are the same, return single price, otherwise return price range
-      //   if(smallestPrice.isEqual(largestPrice)){
-      //     return largestPrice.toString();
-      //   }
-      //   else{
-      //     return '$smallestPrice - \$$largestPrice';
-      //   }
-
       // ✅ correct — loop fully, then return
       for (var variation in product.productVariations!) {
         double priceToConsider =

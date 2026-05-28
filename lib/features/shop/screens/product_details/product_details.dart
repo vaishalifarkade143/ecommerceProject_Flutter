@@ -1,4 +1,6 @@
 import 'package:ecommerseproject/common/widgets/texts/section_heading.dart';
+import 'package:ecommerseproject/features/shop/controller/product/images_controller.dart';
+import 'package:ecommerseproject/features/shop/controller/product/variation_controller.dart';
 import 'package:ecommerseproject/features/shop/model/product_model.dart';
 import 'package:ecommerseproject/features/shop/model/product_type.dart';
 import 'package:ecommerseproject/features/shop/screens/product_details/widgets/bottom_add_to_cart_widget.dart';
@@ -20,6 +22,8 @@ class ProductDetailsScreen extends StatelessWidget {
   final ProductModel product;
   @override
   Widget build(BuildContext context) {
+      final variationController = Get.put(VariationController());
+    final imagesController = Get.put(ImagesController());
     final dark = THelperFunctions.isDarkMode(context);
     return Scaffold(
       bottomNavigationBar: TBottomAddCard(),

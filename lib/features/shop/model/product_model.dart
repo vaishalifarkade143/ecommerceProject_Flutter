@@ -105,12 +105,12 @@ class ProductModel {
     if (data.isEmpty) return ProductModel.empty();
     return ProductModel(
       id: document.id,
-      title: data['Title'],
+      title: data['Title'] ?? '',
       stock: data['Stock'] ?? 0,
       price: double.parse((data['Price'] ?? 0.0).toString()),
       thumbnail: data['Thumbnail'] ?? '',
       productType: data['ProductType'] ?? '',
-      sku: data['Sku'],
+      sku: data['Sku']  ?? '',
       // brand:  BrandModel.fromJson(data['Brand']),
       brand: data['Brand'] != null ? BrandModel.fromJson(data['Brand']) : null,
       images: data['Images'] != null ? List<String>.from(data['Images']) : [],

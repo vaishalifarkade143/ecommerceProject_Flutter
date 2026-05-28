@@ -21,7 +21,7 @@ class BrandProducts extends StatelessWidget {
             ///Brand Details
             const TBrandCard(showBorder: true),
             const SizedBox(height: TSizes.spaceBtwSections),
-            TSortebaleProducts(),
+            TSortebaleProducts(products: []), // Pass the list of products for the brand
           ],
         ),
         
