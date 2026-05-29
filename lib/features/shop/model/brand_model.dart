@@ -110,9 +110,9 @@ class BrandModel {
       id: data['Id'] ?? '',
       name: data['Name'] ?? '',
       image: data['Image'] ?? '',
-      isFeatured: data['IsFeatured'] == true,
+      isFeatured: data['IsFeatured']  ?? false,
       productCount: data['ProductCount'] != null
-          ? int.tryParse(data['ProductCount'].toString()) ?? 0
+          ? int.tryParse((data['ProductCount'] ?? 0).toString()) ?? 0
           : 0,
     );
   }
@@ -125,7 +125,7 @@ class BrandModel {
         id: document.id,
         name: data['Name'] ?? '',
         image: data['Image'] ?? '',
-        isFeatured: data['IsFeatured'] == true,
+        isFeatured: data['IsFeatured'] ?? false,
         productCount: data['ProductCount'] != null
             ? int.tryParse(data['ProductCount'].toString()) ?? 0
             : 0,

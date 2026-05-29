@@ -5,6 +5,7 @@ import 'package:ecommerseproject/common/widgets/list_tile/user_profile_tile.dart
 import 'package:ecommerseproject/common/widgets/texts/section_heading.dart';
 import 'package:ecommerseproject/data/repositories/authentication/authentication_repository.dart';
 import 'package:ecommerseproject/data/repositories/banners/bannar_repository.dart';
+import 'package:ecommerseproject/data/repositories/brand/brand_repository.dart';
 import 'package:ecommerseproject/data/repositories/categories/category_repository.dart';
 import 'package:ecommerseproject/data/repositories/product/product_repository.dart';
 import 'package:ecommerseproject/features/personalization/screen/address/address.dart';
@@ -108,10 +109,6 @@ class SettingsScreen extends StatelessWidget {
                     showActionButton: false,
                   ),
                   SizedBox(height: TSizes.spaceBtwItems),
-                  // TSettingMenuTile(
-                  //     icon: Iconsax.document_upload,
-                  //     title: 'Load Data',
-                  //     subTitle: 'Upload Data to your Firebase'),
                   TSettingMenuTile(
                     icon: Iconsax.location,
                     title: 'Geolocation',
@@ -150,27 +147,40 @@ class SettingsScreen extends StatelessWidget {
                       }
                     },
                   ),
-                  //upload products in firebase
 
                   // TSettingMenuTile(
-                  //   icon: Iconsax.document_upload,
-                  //   title: 'Load Data',
-                  //   subTitle: 'Upload Data to your Firebase',
+                  //   icon: Iconsax.shop,
+                  //   title: 'Load Brands',
+                  //   subTitle: 'Upload brands to Firebase',
                   //   onTap: () async {
                   //     try {
-                  //       TLoaders.CustomToast(message: 'Uploading Products...');
-                  //       await ProductRepository.instance
-                  //           .uploadDummyData(TDummyData.products);
+                  //       await BrandRepository.instance
+                  //           .uploadDummyData(TDummyData.brands);
                   //       TLoaders.successSnackBar(
-                  //           title: 'Done!',
-                  //           message: 'Products uploaded successfully.');
+                  //           title: 'Done!', message: 'Brands uploaded.');
                   //     } catch (e) {
                   //       TLoaders.errorSnackBar(
-                  //           title: 'Upload Failed', message: e.toString());
+                  //           title: 'Failed', message: e.toString());
                   //     }
                   //   },
                   // ),
 
+                  TSettingMenuTile(
+                    icon: Iconsax.shop,
+                    title: 'Load Brands',
+                    subTitle: 'Upload brands to Firebase',
+                    onTap: () async {
+                      try {
+                        await BrandRepository.instance
+                            .uploadDummyData(TDummyData.brands);
+                        TLoaders.successSnackBar(
+                            title: 'Done!', message: 'Brands uploaded.');
+                      } catch (e) {
+                        TLoaders.errorSnackBar(
+                            title: 'Failed', message: e.toString());
+                      }
+                    },
+                  ),
                   // Upload Products
                   TSettingMenuTile(
                     icon: Iconsax.document_upload,

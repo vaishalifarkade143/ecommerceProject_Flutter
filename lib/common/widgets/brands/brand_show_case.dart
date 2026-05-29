@@ -1,5 +1,7 @@
 import 'package:ecommerseproject/common/widgets/custom_shapes/container/t_rounded_container.dart';
-import 'package:ecommerseproject/common/widgets/brands/t_brand_card.dart';
+import 'package:ecommerseproject/features/shop/model/brand_model.dart';
+
+import 'package:ecommerseproject/features/shop/screens/store/widgets/brand_card.dart';
 import 'package:ecommerseproject/utils/constants/colors.dart';
 import 'package:ecommerseproject/utils/constants/sizes.dart';
 import 'package:ecommerseproject/utils/helpers/helper_functions.dart';
@@ -21,8 +23,14 @@ class TBrandShowCase extends StatelessWidget {
       margin: const EdgeInsets.only(bottom: TSizes.spaceBtwItems),
       child: Column(
         children: [
-          const TBrandCard(showBorder: false),
-  const SizedBox(height: TSizes.spaceBtwItems,),
+          TBrandCard(
+            showBorder: false,
+            brand: BrandModel.empty(),
+          ),
+          const SizedBox(
+            height: TSizes.spaceBtwItems,
+          ),
+
           /// Brand Top 3 Product Images
           Row(
             children: images
@@ -44,9 +52,9 @@ class TBrandShowCase extends StatelessWidget {
         margin: EdgeInsets.only(right: TSizes.sm),
         padding: const EdgeInsets.all(TSizes.md),
         child: Image(
-            fit: BoxFit.contain, 
-            image: AssetImage(image),
-            ),
+          fit: BoxFit.contain,
+          image: AssetImage(image),
+        ),
       ),
     );
   }

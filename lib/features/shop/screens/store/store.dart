@@ -5,10 +5,15 @@ import 'package:ecommerseproject/common/widgets/custom_shapes/container/t_rounde
 import 'package:ecommerseproject/common/widgets/images/t_circular_image_use_in_store.dart';
 import 'package:ecommerseproject/common/widgets/layouts/grid_layout.dart';
 import 'package:ecommerseproject/common/widgets/products/cart/cart_menu_icon.dart';
+import 'package:ecommerseproject/common/widgets/shimmer/brand_shimmer.dart';
 import 'package:ecommerseproject/common/widgets/texts/section_heading.dart';
 import 'package:ecommerseproject/common/widgets/texts/t_brand_title_text_with_verifired_icon.dart';
+import 'package:ecommerseproject/features/shop/controller/brand_controller.dart';
 import 'package:ecommerseproject/features/shop/controller/category_controller.dart';
+import 'package:ecommerseproject/features/shop/model/brand_model.dart';
 import 'package:ecommerseproject/features/shop/screens/all_brands/all_brands.dart';
+import 'package:ecommerseproject/features/shop/screens/all_brands/brand_products.dart';
+import 'package:ecommerseproject/features/shop/screens/store/widgets/brand_card.dart';
 import 'package:ecommerseproject/features/shop/screens/store/widgets/category_tab.dart';
 import 'package:ecommerseproject/utils/constants/colors.dart';
 import 'package:ecommerseproject/utils/constants/enum.dart';
@@ -18,18 +23,6 @@ import 'package:ecommerseproject/utils/helpers/helper_functions.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-class BrandModel {
-  final String name;
-  final String image;
-  final int products;
-
-  BrandModel({
-    required this.name,
-    required this.image,
-    required this.products,
-  });
-}
-
 class StoreScreen extends StatelessWidget {
   const StoreScreen({super.key});
 
@@ -37,14 +30,7 @@ class StoreScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     final dark = THelperFunctions.isDarkMode(context);
     final categories = CategoryController.instance.featuredCategories;
-
-    /// --- Sample Data
-    final List<BrandModel> brands = [
-      BrandModel(name: "Shein", image: TImages.clothIcon, products: 230),
-      BrandModel(name: "Nike", image: TImages.shoeIcon, products: 150),
-      BrandModel(name: "Adidas", image: TImages.sportIcon, products: 180),
-      BrandModel(name: "Tiger", image: TImages.animalIcon, products: 95),
-    ];
+    final brandController = Get.put(BrandController());
 
     return DefaultTabController(
       // length: 5,
@@ -72,13 +58,13 @@ class StoreScreen extends StatelessWidget {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      const TSearchContainer(
+                      TSearchContainer(
                         text: 'Search in Store',
                         showBorder: true,
                         showBackground: false,
                         padding: EdgeInsets.zero,
                       ),
-                      const SizedBox(height: TSizes.spaceBtwSections),
+                      SizedBox(height: TSizes.spaceBtwSections),
 
                       /// --- Featured Brands Section
                       TSectionHeading(
@@ -86,62 +72,26 @@ class StoreScreen extends StatelessWidget {
                           onPressed: () => Get.to(() => const AllBrands())),
 
                       /// --- Grid of Brands
-                      TGridLayout(
-                        itemCount: brands.length,
-                        mainAxisExtent: 70,
-                        itemBuilder: (_, index) {
-                          final brand = brands[index];
-                          return GestureDetector(
-                            onTap: () {
-                              debugPrint("Tapped on ${brand.name}");
-                            },
-                            child: TRoundedContainer(
-                              radious: 10,
-                              showBorder: true,
-                              borderColor: TColors.grey,
-                              backgroundColor: Colors.transparent,
-                              padding: const EdgeInsets.all(TSizes.sm),
-                              margin: const EdgeInsets.only(top: TSizes.sm),
-                              child: Row(
-                                children: [
-                                  Flexible(
-                                    child: TCircularImageUseInStore(
-                                      image: brand.image,
-                                      isNetworkImage: false,
-                                      size: 32,
-                                    ),
-                                  ),
-                                  const SizedBox(
-                                      width: TSizes.spaceBtwItems / 2),
 
-                                  /// Brand Info
-                                  Expanded(
-                                    child: Column(
-                                      mainAxisSize: MainAxisSize.min,
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.start,
-                                      children: [
-                                        TBrandTitleTextWithVerifiredIcon(
-                                          title: brand.name,
-                                          brandTextSize: TextSizes.large,
-                                        ),
-                                        Text(
-                                          '${brand.products} products',
-                                          overflow: TextOverflow.ellipsis,
-                                          style: Theme.of(context)
-                                              .textTheme
-                                              .labelMedium,
-                                        )
-                                      ],
-                                    ),
-                                  )
-                                ],
-                              ),
-                            ),
-                          );
-                        },
-                      ),
-                      // const SizedBox(height: TSizes.spaceBtwSections),
+                      Obx(() {
+                        
+                        if (brandController.isLoading.value) {
+                          return const TBrandShimmer(
+                              ); // or CircularProgressIndicator()
+                        }
+                        return TGridLayout(
+                          itemCount: brandController.featuredBrands.length,
+                          mainAxisExtent: 70,
+                          itemBuilder: (_, index) {
+                            final brand = brandController.featuredBrands[index];
+                            return TBrandCard(
+                              brand: brand,
+                              showBorder: true,
+                              onTap: () => Get.to(() => BrandProducts()),
+                            );
+                          },
+                        );
+                      }),
                     ],
                   ),
                 ),
@@ -162,8 +112,10 @@ class StoreScreen extends StatelessWidget {
                 //     Tab(child: Text('Cosmetics')),
                 //   ],
                 // ),
-                bottom:  TTabBar(
-                 tabs:categories.map((category) => Tab(child: Text(category.name))).toList(),
+                bottom: TTabBar(
+                  tabs: categories
+                      .map((category) => Tab(child: Text(category.name)))
+                      .toList(),
                 ),
               ),
             ];
@@ -177,15 +129,14 @@ class StoreScreen extends StatelessWidget {
           //     TCategoryTab(),
           //     TCategoryTab(),
           //     TCategoryTab(),
-             
+
           //   ],
           // ),
-body: TabBarView(
-  children: categories
-      .map((category) => TCategoryTab(category: category))
-      .toList(),
-),
-          
+          body: TabBarView(
+            children: categories
+                .map((category) => TCategoryTab(category: category))
+                .toList(),
+          ),
         ),
       ),
     );

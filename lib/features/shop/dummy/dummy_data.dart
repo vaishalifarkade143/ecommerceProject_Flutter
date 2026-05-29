@@ -339,6 +339,45 @@ class TDummyData {
     BannerModel(active: true,  imageUrl: TImages.promoBanner3, targetScreen: TRoutes.checkout),
   ];
 
+//   static final List<BrandModel> brands = [
+//   BrandModel(id: 'B1', name: 'Nike',    isFeatured: true,  productCount: 265,
+//       image: 'https://upload.wikimedia.org/wikipedia/commons/a/a6/Logo_NIKE.svg'),
+//   BrandModel(id: 'B2', name: 'Adidas',  isFeatured: true,  productCount: 200,
+//       image: 'https://upload.wikimedia.org/wikipedia/commons/2/20/Adidas_Logo.svg'),
+//   BrandModel(id: 'B3', name: 'Puma',    isFeatured: true,  productCount: 150,
+//       image: 'https://upload.wikimedia.org/wikipedia/commons/thumb/8/88/Puma_Logo.svg/200px-Puma_Logo.svg.png'),
+//   BrandModel(id: 'B4', name: 'Zara',    isFeatured: true,  productCount: 180,
+//       image: 'https://upload.wikimedia.org/wikipedia/commons/thumb/f/fd/Zara_Logo.svg/500px-Zara_Logo.svg.png'),
+//   BrandModel(id: 'B5', name: 'H&M',     isFeatured: true,  productCount: 220,
+//       image: 'https://upload.wikimedia.org/wikipedia/commons/5/53/H%26M-Logo.svg'),
+//   BrandModel(id: 'B6', name: 'Samsung', isFeatured: true,  productCount: 120,
+//       image: 'https://upload.wikimedia.org/wikipedia/commons/2/24/Samsung_Logo.svg'),
+//   BrandModel(id: 'B7', name: 'Apple',   isFeatured: true,  productCount: 95,
+//       image: 'https://upload.wikimedia.org/wikipedia/commons/f/fa/Apple_logo_black.svg'),
+//   BrandModel(id: 'B8', name: 'IKEA',    isFeatured: false, productCount: 80,
+//       image: 'https://upload.wikimedia.org/wikipedia/commons/c/c5/Ikea_logo.svg'),
+// ];
+
+
+static final List<BrandModel> brands = [
+  BrandModel(id: 'B1', name: 'Nike',    isFeatured: true,  productCount: 265,
+      image: 'https://upload.wikimedia.org/wikipedia/commons/a/a6/Logo_NIKE.svg'),
+  BrandModel(id: 'B2', name: 'Adidas',  isFeatured: true,  productCount: 200,
+      image: 'https://upload.wikimedia.org/wikipedia/commons/2/20/Adidas_Logo.svg'),
+  BrandModel(id: 'B3', name: 'Puma',    isFeatured: true,  productCount: 150,
+      image: 'https://upload.wikimedia.org/wikipedia/commons/thumb/8/88/Puma_Logo.svg/200px-Puma_Logo.svg.png'),
+  BrandModel(id: 'B4', name: 'Zara',    isFeatured: true,  productCount: 180,
+      image: 'https://upload.wikimedia.org/wikipedia/commons/thumb/f/fd/Zara_Logo.svg/500px-Zara_Logo.svg.png'),
+  BrandModel(id: 'B5', name: 'H&M',     isFeatured: true,  productCount: 220,
+      image: 'https://upload.wikimedia.org/wikipedia/commons/5/53/H%26M-Logo.svg'),
+  BrandModel(id: 'B6', name: 'Samsung', isFeatured: true,  productCount: 120,
+      image: 'https://upload.wikimedia.org/wikipedia/commons/2/24/Samsung_Logo.svg'),
+  BrandModel(id: 'B7', name: 'Apple',   isFeatured: true,  productCount: 95,
+      image: 'https://upload.wikimedia.org/wikipedia/commons/f/fa/Apple_logo_black.svg'),
+  BrandModel(id: 'B8', name: 'IKEA',    isFeatured: false, productCount: 80,
+      image: 'https://upload.wikimedia.org/wikipedia/commons/c/c5/Ikea_logo.svg'),
+];
+
   // ─────────────────────────────────────────────────────────────
   // CATEGORIES
   // id  matches CategoryID used in products below
