@@ -15,9 +15,9 @@
 //     getFeaturedBrands();
 //       super.onInit();
 //   }
-  
+
 //   Future<void> getFeaturedBrands() async {
-    
+
 //     try {
 //       //show loader while loading brands
 //       isLoading.value = true;
@@ -26,22 +26,23 @@
 //       featueredBrands.assignAll(allBrands.where((brand) => brand.isFeatured ?? false).take(4));
 //       isLoading.value = false;
 
-   
 //     } catch (e) {
 //      TLoaders.errorSnackBar(title: 'Oh Snap!', message: e.toString);
-      
+
 //     } finally {
 //       isLoading.value = false;
 //     }
 //   }
-  
+
 // }
 
-
 import 'package:ecommerseproject/data/repositories/brand/brand_repository.dart';
+import 'package:ecommerseproject/data/repositories/product/product_repository.dart';
 import 'package:ecommerseproject/features/shop/model/brand_model.dart';
+import 'package:ecommerseproject/features/shop/model/product_model.dart';
 import 'package:ecommerseproject/utils/popups/loader.dart';
 import 'package:get/get.dart';
+
 class BrandController extends GetxController {
   static BrandController get instance => Get.find();
 
@@ -53,22 +54,34 @@ class BrandController extends GetxController {
 
   @override
   void onInit() {
-    fetchBrands();
+    fetchFeaturedBrands();
     super.onInit();
   }
 
-  Future<void> fetchBrands() async {
+  Future<void> fetchFeaturedBrands() async {
     try {
       isLoading.value = true;
       final brands = await _brandRepository.getAllBrands();
       allBrands.assignAll(brands);
       featuredBrands.assignAll(
-        brands.where((b) => b.isFeatured == true).take(4).toList(),
-      );
+          allBrands.where((brand) => brand.isFeatured ?? false).take(4));
     } catch (e) {
-      TLoaders.errorSnackBar(title: 'Error', message: e.toString());
+      TLoaders.errorSnackBar(title: 'Oh snap!', message: e.toString());
     } finally {
+      //stop Loader
       isLoading.value = false;
+    }
+  }
+
+  // Get Brand specific Products from your data source and return as List<ProductModel>
+  Future<List<ProductModel>> getBrandProducts(String brandId) async {
+    try {
+      final products =
+          await ProductRepository.instance.getProductForBrand(brandId : brandId);
+      return products;
+    } catch (e) {
+      TLoaders.errorSnackBar(title: 'Oh snap!', message: e.toString());
+      return [];
     }
   }
 }

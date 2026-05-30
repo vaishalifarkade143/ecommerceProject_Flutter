@@ -74,10 +74,8 @@ class StoreScreen extends StatelessWidget {
                       /// --- Grid of Brands
 
                       Obx(() {
-                        
                         if (brandController.isLoading.value) {
-                          return const TBrandShimmer(
-                              ); // or CircularProgressIndicator()
+                          return const TBrandShimmer(); // or CircularProgressIndicator()
                         }
                         return TGridLayout(
                           itemCount: brandController.featuredBrands.length,
@@ -87,7 +85,8 @@ class StoreScreen extends StatelessWidget {
                             return TBrandCard(
                               brand: brand,
                               showBorder: true,
-                              onTap: () => Get.to(() => BrandProducts()),
+                              onTap: () =>
+                                  Get.to(() => BrandProducts(brand: brand)),
                             );
                           },
                         );
@@ -103,15 +102,6 @@ class StoreScreen extends StatelessWidget {
                 pinned: true,
                 backgroundColor: dark ? TColors.black : TColors.white,
                 toolbarHeight: 0,
-                // bottom: const TTabBar(
-                //   tabs: [
-                //     Tab(child: Text('Sports')),
-                //     Tab(child: Text('Furniture')),
-                //     Tab(child: Text('Electronics')),
-                //     Tab(child: Text('Cloths')),
-                //     Tab(child: Text('Cosmetics')),
-                //   ],
-                // ),
                 bottom: TTabBar(
                   tabs: categories
                       .map((category) => Tab(child: Text(category.name)))
@@ -120,18 +110,6 @@ class StoreScreen extends StatelessWidget {
               ),
             ];
           },
-
-          /// Tab content
-          // body: TabBarView(
-          //   children: [
-          //     TCategoryTab(),
-          //     TCategoryTab(),
-          //     TCategoryTab(),
-          //     TCategoryTab(),
-          //     TCategoryTab(),
-
-          //   ],
-          // ),
           body: TabBarView(
             children: categories
                 .map((category) => TCategoryTab(category: category))

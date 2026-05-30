@@ -6,6 +6,7 @@ import 'package:ecommerseproject/features/shop/model/product_model.dart';
 import 'package:ecommerseproject/features/shop/model/product_type.dart';
 import 'package:ecommerseproject/utils/exceptions/firebase_exceptions.dart';
 import 'package:ecommerseproject/utils/exceptions/platform_exceptions.dart';
+import 'package:ecommerseproject/utils/popups/loader.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 
@@ -38,14 +39,15 @@ class ProductRepository extends GetxController {
   }
 
   ///Get limited featured products
- 
+
   Future<List<ProductModel>> getAllFeaturedProducts() async {
     try {
       final snapshot = await _db
           .collection('Products')
           .where('IsFeatured', isEqualTo: true)
           .get();
-      print('📦 Firestore docs returned in getAllFeaturedProducts: ${snapshot.docs.length}'); // ✅ debug
+      print(
+          '📦 Firestore docs returned in getAllFeaturedProducts: ${snapshot.docs.length}'); // ✅ debug
 
       return snapshot.docs.map((e) => ProductModel.fromSnapshot(e)).toList();
     } on FirebaseException catch (e) {
@@ -120,15 +122,6 @@ class ProductRepository extends GetxController {
 // Get Products based on the brands
   Future<List<ProductModel>> fetchProductsByQuery(Query<Object>? query) async {
     try {
-      // final snapshot = await _db
-      //     .collection('Products')
-      //     // .where('IsFeatured', isEqualTo: true)
-      //     .limit(10)
-      //     .get();
-      // print('📦 Firestore docs returned: ${snapshot.docs.length}'); // ✅ debug
-
-      // return snapshot.docs.map((e) => ProductModel.fromSnapshot(e)).toList();
-
       final querySnapshot = await query?.get();
       final List<ProductModel> productList = querySnapshot!.docs
           .map((doc) => ProductModel.fromQuerySnapShot(doc))
@@ -157,5 +150,43 @@ class ProductRepository extends GetxController {
     } catch (e) {
       throw 'Failed to upload dummy data: $e';
     }
+  }
+
+  Future<List<ProductModel>> getProductForBrand(
+      {required String brandId, int limit = -1}) async {
+    try {
+      final querySnapshot = limit == -1
+          ? await _db
+              .collection('Products')
+              .where('Brand.Id', isEqualTo: brandId)
+              .get()
+          : await _db
+              .collection('Products')
+              .where('Brand.Id', isEqualTo: brandId)
+              .limit(limit)
+              .get();
+      final products = querySnapshot.docs
+          .map((doc) => ProductModel.fromSnapshot(doc))
+          .toList();
+      return products;
+    } on FirebaseException catch (e) {
+      throw TFirebaseExceptions(e.code).message;
+    } on PlatformException catch (e) {
+      throw TPlatformExceptions(e.code).message;
+    } catch (e) {
+      throw e.toString();
+    }
+  }
+
+  ///Get Brand Specific Products from your data source
+  Future<List<ProductModel>> getBrandProducts(String brandId) async {
+  try{
+    final products = await ProductRepository.instance.getProductForBrand(brandId: brandId);
+    return products;
+
+  }catch(e){
+    TLoaders.errorSnackBar( title: 'Oh Snap!',message:  e.toString());
+    return [];
+  }
   }
 }

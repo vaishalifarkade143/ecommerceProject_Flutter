@@ -49,7 +49,7 @@ class AllBrands extends StatelessWidget {
                     return TBrandCard(
                       brand: brand,
                       showBorder: true,
-                      onTap: () => Get.to(() => BrandProducts()),
+                      onTap: () => Get.to(() => BrandProducts(brand: brand,)),
                     );
                   },
                 );

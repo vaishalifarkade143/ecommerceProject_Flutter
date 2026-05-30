@@ -9,7 +9,7 @@ class TRoundedContainer extends StatelessWidget {
       this.height,
       this.radious =TSizes.cardRadiousLg,
       this.child,
-      this.showBorder = false,
+      this.showBorder = true,
       this.borderColor = TColors.white,
       this.backgroundColor = TColors.borderPrimary,
       this.padding,
