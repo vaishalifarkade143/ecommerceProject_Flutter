@@ -2,6 +2,7 @@ import 'dart:io';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:ecommerseproject/features/firebase_services/firebase_storage_services.dart';
+import 'package:ecommerseproject/features/shop/model/product_category_model.dart';
 import 'package:ecommerseproject/features/shop/model/product_model.dart';
 import 'package:ecommerseproject/features/shop/model/product_type.dart';
 import 'package:ecommerseproject/utils/exceptions/firebase_exceptions.dart';
@@ -35,6 +36,20 @@ class ProductRepository extends GetxController {
     } catch (e) {
       // throw 'Something went wrong.Please try again later.';
       throw e.toString(); // ✅ show REAL error not generic message
+    }
+  }
+
+  //add productCategory to firebase
+  Future<void> uploadProductCategories(
+      List<ProductCategoryModel> productCategories) async {
+    try {
+      for (var pc in productCategories) {
+        await _db.collection('ProductCategory').add(pc.toJson());
+      }
+    } on FirebaseException catch (e) {
+      throw TFirebaseExceptions(e.code).message;
+    } catch (e) {
+      throw 'Failed to upload product categories: $e';
     }
   }
 
@@ -102,12 +117,13 @@ class ProductRepository extends GetxController {
   }
 
   // In product_repository.dart — add this method
-  Future<List<ProductModel>> getProductsByCategory(String categoryId) async {
+  Future<List<ProductModel>> getProductsByCategory(int limit,
+      {required String categoryId}) async {
     try {
       final snapshot = await _db
           .collection('Products')
           .where('CategoryID', isEqualTo: categoryId)
-          .limit(10)
+          .limit(limit)
           .get();
       return snapshot.docs.map((e) => ProductModel.fromSnapshot(e)).toList();
     } on FirebaseException catch (e) {
@@ -178,15 +194,52 @@ class ProductRepository extends GetxController {
     }
   }
 
+  Future<List<ProductModel>> getProductForCategory({
+    required String categoryId,
+    int limit = 4,
+  }) async {
+    try {
+      QuerySnapshot productCategoryQuery = limit == -1
+          ? await _db
+              .collection('ProductCategory')
+              .where('categoryId', isEqualTo: categoryId)
+              .get()
+          : await _db
+              .collection('ProductCategory')
+              .where('categoryId', isEqualTo: categoryId)
+              .limit(limit)
+              .get();
+      List<String> productIds = productCategoryQuery.docs
+          .map((doc) => doc['productId'] as String)
+          .toList();
+          
+      final productsQuery = await _db
+          .collection('Products')
+          .where(FieldPath.documentId, whereIn: productIds)
+          .get();
+      List<ProductModel> products = productsQuery.docs
+          .map((doc) => ProductModel.fromSnapshot(doc))
+          .toList();
+
+      return products;
+    } on FirebaseException catch (e) {
+      throw TFirebaseExceptions(e.code).message;
+    } on PlatformException catch (e) {
+      throw TPlatformExceptions(e.code).message;
+    } catch (e) {
+      throw 'something went wrong. Please try again later. Error: $e';
+    }
+  }
+
   ///Get Brand Specific Products from your data source
   Future<List<ProductModel>> getBrandProducts(String brandId) async {
-  try{
-    final products = await ProductRepository.instance.getProductForBrand(brandId: brandId);
-    return products;
-
-  }catch(e){
-    TLoaders.errorSnackBar( title: 'Oh Snap!',message:  e.toString());
-    return [];
-  }
+    try {
+      final products =
+          await ProductRepository.instance.getProductForBrand(brandId: brandId);
+      return products;
+    } catch (e) {
+      TLoaders.errorSnackBar(title: 'Oh Snap!', message: e.toString());
+      return [];
+    }
   }
 }

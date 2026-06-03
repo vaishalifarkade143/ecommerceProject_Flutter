@@ -4,7 +4,6 @@ import 'package:ecommerseproject/common/widgets/list_tile/settings_menu_tile.dar
 import 'package:ecommerseproject/common/widgets/list_tile/user_profile_tile.dart';
 import 'package:ecommerseproject/common/widgets/texts/section_heading.dart';
 import 'package:ecommerseproject/data/repositories/authentication/authentication_repository.dart';
-import 'package:ecommerseproject/data/repositories/banners/bannar_repository.dart';
 import 'package:ecommerseproject/data/repositories/brand/brand_repository.dart';
 import 'package:ecommerseproject/data/repositories/categories/category_repository.dart';
 import 'package:ecommerseproject/data/repositories/product/product_repository.dart';
@@ -148,23 +147,25 @@ class SettingsScreen extends StatelessWidget {
                     },
                   ),
 
-                  // TSettingMenuTile(
-                  //   icon: Iconsax.shop,
-                  //   title: 'Load Brands',
-                  //   subTitle: 'Upload brands to Firebase',
-                  //   onTap: () async {
-                  //     try {
-                  //       await BrandRepository.instance
-                  //           .uploadDummyData(TDummyData.brands);
-                  //       TLoaders.successSnackBar(
-                  //           title: 'Done!', message: 'Brands uploaded.');
-                  //     } catch (e) {
-                  //       TLoaders.errorSnackBar(
-                  //           title: 'Failed', message: e.toString());
-                  //     }
-                  //   },
-                  // ),
+                  TSettingMenuTile(
+                    icon: Iconsax.tag,
+                    title: 'Load Brand Categories',
+                    subTitle: 'Link brands to categories in Firebase',
+                    onTap: () async {
+                      try {
+                        await BrandRepository.instance
+                            .uploadBrandCategories(TDummyData.brandCategories);
+                        TLoaders.successSnackBar(
+                            title: 'Done!',
+                            message: 'Brand categories uploaded.');
+                      } catch (e) {
+                        TLoaders.errorSnackBar(
+                            title: 'Failed', message: e.toString());
+                      }
+                    },
+                  ),
 
+                  // Upload Brands
                   TSettingMenuTile(
                     icon: Iconsax.shop,
                     title: 'Load Brands',
@@ -175,6 +176,25 @@ class SettingsScreen extends StatelessWidget {
                             .uploadDummyData(TDummyData.brands);
                         TLoaders.successSnackBar(
                             title: 'Done!', message: 'Brands uploaded.');
+                      } catch (e) {
+                        TLoaders.errorSnackBar(
+                            title: 'Failed', message: e.toString());
+                      }
+                    },
+                  ),
+
+                  TSettingMenuTile(
+                    icon: Iconsax.box,
+                    title: 'Load Product Categories',
+                    subTitle: 'Link products to categories in Firebase',
+                    onTap: () async {
+                      try {
+                        await ProductRepository.instance
+                            .uploadProductCategories(
+                                TDummyData.productCategories);
+                        TLoaders.successSnackBar(
+                            title: 'Done!',
+                            message: 'Product categories uploaded.');
                       } catch (e) {
                         TLoaders.errorSnackBar(
                             title: 'Failed', message: e.toString());

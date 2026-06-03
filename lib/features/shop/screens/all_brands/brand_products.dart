@@ -30,7 +30,7 @@ class BrandProducts extends StatelessWidget {
               TBrandCard(showBorder: true, brand: brand),
               const SizedBox(height: TSizes.spaceBtwSections),
               FutureBuilder(
-                  future: controller.getBrandProducts(brand.id),
+                  future: controller.getBrandProducts(brandId: brand.id),
                   builder: (context, snapshot) {
                     //handle Loading ,No Record Or Error Messages
                     const loader = TVerticalProductShimmer();

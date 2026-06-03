@@ -1,326 +1,12 @@
-// import 'package:ecommerseproject/features/shop/model/banner_model.dart';
-// import 'package:ecommerseproject/features/shop/model/brand_model.dart';
-// import 'package:ecommerseproject/features/shop/model/product_attribute_model.dart';
-// import 'package:ecommerseproject/features/shop/model/product_model.dart';
-// import 'package:ecommerseproject/features/shop/model/product_variation_model.dart';
-// import 'package:ecommerseproject/routes/routes.dart';
-// import 'package:ecommerseproject/utils/constants/image_strings.dart';
-
-// import '../model/category_model.dart';
-
-// class TDummyData {
-//   static final List<BannerModel> banners = [
-//     BannerModel(
-//         active: true,
-//         imageUrl: TImages.promoBanner1,
-//         targetScreen: TRoutes.orders),
-//     BannerModel(
-//         active: false,
-//         imageUrl: TImages.promoBanner2,
-//         targetScreen: TRoutes.cart),
-//     BannerModel(
-//         active: true,
-//         imageUrl: TImages.promoBanner3,
-//         targetScreen: TRoutes.checkout),
-//     BannerModel(
-//         active: true,
-//         imageUrl: TImages.promoBanner1,
-//         targetScreen: TRoutes.checkout),
-//     BannerModel(
-//         active: true,
-//         imageUrl: TImages.promoBanner2,
-//         targetScreen: TRoutes.checkout),
-//     BannerModel(
-//         active: true,
-//         imageUrl: TImages.promoBanner3,
-//         targetScreen: TRoutes.checkout),
-//   ];
-//     // ✅ ADD THIS
-//   static final List<CategoryModel> categories = [
-//     CategoryModel(id: '1', name: 'Sports',      image: TImages.sportIcon,       isFeatured: true),
-//     CategoryModel(id: '2', name: 'Furniture',   image: TImages.furnitureIcon,   isFeatured: true),
-//     CategoryModel(id: '3', name: 'Electronics', image: TImages.electronicsIcon, isFeatured: true),
-//     CategoryModel(id: '4', name: 'Clothes',     image: TImages.clothIcon,       isFeatured: true),
-//     CategoryModel(id: '5', name: 'Animals',     image: TImages.animalIcon,      isFeatured: true),
-//     CategoryModel(id: '6', name: 'Shoes',       image: TImages.shoeIcon,        isFeatured: true),
-//     CategoryModel(id: '7', name: 'Cosmetics',   image: TImages.cosmeticsIcon,   isFeatured: false),
-//     CategoryModel(id: '8',  name: 'Running Shoes', image: TImages.shoeIcon, parentId: '6', isFeatured: false),
-//     CategoryModel(id: '9',  name: 'Formal Shoes',  image: TImages.shoeIcon, parentId: '6', isFeatured: false),
-//     CategoryModel(id: '10', name: 'Sports Shirts',  image: TImages.clothIcon, parentId: '1', isFeatured: false),
-//   ];
-
-
-//   static final List<ProductModel> products = [
-//   // ── Product 001 ──────────────────────────────────────────────
-//   ProductModel(
-//     id: '001',
-//     title: 'Green Nike Sports Shoe',
-//     stock: 15,
-//     price: 135,
-//     salePrice: 0,
-//     isFeatured: true,
-//     thumbnail: 'https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=400',
-//     description: 'This is a Product description for Green Nike sports shoe.',
-//     sku: '',
-//     categoryID: '1',
-//     productType: 'ProductType.variable',
-//     brand: BrandModel(
-//       id: '1',
-//       name: 'Nike',
-//       image: 'https://upload.wikimedia.org/wikipedia/commons/a/a6/Logo_NIKE.svg',
-//     ),
-//     images: [
-//       'https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=400',
-//       'https://images.unsplash.com/photo-1606107557195-0e29a4b5b4aa?w=400',
-//     ],
-//     productAttributes: [
-//       ProductAttributeModel(name: 'Color', values: ['Green', 'Black', 'Red']),
-//       ProductAttributeModel(name: 'Size', values: ['EU 30', 'EU 32', 'EU 34']),
-//     ],
-//     productVariations: [
-//       ProductVariationModel(
-//         id: '1',
-//         stock: 34,
-//         price: 134,
-//         salePrice: 122.6,
-//         sku: '',
-//         image: 'https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=400',
-//         description: 'This is a Product description for Green Nike sports shoe.',
-//         attributesValues: {'Color': 'Green', 'Size': 'EU 30'},
-//       ),
-//       ProductVariationModel(
-//         id: '2',
-//         stock: 0,
-//         price: 132,
-//         salePrice: 0,
-//         sku: '',
-//         image: 'https://images.unsplash.com/photo-1606107557195-0e29a4b5b4aa?w=400',
-//         description: '',
-//         attributesValues: {'Color': 'Black', 'Size': 'EU 32'},
-//       ),
-//       ProductVariationModel(
-//         id: '3',
-//         stock: 0,
-//         price: 234,
-//         salePrice: 0,
-//         sku: '',
-//         image: 'https://images.unsplash.com/photo-1608231387042-66d1773070a5?w=400',
-//         description: '',
-//         attributesValues: {'Color': 'Black', 'Size': 'EU 34'},
-//       ),
-//       ProductVariationModel(
-//         id: '4',
-//         stock: 0,
-//         price: 334,
-//         salePrice: 0,
-//         sku: '',
-//         image: 'https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=400',
-//         description: '',
-//         attributesValues: {'Color': 'Red', 'Size': 'EU 34'},
-//       ),
-//       ProductVariationModel(
-//         id: '5',
-//         stock: 0,
-//         price: 334,
-//         salePrice: 0,
-//         sku: '',
-//         image: 'https://images.unsplash.com/photo-1606107557195-0e29a4b5b4aa?w=400',
-//         description: '',
-//         attributesValues: {'Color': 'Red', 'Size': 'EU 34'},
-//       ),
-//       ProductVariationModel(
-//         id: '6',
-//         stock: 11,
-//         price: 332,
-//         salePrice: 0,
-//         sku: '',
-//         image: 'https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=400',
-//         description: '',
-//         attributesValues: {'Color': 'Red', 'Size': 'EU 32'},
-//       ),
-//     ],
-//   ),
-
-//   // ── Product 002 ──────────────────────────────────────────────
-//   ProductModel(
-//     id: '002',
-//     title: 'Adidas Ultraboost 21',
-//     stock: 20,
-//     price: 180,
-//     salePrice: 150,
-//     isFeatured: true,
-//     thumbnail: 'https://images.unsplash.com/photo-1608231387042-66d1773070a5?w=400',
-//     description: 'The Adidas Ultraboost 21 delivers responsive cushioning and a sock-like fit.',
-//     sku: 'ADU21F',
-//     categoryID: '1',
-//     productType: 'ProductType.variable',
-//     brand: BrandModel(
-//       id: '2',
-//       name: 'Adidas',
-//       image: 'https://upload.wikimedia.org/wikipedia/commons/2/20/Adidas_Logo.svg',
-//     ),
-//     images: [
-//       'https://images.unsplash.com/photo-1608231387042-66d1773070a5?w=400',
-//       'https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=400',
-//     ],
-//     productAttributes: [
-//       ProductAttributeModel(name: 'Color', values: ['White', 'Black', 'Grey']),
-//       ProductAttributeModel(name: 'Size', values: ['EU 30', 'EU 32', 'EU 34']),
-//     ],
-//     productVariations: [
-//       ProductVariationModel(
-//         id: '1',
-//         stock: 10,
-//         price: 180,
-//         salePrice: 150,
-//         sku: '',
-//         image: 'https://images.unsplash.com/photo-1608231387042-66d1773070a5?w=400',
-//         description: 'White EU 30',
-//         attributesValues: {'Color': 'White', 'Size': 'EU 30'},
-//       ),
-//       ProductVariationModel(
-//         id: '2',
-//         stock: 5,
-//         price: 175,
-//         salePrice: 140,
-//         sku: '',
-//         image: 'https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=400',
-//         description: 'Black EU 32',
-//         attributesValues: {'Color': 'Black', 'Size': 'EU 32'},
-//       ),
-//     ],
-//   ),
-
-//   // ── Product 003 ──────────────────────────────────────────────
-//   ProductModel(
-//     id: '003',
-//     title: 'Puma RS-X3',
-//     stock: 20,
-//     price: 110,
-//     salePrice: 90,
-//     isFeatured: true,
-//     thumbnail: 'https://images.unsplash.com/photo-1606107557195-0e29a4b5b4aa?w=400',
-//     description: 'The Puma RS-X3 combines bold design with comfort and performance.',
-//     sku: 'PRSX3F',
-//     categoryID: '1',
-//     productType: 'ProductType.single',
-//     brand: BrandModel(
-//       id: '3',
-//       name: 'Puma',
-//       image: 'https://upload.wikimedia.org/wikipedia/commons/thumb/8/88/Puma_Logo.svg/200px-Puma_Logo.svg.png',
-//     ),
-//     images: [
-//       'https://images.unsplash.com/photo-1606107557195-0e29a4b5b4aa?w=400',
-//       'https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=400',
-//     ],
-//     productAttributes: [
-//       ProductAttributeModel(name: 'Color', values: ['Red', 'Blue', 'Green']),
-//       ProductAttributeModel(name: 'Size', values: ['EU 30', 'EU 32', 'EU 34']),
-//     ],
-//   ),
-
-//   // product 4 
-//    ProductModel(
-//     id: '004',
-//     title: 'Green Nike Sports Shoe',
-//     stock: 15,
-//     price: 135,
-//     salePrice: 0,
-//     isFeatured: true,
-//     thumbnail: 'https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=400',
-//     description: 'This is a Product description for Green Nike sports shoe.',
-//     sku: '',
-//     categoryID: '1',
-//     productType: 'ProductType.variable',
-//     brand: BrandModel(
-//       id: '1',
-//       name: 'Nike',
-//       image: 'https://upload.wikimedia.org/wikipedia/commons/a/a6/Logo_NIKE.svg',
-//     ),
-//     images: [
-//       'https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=400',
-//       'https://images.unsplash.com/photo-1606107557195-0e29a4b5b4aa?w=400',
-//     ],
-//     productAttributes: [
-//       ProductAttributeModel(name: 'Color', values: ['Green', 'Black', 'Red']),
-//       ProductAttributeModel(name: 'Size', values: ['EU 30', 'EU 32', 'EU 34']),
-//     ],
-//     productVariations: [
-//       ProductVariationModel(
-//         id: '1',
-//         stock: 34,
-//         price: 134,
-//         salePrice: 122.6,
-//         sku: '',
-//         image: 'https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=400',
-//         description: 'This is a Product description for Green Nike sports shoe.',
-//         attributesValues: {'Color': 'Green', 'Size': 'EU 30'},
-//       ),
-//       ProductVariationModel(
-//         id: '2',
-//         stock: 0,
-//         price: 132,
-//         salePrice: 0,
-//         sku: '',
-//         image: 'https://images.unsplash.com/photo-1606107557195-0e29a4b5b4aa?w=400',
-//         description: '',
-//         attributesValues: {'Color': 'Black', 'Size': 'EU 32'},
-//       ),
-//       ProductVariationModel(
-//         id: '3',
-//         stock: 0,
-//         price: 234,
-//         salePrice: 0,
-//         sku: '',
-//         image: 'https://images.unsplash.com/photo-1608231387042-66d1773070a5?w=400',
-//         description: '',
-//         attributesValues: {'Color': 'Black', 'Size': 'EU 34'},
-//       ),
-//       ProductVariationModel(
-//         id: '4',
-//         stock: 0,
-//         price: 334,
-//         salePrice: 0,
-//         sku: '',
-//         image: 'https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=400',
-//         description: '',
-//         attributesValues: {'Color': 'Red', 'Size': 'EU 34'},
-//       ),
-//       ProductVariationModel(
-//         id: '5',
-//         stock: 0,
-//         price: 334,
-//         salePrice: 0,
-//         sku: '',
-//         image: 'https://images.unsplash.com/photo-1606107557195-0e29a4b5b4aa?w=400',
-//         description: '',
-//         attributesValues: {'Color': 'Red', 'Size': 'EU 34'},
-//       ),
-//       ProductVariationModel(
-//         id: '6',
-//         stock: 11,
-//         price: 332,
-//         salePrice: 0,
-//         sku: '',
-//         image: 'https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=400',
-//         description: '',
-//         attributesValues: {'Color': 'Red', 'Size': 'EU 32'},
-//       ),
-//     ],
-//   ),
-// ];
-
-// }
-
-
-
 
 
 
 import 'package:ecommerseproject/features/shop/model/banner_model.dart';
+import 'package:ecommerseproject/features/shop/model/brand_category_model.dart';
 import 'package:ecommerseproject/features/shop/model/brand_model.dart';
 import 'package:ecommerseproject/features/shop/model/category_model.dart';
 import 'package:ecommerseproject/features/shop/model/product_attribute_model.dart';
+import 'package:ecommerseproject/features/shop/model/product_category_model.dart';
 import 'package:ecommerseproject/features/shop/model/product_model.dart';
 import 'package:ecommerseproject/features/shop/model/product_variation_model.dart';
 import 'package:ecommerseproject/routes/routes.dart';
@@ -339,25 +25,33 @@ class TDummyData {
     BannerModel(active: true,  imageUrl: TImages.promoBanner3, targetScreen: TRoutes.checkout),
   ];
 
-//   static final List<BrandModel> brands = [
-//   BrandModel(id: 'B1', name: 'Nike',    isFeatured: true,  productCount: 265,
-//       image: 'https://upload.wikimedia.org/wikipedia/commons/a/a6/Logo_NIKE.svg'),
-//   BrandModel(id: 'B2', name: 'Adidas',  isFeatured: true,  productCount: 200,
-//       image: 'https://upload.wikimedia.org/wikipedia/commons/2/20/Adidas_Logo.svg'),
-//   BrandModel(id: 'B3', name: 'Puma',    isFeatured: true,  productCount: 150,
-//       image: 'https://upload.wikimedia.org/wikipedia/commons/thumb/8/88/Puma_Logo.svg/200px-Puma_Logo.svg.png'),
-//   BrandModel(id: 'B4', name: 'Zara',    isFeatured: true,  productCount: 180,
-//       image: 'https://upload.wikimedia.org/wikipedia/commons/thumb/f/fd/Zara_Logo.svg/500px-Zara_Logo.svg.png'),
-//   BrandModel(id: 'B5', name: 'H&M',     isFeatured: true,  productCount: 220,
-//       image: 'https://upload.wikimedia.org/wikipedia/commons/5/53/H%26M-Logo.svg'),
-//   BrandModel(id: 'B6', name: 'Samsung', isFeatured: true,  productCount: 120,
-//       image: 'https://upload.wikimedia.org/wikipedia/commons/2/24/Samsung_Logo.svg'),
-//   BrandModel(id: 'B7', name: 'Apple',   isFeatured: true,  productCount: 95,
-//       image: 'https://upload.wikimedia.org/wikipedia/commons/f/fa/Apple_logo_black.svg'),
-//   BrandModel(id: 'B8', name: 'IKEA',    isFeatured: false, productCount: 80,
-//       image: 'https://upload.wikimedia.org/wikipedia/commons/c/c5/Ikea_logo.svg'),
-// ];
+static final List<BrandCategoryModel> brandCategories = [
+  // Nike (B1) → Sports, Clothes
+  BrandCategoryModel(brandId: 'B1', categoryId: 'CAT1'),
+  BrandCategoryModel(brandId: 'B1', categoryId: 'CAT2'),
 
+  // Adidas (B2) → Sports, Clothes
+  BrandCategoryModel(brandId: 'B2', categoryId: 'CAT1'),
+  BrandCategoryModel(brandId: 'B2', categoryId: 'CAT2'),
+
+  // Puma (B3) → Sports
+  BrandCategoryModel(brandId: 'B3', categoryId: 'CAT1'),
+
+  // Zara (B4) → Clothes
+  BrandCategoryModel(brandId: 'B4', categoryId: 'CAT2'),
+
+  // H&M (B5) → Clothes
+  BrandCategoryModel(brandId: 'B5', categoryId: 'CAT2'),
+
+  // Samsung (B6) → Electronics
+  BrandCategoryModel(brandId: 'B6', categoryId: 'CAT3'),
+
+  // Apple (B7) → Electronics
+  BrandCategoryModel(brandId: 'B7', categoryId: 'CAT3'),
+
+  // IKEA (B8) → Furniture
+  BrandCategoryModel(brandId: 'B8', categoryId: 'CAT4'),
+];
 
 static final List<BrandModel> brands = [
   BrandModel(id: 'B1', name: 'Nike',    isFeatured: true,  productCount: 265,
@@ -376,6 +70,51 @@ static final List<BrandModel> brands = [
       image: 'https://upload.wikimedia.org/wikipedia/commons/f/fa/Apple_logo_black.svg'),
   BrandModel(id: 'B8', name: 'IKEA',    isFeatured: false, productCount: 80,
       image: 'https://upload.wikimedia.org/wikipedia/commons/c/c5/Ikea_logo.svg'),
+];
+
+
+
+static final List<ProductCategoryModel> productCategories = [
+
+  // CAT1 - Sports (Running Shoes subcategory CAT7, Sports Shirts CAT8)
+  ProductCategoryModel(productId: 'P001', categoryId: 'CAT1'),  // Nike Air Max 270
+  ProductCategoryModel(productId: 'P001', categoryId: 'CAT7'),  // also Running Shoes
+  ProductCategoryModel(productId: 'P002', categoryId: 'CAT1'),  // Adidas Ultraboost 22
+  ProductCategoryModel(productId: 'P002', categoryId: 'CAT7'),  // also Running Shoes
+  ProductCategoryModel(productId: 'P003', categoryId: 'CAT1'),  // Puma RS-X3 Sneaker
+  ProductCategoryModel(productId: 'P003', categoryId: 'CAT7'),  // also Running Shoes
+  ProductCategoryModel(productId: 'P004', categoryId: 'CAT1'),  // Nike Dri-FIT Sports Shirt
+  ProductCategoryModel(productId: 'P004', categoryId: 'CAT8'),  // also Sports Shirts
+
+  // CAT2 - Clothes (Casual Shirts CAT9, Dresses CAT10)
+  ProductCategoryModel(productId: 'P005', categoryId: 'CAT2'),  // Zara Slim Fit Casual Shirt
+  ProductCategoryModel(productId: 'P005', categoryId: 'CAT9'),  // also Casual Shirts
+  ProductCategoryModel(productId: 'P006', categoryId: 'CAT2'),  // H&M Floral Summer Dress
+  ProductCategoryModel(productId: 'P006', categoryId: 'CAT10'), // also Dresses
+  ProductCategoryModel(productId: 'P007', categoryId: 'CAT2'),  // Zara Slim Chinos
+  ProductCategoryModel(productId: 'P007', categoryId: 'CAT9'),  // also Casual Shirts
+  ProductCategoryModel(productId: 'P008', categoryId: 'CAT2'),  // H&M Basic Cotton T-Shirt
+  ProductCategoryModel(productId: 'P008', categoryId: 'CAT9'),  // also Casual Shirts
+
+  // CAT3 - Electronics (Smartphones CAT11, Laptops CAT12)
+  ProductCategoryModel(productId: 'P009', categoryId: 'CAT3'),  // Samsung Galaxy S24
+  ProductCategoryModel(productId: 'P009', categoryId: 'CAT11'), // also Smartphones
+  ProductCategoryModel(productId: 'P010', categoryId: 'CAT3'),  // Apple MacBook Air M2
+  ProductCategoryModel(productId: 'P010', categoryId: 'CAT12'), // also Laptops
+  ProductCategoryModel(productId: 'P011', categoryId: 'CAT3'),  // Samsung 65" QLED TV
+
+  // CAT4 - Furniture
+  ProductCategoryModel(productId: 'P012', categoryId: 'CAT4'),  // IKEA KALLAX Shelf
+  ProductCategoryModel(productId: 'P013', categoryId: 'CAT4'),  // IKEA POÄNG Armchair
+
+  // CAT5 - Jewellery
+  ProductCategoryModel(productId: 'P014', categoryId: 'CAT5'),  // Gold Diamond Ring
+  ProductCategoryModel(productId: 'P015', categoryId: 'CAT5'),  // Pearl Necklace Set
+
+  // CAT6 - Cosmetics
+  ProductCategoryModel(productId: 'P016', categoryId: 'CAT6'),  // Hydrating Face Serum
+  ProductCategoryModel(productId: 'P017', categoryId: 'CAT6'),  // Matte Lipstick Collection
+  ProductCategoryModel(productId: 'P018', categoryId: 'CAT6'),  // Daily SPF50 Sunscreen
 ];
 
   // ─────────────────────────────────────────────────────────────

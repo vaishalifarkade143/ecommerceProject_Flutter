@@ -48,9 +48,10 @@ class CategoryController extends GetxController {
   /// -- Load selected category data
   ///  -- Get category or sub -category Products.
   // In category_controller.dart — add this method
-Future<List<ProductModel>> getCategoryProducts(String categoryId) async {
+Future<List<ProductModel>> getCategoryProducts({required String categoryId ,int limit = 4}) async {
   try {
-    return await ProductRepository.instance.getProductsByCategory(categoryId);
+    final products = await ProductRepository.instance.getProductForCategory(categoryId :categoryId, limit: limit);
+    return products;
   } catch (e) {
     TLoaders.errorSnackBar(title: 'Oh snap!', message: e.toString());
     return [];
