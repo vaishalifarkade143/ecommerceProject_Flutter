@@ -2,6 +2,7 @@ import 'package:ecommerseproject/common/styles/shadows.dart';
 import 'package:ecommerseproject/common/widgets/custom_shapes/container/t_rounded_container.dart';
 import 'package:ecommerseproject/common/widgets/icons/t_circular_icon.dart';
 import 'package:ecommerseproject/common/widgets/images/t_rounded_image.dart';
+import 'package:ecommerseproject/common/widgets/products/favourite_icon/favourite_icon.dart';
 import 'package:ecommerseproject/common/widgets/texts/product_price_text.dart';
 import 'package:ecommerseproject/common/widgets/texts/product_title_text.dart';
 import 'package:ecommerseproject/common/widgets/texts/t_brand_title_text_with_verifired_icon.dart';
@@ -75,10 +76,8 @@ class TProductCardVertical extends StatelessWidget {
                   Positioned(
                       top: 0,
                       right: 0,
-                      child: TCircularIcon(
-                        icon: Iconsax.heart5,
-                        color: Colors.red,
-                      ))
+                      child:TFavouriteIcon(productId: product.id),
+                      )
                 ],
               ),
             ),

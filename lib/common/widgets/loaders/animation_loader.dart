@@ -25,10 +25,7 @@ class TAnimationLoaderWidget extends StatelessWidget {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          // Lottie.asset(animation,
-          //     width: MediaQuery.of(context).size.width *
-          //         0.8), // Display the animation
-
+          
           Lottie.asset(
             animation,
             width: MediaQuery.of(context).size.width * 0.8,
@@ -58,7 +55,7 @@ class TAnimationLoaderWidget extends StatelessWidget {
                       style: Theme.of(context)
                           .textTheme
                           .bodyMedium!
-                          .apply(color: TColors.light),
+                          .apply(color: TColors.black),
                     ),
                   ),
                 )

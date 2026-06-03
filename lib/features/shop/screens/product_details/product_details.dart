@@ -22,9 +22,9 @@ class ProductDetailsScreen extends StatelessWidget {
   final ProductModel product;
   @override
   Widget build(BuildContext context) {
-      final variationController = Get.put(VariationController());
-    final imagesController = Get.put(ImagesController());
-    final dark = THelperFunctions.isDarkMode(context);
+    //   final variationController = Get.put(VariationController());
+    // final imagesController = Get.put(ImagesController());
+    // final dark = THelperFunctions.isDarkMode(context);
     return Scaffold(
       bottomNavigationBar: TBottomAddCard(),
       body: SingleChildScrollView(

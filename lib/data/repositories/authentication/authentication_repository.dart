@@ -9,6 +9,7 @@ import 'package:ecommerseproject/utils/exceptions/firebase_auth_exceptions.dart'
 import 'package:ecommerseproject/utils/exceptions/firebase_exceptions.dart';
 import 'package:ecommerseproject/utils/exceptions/format_exceptions.dart';
 import 'package:ecommerseproject/utils/exceptions/platform_exceptions.dart';
+import 'package:ecommerseproject/utils/local_storage/storage_utility.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/services.dart';
@@ -52,6 +53,8 @@ class AuthenticationRepository extends GetxController {
           user.providerData.any((info) => info.providerId == 'google.com');
 
       if (user.emailVerified || isGoogleUser) {
+
+        await TLocalStorage.init(user.uid);
         // ✅ Fully authenticated — go to home
         Get.offAll(() => const NavigationMenu());
       } else {
@@ -59,7 +62,9 @@ class AuthenticationRepository extends GetxController {
         Get.offAll(() => VerifyEmailScreen(email: _auth.currentUser?.email));
       }
     } else {
+      //local storage to check if user is opening the app for the first time or not
       deviceStorage.writeIfNull('IsFirstTime', true);
+      // If first time, show onboarding, else show login, firsttime Launching app
       deviceStorage.read('IsFirstTime') != true
           ? Get.offAll(() => const LoginScreen())
           : Get.offAll(() => const OnBoardingScreen());

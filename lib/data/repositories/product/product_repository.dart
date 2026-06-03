@@ -153,6 +153,27 @@ class ProductRepository extends GetxController {
     }
   }
 
+  //
+  Future<List<ProductModel>> getFavouriteProducts(
+      List<String> productIds) async {
+    try {
+      final snapshot = await _db
+          .collection('Products')
+          .where(FieldPath.documentId, whereIn: productIds)
+          .get();
+      return snapshot.docs
+          .map((querySnapshot) => ProductModel.fromSnapshot(querySnapshot))
+          .toList();
+    } on FirebaseException catch (e) {
+      throw TFirebaseExceptions(e.code).message;
+    } on PlatformException catch (e) {
+      throw TPlatformExceptions(e.code).message;
+    } catch (e) {
+      // throw 'Something went wrong.Please try again later.';
+      throw e.toString(); // ✅ show REAL error not generic message
+    }
+  }
+
   // ✅ Replace the entire uploadDummyData method with this:
   Future<void> uploadDummyData(List<ProductModel> products) async {
     try {
@@ -212,7 +233,7 @@ class ProductRepository extends GetxController {
       List<String> productIds = productCategoryQuery.docs
           .map((doc) => doc['productId'] as String)
           .toList();
-          
+
       final productsQuery = await _db
           .collection('Products')
           .where(FieldPath.documentId, whereIn: productIds)

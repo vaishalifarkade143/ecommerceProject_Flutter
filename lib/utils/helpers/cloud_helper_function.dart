@@ -29,7 +29,7 @@ class TCloudHelperFunction {
   /// Returns a loading indicator if the data is still being fetched, an error message if there
   /// was an error, or a "No data found" message if the data is null or empty. If the data is available, it returns null, indicating that the caller can proceed to display the data.
   /// Example usage:
-  static Widget? checkMultipleRecordsState<T>( {required AsyncSnapshot<List<T>> snapshot,
+  static Widget? checkMultipleRecordsState<T>({required AsyncSnapshot<List<T>> snapshot,
       Widget? loader, Widget? error, Widget? nothingFound}) {
     if (snapshot.connectionState == ConnectionState.waiting) {
       if (loader != null) return loader;

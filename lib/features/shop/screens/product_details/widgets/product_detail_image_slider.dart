@@ -3,6 +3,7 @@ import 'package:ecommerseproject/common/widgets/appbar/appbar.dart';
 import 'package:ecommerseproject/common/widgets/custom_shapes/curved_edges/curved_edges_widget.dart';
 import 'package:ecommerseproject/common/widgets/icons/t_circular_icon.dart';
 import 'package:ecommerseproject/common/widgets/images/t_rounded_image.dart';
+import 'package:ecommerseproject/common/widgets/products/favourite_icon/favourite_icon.dart';
 import 'package:ecommerseproject/features/shop/controller/product/images_controller.dart';
 import 'package:ecommerseproject/features/shop/model/product_model.dart';
 import 'package:ecommerseproject/utils/constants/colors.dart';
@@ -94,10 +95,7 @@ class TProductImageSlider extends StatelessWidget {
 
             //Appbar Icons
             TAppBar(showBackArrow: true, actions: [
-              TCircularIcon(
-                icon: Iconsax.heart,
-                color: Colors.red,
-              )
+              TFavouriteIcon(productId: product.id),
             ])
           ],
         ),
