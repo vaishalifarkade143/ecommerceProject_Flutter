@@ -32,40 +32,27 @@ class CategoryRepository extends GetxController {
     }
   }
 
-  /// Upload categories  to the cloude Firestore
-//   Future<void> uploadDummyData(List<CategoryModel> categories) async {
-//     try {
-//       final storage = Get.put(TFirebaseStorageService());
-//       for (var category in categories) {
-//         final file = await storage.getImageDateFromAssets(category.image);
-
-// //Get image data link from local assets and upload to firebase storage
-//         final url = await storage.uploadImageData(
-//           'Categories',
-//           file,
-//           category.name,
-//         );
-//         // Update category model with the new image URL
-//         category.image = url;
-//         // Upload the updated category to Firestore
-//         await _db
-//             .collection('Categories')
-//             .doc(category.id)
-//             .set(category.toJson());
-//       }
-//     } on FirebaseException catch (e) {
-//       throw TFirebaseExceptions(e.code).message;
-//     } on FormatException catch (_) {
-//       throw TFormatExceptions().message;
-//     } on PlatformException catch (e) {
-//       throw TPlatformExceptions(e.code).message;
-//     } catch (e) {
-//       throw "Failed to upload dummy data: $e";
-//     }
-//   }
-
-// In category_repository.dart
-// ❌ REPLACE the old uploadDummyData with this:
+  //Get Sub Categories
+  Future<List<CategoryModel>> getSubCategories(String categoryId) async {
+  try {
+    final snapshot = await _db
+        .collection('Categories')
+        .where('ParentId', isEqualTo: categoryId)
+        .get();
+        final result = snapshot.docs.map((e) => CategoryModel.fromSnapshot(e)).toList();
+        return result;
+   
+  } on FirebaseException catch (e) {
+    throw TFirebaseExceptions(e.code).message;
+  } on FormatException catch (_) {
+    throw TFormatExceptions().message;
+  } on PlatformException catch (e) {
+    throw TPlatformExceptions(e.code).message;
+  } catch (e) {
+    throw ' Get Sub Categories data: $e';
+  }
+}
+  
 
 Future<void> uploadDummyData(List<CategoryModel> categories) async {
   try {

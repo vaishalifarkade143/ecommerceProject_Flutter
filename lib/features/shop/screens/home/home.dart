@@ -60,14 +60,10 @@ class HomeScreen extends StatelessWidget {
 
                       /// -- Categories List
                       THomeCategories(
-                          // categories: categories,
                           )
                     ],
                   ),
                 ),
-                // const SizedBox(
-                //   height: TSizes.spaceBtwSections,
-                // ),
               ],
             ),
           ),
@@ -78,11 +74,6 @@ class HomeScreen extends StatelessWidget {
             child: Column(
               children: [
                 TPromoSlider(
-                    // banners: [
-                    //   TImages.promoBanner1,
-                    //   TImages.promoBanner2,
-                    //   TImages.promoBanner3
-                    // ],
                     ),
                 const SizedBox(height: TSizes.spaceBtwSections),
 
@@ -91,10 +82,7 @@ class HomeScreen extends StatelessWidget {
                   title: 'Popular Products',
                   onPressed: () => Get.to(() => AllProductsScreen(
                       title: 'Popular Products',
-                      // query: FirebaseFirestore.instance
-                      //     .collection('Products')
-                      //     .where('IsFeatured', isEqualTo: true)
-                      //     .limit(6),
+                     
                           futureMethod: controller.fetchAllFeaturedProducts(),
                           ),
                       

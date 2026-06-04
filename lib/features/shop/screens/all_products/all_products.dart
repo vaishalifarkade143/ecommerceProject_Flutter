@@ -34,13 +34,15 @@ class AllProductsScreen extends StatelessWidget {
               builder: (context, snapshot) {
                 //check the state of the FutureBuilder snapshot
                 const loader = TVerticalProductShimmer();
-                final widget = TCloudHelperFunction.checkMultipleRecordsState(snapshot :snapshot , loader :loader, );
-                
+                final widget = TCloudHelperFunction.checkMultipleRecordsState(
+                  snapshot: snapshot,
+                  loader: loader,
+                );
+
                 // return  Appropriate widget based on the snapshot state
                 if (widget != null) {
                   return widget;
                 }
-                
 
                 //Products found !
                 final products = snapshot.data!;

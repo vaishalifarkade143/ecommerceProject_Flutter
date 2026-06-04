@@ -11,11 +11,10 @@ class CategoryController extends GetxController {
   final isLoading = false.obs;
   final _categoryRepository = Get.put(CategoryRepository());
   RxList<CategoryModel> allCategories = <CategoryModel>[].obs;
-   RxList<CategoryModel> featuredCategories = <CategoryModel>[].obs;
+  RxList<CategoryModel> featuredCategories = <CategoryModel>[].obs;
 
   @override
   void onInit() {
-    // TODO: implement onInit
     fetchCategories();
     super.onInit();
   }
@@ -34,8 +33,10 @@ class CategoryController extends GetxController {
       // Hide loader after loading categories
       //fetch data from data source(Firestore, api etc)
       //Filter fetched categories
-      featuredCategories.assignAll(allCategories.where((category) => category.isFeatured && category.parentId.isEmpty).take(8).toList());
-    
+      featuredCategories.assignAll(allCategories
+          .where((category) => category.isFeatured && category.parentId.isEmpty)
+          .take(8)
+          .toList());
     } catch (e) {
       // print('Error fetching categories: $e');
       TLoaders.errorSnackBar(title: 'Oh snap!', message: e.toString());
@@ -46,15 +47,27 @@ class CategoryController extends GetxController {
   }
 
   /// -- Load selected category data
-  ///  -- Get category or sub -category Products.
-  // In category_controller.dart — add this method
-Future<List<ProductModel>> getCategoryProducts({required String categoryId ,int limit = 4}) async {
-  try {
-    final products = await ProductRepository.instance.getProductForCategory(categoryId :categoryId, limit: limit);
-    return products;
-  } catch (e) {
+  Future<List<CategoryModel>> getSubCategories(String categoryId) async {
+  try{
+    final subCategories = await _categoryRepository.getSubCategories(categoryId);
+    return subCategories;
+  }
+  catch(e){
     TLoaders.errorSnackBar(title: 'Oh snap!', message: e.toString());
     return [];
   }
-}
+  }
+  ///  -- Get category or sub -category Products.
+  // In category_controller.dart — add this method
+  Future<List<ProductModel>> getCategoryProducts(
+      {required String categoryId, int limit = 4}) async {
+    try {
+      final products = await ProductRepository.instance
+          .getProductForCategory(categoryId: categoryId, limit: limit);
+      return products;
+    } catch (e) {
+      TLoaders.errorSnackBar(title: 'Oh snap!', message: e.toString());
+      return [];
+    }
+  }
 }
