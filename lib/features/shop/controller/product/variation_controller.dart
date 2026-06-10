@@ -7,10 +7,10 @@ class VariationController extends GetxController {
   static VariationController get instance => Get.find();
 
   // ADD THESE 3 lines
-  RxInt quantity = 1.obs;
+  RxInt quantity = 0.obs;
   void increaseQuantity() => quantity.value++;
   void decreaseQuantity() {
-    if (quantity.value > 1) quantity.value--;
+    if (quantity.value > 0) quantity.value--;
   }
 
   //variables
@@ -106,6 +106,6 @@ class VariationController extends GetxController {
     selectedAttributes.clear();
     variationStockStatus.value = '';
     selectedVariation.value = ProductVariationModel.empty();
-    quantity.value = 1;
+    quantity.value = 0;
   }
 }

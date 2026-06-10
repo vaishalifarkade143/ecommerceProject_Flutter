@@ -1,78 +1,3 @@
-// import 'package:ecommerseproject/common/widgets/icons/t_circular_icon.dart';
-// import 'package:ecommerseproject/utils/constants/colors.dart';
-// import 'package:ecommerseproject/utils/constants/sizes.dart';
-// import 'package:ecommerseproject/utils/helpers/helper_functions.dart';
-// import 'package:flutter/material.dart';
-// import 'package:iconsax/iconsax.dart';
-
-// class TBottomAddCard extends StatelessWidget {
-//   const TBottomAddCard({super.key});
-
-//   @override
-//   Widget build(BuildContext context) {
-//     final dark = THelperFunctions.isDarkMode(context);
-//     return Container(
-//       padding: EdgeInsets.symmetric(
-//         vertical: TSizes.defaultSpace / 2,
-//         horizontal: TSizes.defaultSpace / 2,
-//       ),
-//       decoration: BoxDecoration(
-//         color: dark ? TColors.dark : TColors.light,
-//         borderRadius: const BorderRadius.only(
-//           topLeft: Radius.circular(TSizes.cardRadiousLg),
-//           topRight: Radius.circular(TSizes.cardRadiousLg),
-//         ),
-//       ),
-//       child: Row(
-//         mainAxisAlignment: MainAxisAlignment.spaceBetween,
-//         children: [
-//           Row(
-//             children: [
-//               TCircularIcon(
-//                 icon: Iconsax.minus,
-//                 backgroundColor: TColors.darkGrey,
-//                 width: 40,
-//                 height: 40,
-//                 color: TColors.white,
-//               ),
-//               const SizedBox(
-//                 width: TSizes.spaceBtwItems,
-//               ),
-//               Text(
-//                 "2",
-//                 style: Theme.of(context).textTheme.titleSmall,
-//               ),
-//               const SizedBox(
-//                 width: TSizes.spaceBtwItems,
-//               ),
-//               TCircularIcon(
-//                 icon: Iconsax.add,
-//                 backgroundColor: TColors.black,
-//                 width: 40,
-//                 height: 40,
-//                 color: TColors.white,
-//               ),
-//             ],
-//           ),
-//           ElevatedButton(
-//             onPressed: () {},
-//             style: ElevatedButton.styleFrom(
-//               padding: EdgeInsets.all(
-//                 TSizes.md,
-//               ),
-//               backgroundColor: TColors.black,
-//               side: const BorderSide(
-//                 color: TColors.black,
-//               ),
-//             ),
-//             child: const Text('Add to Cart'),
-//           ),
-//         ],
-//       ),
-//     );
-//   }
-// }
-
 import 'package:ecommerseproject/common/widgets/icons/t_circular_icon.dart';
 import 'package:ecommerseproject/features/shop/controller/product/cart_controller.dart';
 import 'package:ecommerseproject/features/shop/controller/product/variation_controller.dart';
@@ -92,6 +17,7 @@ class TBottomAddCard extends StatelessWidget {
   Widget build(BuildContext context) {
     final dark = THelperFunctions.isDarkMode(context);
     final cartController = CartController.instance;
+    cartController.updateAlreadyAddedProductCount(product);
     final controller = VariationController.instance; // ADD THIS
 
     return Container(
@@ -109,43 +35,58 @@ class TBottomAddCard extends StatelessWidget {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          Row(
-            children: [
-              TCircularIcon(
-                icon: Iconsax.minus,
-                backgroundColor: TColors.darkGrey,
-                width: 40,
-                height: 40,
-                color: TColors.white,
-                onPressed: () => controller.decreaseQuantity(), // ADD
-              ),
-              const SizedBox(width: TSizes.spaceBtwItems),
+          Obx(
+            () => Row(
+              children: [
+                TCircularIcon(
+                  icon: Iconsax.minus,
+                  backgroundColor: TColors.darkGrey,
+                  width: 40,
+                  height: 40,
+                  color: TColors.white,
+                  onPressed: () {
+                    if (controller.quantity.value > 0) {
+                      controller.quantity.value -= 1;
+                    }
+                  },
+                  // onPressed: () => cartController.productQuantityInCart.value < 1 ? null : cartController.productQuantityInCart.value -= 1, // ADD
+                ),
+                const SizedBox(width: TSizes.spaceBtwItems),
 
-              // REPLACE hardcoded "2" with this
-              Obx(() => Text(
-                    '${controller.quantity.value}',
-                    style: Theme.of(context).textTheme.titleSmall,
-                  )),
+                // REPLACE hardcoded "2" with this
+                Text(
+                  controller.quantity.value.toString(),
+                  style: Theme.of(context).textTheme.titleSmall,
+                ),
 
-              const SizedBox(width: TSizes.spaceBtwItems),
-              TCircularIcon(
-                icon: Iconsax.add,
-                backgroundColor: TColors.black,
-                width: 40,
-                height: 40,
-                color: TColors.white,
-                onPressed: () => controller.increaseQuantity(), // ADD
-              ),
-            ],
-          ),
-          ElevatedButton(
-            onPressed: () => cartController.addToCart(product),
-            style: ElevatedButton.styleFrom(
-              padding: EdgeInsets.all(TSizes.md),
-              backgroundColor: TColors.black,
-              side: const BorderSide(color: TColors.black),
+                const SizedBox(width: TSizes.spaceBtwItems),
+                TCircularIcon(
+                  icon: Iconsax.add,
+                  backgroundColor: TColors.black,
+                  width: 40,
+                  height: 40,
+                  color: TColors.white,
+                  onPressed: () => controller.quantity.value += 1,
+                ),
+              ],
             ),
-            child: const Text('Add to Cart'),
+          ),
+          Obx(
+            () => ElevatedButton(
+              onPressed: controller.quantity.value < 1
+                  ? null
+                  : () => cartController.addToCart(product),
+             
+              style: ElevatedButton.styleFrom(
+                padding: EdgeInsets.all(TSizes.md),
+                
+                backgroundColor: controller.quantity.value < 1 ? TColors.grey : TColors.black,
+                side: const BorderSide(color: TColors.black),
+              ),
+              child:  Text('Add to Cart' ,  style: TextStyle(
+    color: controller.quantity.value < 1 ? TColors.grey : TColors.white,
+  ),),
+            ),
           ),
         ],
       ),

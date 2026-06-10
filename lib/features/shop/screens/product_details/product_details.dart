@@ -25,6 +25,11 @@ class ProductDetailsScreen extends StatelessWidget {
     //   final variationController = Get.put(VariationController());
     // final imagesController = Get.put(ImagesController());
     // final dark = THelperFunctions.isDarkMode(context);
+    
+     final controller = VariationController.instance;
+ 
+    // Reset quantity and selected attributes every time a new product page opens
+    controller.resetSelectedAttributes();
     return Scaffold(
       bottomNavigationBar: TBottomAddCard(product: product),
       body: SingleChildScrollView(
