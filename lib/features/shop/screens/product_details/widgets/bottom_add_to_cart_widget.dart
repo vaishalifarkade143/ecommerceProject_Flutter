@@ -73,11 +73,10 @@
 //   }
 // }
 
-
-
-
 import 'package:ecommerseproject/common/widgets/icons/t_circular_icon.dart';
+import 'package:ecommerseproject/features/shop/controller/product/cart_controller.dart';
 import 'package:ecommerseproject/features/shop/controller/product/variation_controller.dart';
+import 'package:ecommerseproject/features/shop/model/product_model.dart';
 import 'package:ecommerseproject/utils/constants/colors.dart';
 import 'package:ecommerseproject/utils/constants/sizes.dart';
 import 'package:ecommerseproject/utils/helpers/helper_functions.dart';
@@ -86,11 +85,13 @@ import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
 
 class TBottomAddCard extends StatelessWidget {
-  const TBottomAddCard({super.key});
+  const TBottomAddCard({super.key, required this.product});
+  final ProductModel product;
 
   @override
   Widget build(BuildContext context) {
     final dark = THelperFunctions.isDarkMode(context);
+    final cartController = CartController.instance;
     final controller = VariationController.instance; // ADD THIS
 
     return Container(
@@ -122,9 +123,9 @@ class TBottomAddCard extends StatelessWidget {
 
               // REPLACE hardcoded "2" with this
               Obx(() => Text(
-                '${controller.quantity.value}',
-                style: Theme.of(context).textTheme.titleSmall,
-              )),
+                    '${controller.quantity.value}',
+                    style: Theme.of(context).textTheme.titleSmall,
+                  )),
 
               const SizedBox(width: TSizes.spaceBtwItems),
               TCircularIcon(
@@ -138,7 +139,7 @@ class TBottomAddCard extends StatelessWidget {
             ],
           ),
           ElevatedButton(
-            onPressed: () {},
+            onPressed: () => cartController.addToCart(product),
             style: ElevatedButton.styleFrom(
               padding: EdgeInsets.all(TSizes.md),
               backgroundColor: TColors.black,

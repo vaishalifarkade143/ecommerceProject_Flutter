@@ -3,6 +3,7 @@ import 'package:ecommerseproject/common/widgets/custom_shapes/container/t_rounde
 import 'package:ecommerseproject/common/widgets/icons/t_circular_icon.dart';
 import 'package:ecommerseproject/common/widgets/images/t_rounded_image.dart';
 import 'package:ecommerseproject/common/widgets/products/favourite_icon/favourite_icon.dart';
+import 'package:ecommerseproject/common/widgets/products/product_cards/product_cart_add_button.dart';
 import 'package:ecommerseproject/common/widgets/texts/product_price_text.dart';
 import 'package:ecommerseproject/common/widgets/texts/product_title_text.dart';
 import 'package:ecommerseproject/common/widgets/texts/t_brand_title_text_with_verifired_icon.dart';
@@ -132,22 +133,7 @@ class TProductCardVertical extends StatelessWidget {
                   ),
                 ),
 
-                Container(
-                  decoration: BoxDecoration(
-                      color: TColors.dark,
-                      borderRadius: BorderRadius.only(
-                        topLeft: Radius.circular(TSizes.cardRadiousMd),
-                        bottomRight:
-                            Radius.circular(TSizes.productImageRadious),
-                      )),
-                  child: const SizedBox(
-                    width: TSizes.iconLg * 1.2,
-                    height: TSizes.iconLg * 1.2,
-                    child: Center(
-                      child: Icon(Iconsax.add, color: TColors.white),
-                    ),
-                  ),
-                )
+                ProductCartAddToCartButton(product: product,),
               ],
             )
           ],
@@ -156,3 +142,5 @@ class TProductCardVertical extends StatelessWidget {
     );
   }
 }
+
+

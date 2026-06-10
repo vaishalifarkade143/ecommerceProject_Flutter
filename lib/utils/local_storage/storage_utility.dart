@@ -4,6 +4,7 @@ class TLocalStorage {
   late final GetStorage _storage;
   //singleton instance 
   static  TLocalStorage? _instance;
+  
    TLocalStorage._internal();
 
   factory TLocalStorage.instance() {

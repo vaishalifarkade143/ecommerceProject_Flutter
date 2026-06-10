@@ -22,5 +22,6 @@ class GeneralBindings extends Bindings {
     Get.lazyPut(() => ImagesController());
     Get.put(BrandRepository());
   Get.put(BrandController());
+  
   }
 }

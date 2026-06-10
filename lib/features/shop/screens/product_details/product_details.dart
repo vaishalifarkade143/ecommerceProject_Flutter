@@ -26,7 +26,7 @@ class ProductDetailsScreen extends StatelessWidget {
     // final imagesController = Get.put(ImagesController());
     // final dark = THelperFunctions.isDarkMode(context);
     return Scaffold(
-      bottomNavigationBar: TBottomAddCard(),
+      bottomNavigationBar: TBottomAddCard(product: product),
       body: SingleChildScrollView(
         child: Column(
           children: [

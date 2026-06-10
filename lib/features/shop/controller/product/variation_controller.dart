@@ -20,30 +20,7 @@ class VariationController extends GetxController {
       ProductVariationModel.empty().obs;
   // -- Get product stock status
 
-  // void onAttributeSelected(
-  //     ProductModel product, attributeName, attributeValue) {
-  //   //-- when attribute is selected we will first add tht attribute to selected attributes map
-  //   final selectedAttributes =
-  //       Map<String, dynamic>.from(this.selectedAttributes);
-  //   selectedAttributes[attributeName] = attributeValue;
-  //   this.selectedAttributes[attributeName] = attributeValue;
-
-  //   final selectedVariation = product.productVariations!.firstWhere(
-  //       (variation) => _isSameAttributeValues(
-  //           variation.attributeValues, selectedAttributes),
-  //       orElse: () => ProductVariationModel.empty());
-
-  //   // show the selected variation image as a main images
-  //   if (selectedVariation.image.isNotEmpty) {
-  //     ImagesController.instance.selectedProductImages.value =
-  //         selectedVariation.image;
-  //   }
-
-  //   //Assign selected variation
-  //   this.selectedVariation.value = selectedVariation;
-  //   // ✅ FIX: call stock status update here — it was never being called
-  //   getProdutVariationStockStatus();
-  // }
+ 
 
   void onAttributeSelected(
       ProductModel product, attributeName, attributeValue) {
