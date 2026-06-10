@@ -46,7 +46,7 @@ class TCartItems extends StatelessWidget {
                           quantity: item.quantity,
                           add: () => cartController.addOneToCart(item),
                           remove: () =>
-                              cartController.removeFromCartDialog(item as int),
+                              cartController.removeOneFromCart(item),
                         ),
                       ],
                     ),

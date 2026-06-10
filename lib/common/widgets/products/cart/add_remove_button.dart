@@ -29,6 +29,7 @@ class TProductQantityWithAddRemoveButton extends StatelessWidget {
           backgroundColor: THelperFunctions.isDarkMode(context)
               ? TColors.darkerGrey
               : TColors.light,
+              onPressed: remove,
         ),
         const SizedBox(width: TSizes.spaceBtwItems),
         Text(quantity.toString(), style: Theme.of(context).textTheme.titleSmall),
