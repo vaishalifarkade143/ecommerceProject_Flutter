@@ -1,11 +1,15 @@
+
 import 'package:ecommerseproject/common/widgets/loaders/circular_loader.dart';
+import 'package:ecommerseproject/common/widgets/texts/section_heading.dart';
 import 'package:ecommerseproject/data/repositories/address/address_repository.dart';
 import 'package:ecommerseproject/features/personalization/model/address_model.dart';
+import 'package:ecommerseproject/features/personalization/screen/address/widgets/single_address.dart';
 import 'package:ecommerseproject/utils/constants/image_strings.dart';
+import 'package:ecommerseproject/utils/constants/sizes.dart';
+import 'package:ecommerseproject/utils/helpers/cloud_helper_function.dart';
 import 'package:ecommerseproject/utils/helpers/network_manager.dart';
 import 'package:ecommerseproject/utils/popups/full_screen_loader.dart';
 import 'package:ecommerseproject/utils/popups/loader.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -25,7 +29,7 @@ class AddressController extends GetxController {
   Rx<AddressModel> selectedAddress = AddressModel.empty().obs;
   final addressRepository = Get.put(AddressRepository());
 
-  //Future all user specific address
+  // Fetch all user specific addresses
   Future<List<AddressModel>> getAllUserAddress() async {
     try {
       final addresses = await addressRepository.fetchUserAddresses();
@@ -50,43 +54,43 @@ class AddressController extends GetxController {
         backgroundColor: Colors.transparent,
         content: TCircularLoader(),
       );
-      //clear the 'selected' field
+      // Clear the 'selected' field on the previously selected address
       if (selectedAddress.value.id.isNotEmpty) {
         await addressRepository.updateSelectedField(
             selectedAddress.value.id, false);
       }
-      //assign     selected address
+      // Assign selected address
       newSelectedAddress.selectedAddress = true;
       selectedAddress.value = newSelectedAddress;
-      //Assign selected field to true the newly selected address
+      // Set selected field to true for the newly selected address
       await addressRepository.updateSelectedField(
           selectedAddress.value.id, true);
 
-          Get.back();
+      Get.back();
     } catch (e) {
       TLoaders.errorSnackBar(
           title: 'Error in selection', message: e.toString());
     }
   }
 
-  //Add new address
+  // Add new address
   Future addNewAddresses() async {
     try {
-      //start Loading
+      // Start loading
       TFullScreenLoader.openLoadingDialog(
           'Storing Address... ', TImages.deliveredEmailIllustration);
-      //check Internet connectivity
+      // Check internet connectivity
       final isConnected = await NetworkManager.instance.isConnected();
       if (!isConnected) {
         TFullScreenLoader.stopLoading();
         return;
       }
-      //form validation
+      // Form validation
       if (!addressFormKey.currentState!.validate()) {
         TFullScreenLoader.stopLoading();
         return;
       }
-      //save address Data
+      // Save address data
       final address = AddressModel(
           id: '',
           name: name.text.trim(),
@@ -99,20 +103,20 @@ class AddressController extends GetxController {
           selectedAddress: true);
 
       final id = await addressRepository.addAddress(address);
-      //update Selected address Status
+      // Update selected address status
       address.id = id;
       await selectAddress(address);
-      //Remove Loader
+      // Remove loader
       TFullScreenLoader.stopLoading();
-      //show success Message
+      // Show success message
       TLoaders.successSnackBar(
           title: 'Congratulations',
           message: 'Your address has been saved successfully.');
-      //Refresh address  data
+      // Refresh address data
       refreshData.toggle();
-      //Reset Fields
+      // Reset fields
       resetFormFields();
-      //Rediect
+      // Redirect back
       Navigator.of(Get.context!).pop();
     } catch (e) {
       TLoaders.errorSnackBar(
@@ -120,7 +124,44 @@ class AddressController extends GetxController {
     }
   }
 
-//Function to reset form field
+  Future<dynamic> selectNewAddressPopUp(BuildContext context) {
+    return showModalBottomSheet(
+        context: context,
+        builder: (_) => Container(
+              padding: EdgeInsets.all(TSizes.lg),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  TSectionHeading(title: 'Select Address'),
+                  FutureBuilder(
+                      future: getAllUserAddress(),
+                      builder: (_, snapshot) {
+                        // Helper function: handle loader, no record or error message
+                        final responce =
+                            TCloudHelperFunction.checkMultipleRecordsState(
+                                snapshot: snapshot);
+                        if (responce != null) return responce;
+
+                        // FIX 3: Added itemCount and shrinkWrap to prevent unbounded height crash
+                        // FIX 4: Changed selectedAddress(...) to selectAddress(...) — Rx object is not callable
+                        return ListView.builder(
+                          shrinkWrap: true,
+                          itemCount: snapshot.data!.length,
+                          itemBuilder: (_, index) => TSingleAddress(
+                            address: snapshot.data![index],
+                            onTap: () async {
+                              await selectAddress(snapshot.data![index]);
+                              Get.back();
+                            },
+                          ),
+                        );
+                      }),
+                ],
+              ),
+            ));
+  }
+
+  // Function to reset form fields
   void resetFormFields() {
     name.clear();
     phoneNumber.clear();

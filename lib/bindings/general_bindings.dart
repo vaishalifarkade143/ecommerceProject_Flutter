@@ -1,8 +1,10 @@
 import 'package:ecommerseproject/data/repositories/brand/brand_repository.dart';
 import 'package:ecommerseproject/data/repositories/product/product_repository.dart';
 import 'package:ecommerseproject/data/user/user_repository.dart';
+import 'package:ecommerseproject/features/personalization/controller/address_controller.dart';
 import 'package:ecommerseproject/features/personalization/controller/user_controller.dart';
 import 'package:ecommerseproject/features/shop/controller/brand_controller.dart';
+import 'package:ecommerseproject/features/shop/controller/product/checkout_controller.dart';
 import 'package:ecommerseproject/features/shop/controller/product/images_controller.dart';
 import 'package:ecommerseproject/features/shop/controller/product/product_controller.dart';
 import 'package:ecommerseproject/features/shop/controller/product/variation_controller.dart';
@@ -21,7 +23,8 @@ class GeneralBindings extends Bindings {
     Get.lazyPut(() => VariationController());
     Get.lazyPut(() => ImagesController());
     Get.put(BrandRepository());
-  Get.put(BrandController());
-  
+    Get.put(BrandController());
+    Get.put(AddressController());
+    Get.put(CheckoutController());
   }
 }

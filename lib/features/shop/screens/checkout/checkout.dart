@@ -2,6 +2,9 @@ import 'package:ecommerseproject/common/widgets/appbar/appbar.dart';
 import 'package:ecommerseproject/common/widgets/custom_shapes/container/t_rounded_container.dart';
 import 'package:ecommerseproject/common/widgets/products/cart/coupon_widget.dart';
 import 'package:ecommerseproject/common/widgets/success_screen/success_screen.dart';
+import 'package:ecommerseproject/features/personalization/controller/address_controller.dart';
+import 'package:ecommerseproject/features/shop/controller/product/cart_controller.dart';
+import 'package:ecommerseproject/features/shop/controller/product/checkout_controller.dart';
 import 'package:ecommerseproject/features/shop/screens/cart/widgets/cart_items.dart';
 import 'package:ecommerseproject/features/shop/screens/checkout/widgets/billing_address_section.dart';
 import 'package:ecommerseproject/features/shop/screens/checkout/widgets/billing_amount_section.dart';
@@ -19,6 +22,9 @@ class CheckoutScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final cartController = Get.put(CartController());
+    Get.put(CheckoutController());
+    Get.put(AddressController());
     final dark = THelperFunctions.isDarkMode(context);
     return Scaffold(
       appBar: TAppBar(
